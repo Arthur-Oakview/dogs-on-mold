@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,29 +96,65 @@
 
   /* ---------- HERO ---------- */
   .hero {
-    background: var(--sage);
+    background-color: var(--sage);
     color: var(--bone);
-    padding: 90px 0 80px;
+    padding: 110px 0 100px;
     position: relative;
     overflow: hidden;
+    min-height: 640px;
   }
+  /* Full-width photo bleeding to the right edge */
   .hero::before {
     content: '';
     position: absolute;
-    top: -120px; right: -120px;
-    width: 500px; height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(160,75,44,0.22), transparent 70%);
+    inset: 0;
+    background-image: url('Black_Lab_Cover_photo.avif');
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+  /* Sage gradient that fades from solid on the left to transparent on the right,
+     keeping the text readable while letting the dog's photo show through */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        90deg,
+        var(--sage) 0%,
+        var(--sage) 30%,
+        rgba(107, 128, 115, 0.92) 45%,
+        rgba(107, 128, 115, 0.55) 65%,
+        rgba(107, 128, 115, 0.15) 85%,
+        rgba(107, 128, 115, 0.05) 100%
+      );
+    z-index: 1;
     pointer-events: none;
   }
   .hero-grid {
     display: grid;
-    grid-template-columns: 1.15fr 1fr;
+    grid-template-columns: minmax(0, 720px) 1fr;
     gap: 64px;
     align-items: center;
-    position: relative; z-index: 1;
+    position: relative;
+    z-index: 2;
   }
   @media (max-width: 960px) {
+    .hero {
+      min-height: auto;
+      padding: 90px 0 80px;
+    }
+    .hero::after {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(107, 128, 115, 0.92) 0%,
+          rgba(107, 128, 115, 0.85) 60%,
+          rgba(107, 128, 115, 0.75) 100%
+        );
+    }
     .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   }
   .eyebrow {
@@ -151,6 +188,7 @@
     font-weight: 400;
     margin-bottom: 24px;
     letter-spacing: -0.025em;
+    text-shadow: 0 2px 24px rgba(42, 42, 40, 0.25);
   }
   .hero h1 em {
     font-style: italic;
@@ -839,8 +877,8 @@
   <div class="container hero-grid">
     <div>
       <div class="eyebrow"><span class="dot"></span>Now booking nationwide trips — Spring/Summer 2026</div>
-      <h1>Find the mold.<br/>Find the <em>truth.</em><br/>Then find your way home.</h1>
-      <p class="lead">Certified canine mold detection from a Minneapolis-based team that travels nationwide. 90–97% accuracy, 45–90 minute non-invasive inspections, and end-to-end guidance from the first sniff through remediation.</p>
+      <h1>Stop guessing.<br/>Start <em>healing.</em></h1>
+      <p class="lead">Most homeowners come to us after traditional inspections found nothing — and they were still sick. Certified K9 mold detection backed by building science finds what air samples and visual inspections miss. Minneapolis-based, nationwide travel.</p>
       <div class="hero-cta">
         <a href="#request" class="btn btn-large">Get on the Schedule</a>
         <a href="#the-way" class="btn btn-large btn-ghost">See How We Work</a>
@@ -849,14 +887,6 @@
         <div class="stat"><div class="num">90–97%</div><div class="lbl">Detection Accuracy</div></div>
         <div class="stat"><div class="num">45–90 min</div><div class="lbl">Avg Inspection</div></div>
         <div class="stat"><div class="num">50</div><div class="lbl">States Served</div></div>
-      </div>
-    </div>
-    <div class="hero-photo">
-      <span class="photo-tag">Hero photo</span>
-      <div class="photo-meta">
-        <strong>Winnie at work</strong>
-        Replace this placeholder with your highest-impact action shot — Winnie indicating in a real inspection setting.<br/><br/>
-        <em>Recommended: 1200×1500px, portrait orientation.</em>
       </div>
     </div>
   </div>
