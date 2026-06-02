@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Dogs On Mold — Certified Canine Mold Detection · Minneapolis, MN · Nationwide</title>
-<meta name="description" content="Certified canine mold detection. 90–97% accuracy, non-invasive, 45–90 minute inspections. Based in Minneapolis, traveling nationwide. Get on an upcoming trip." />
+<meta name="description" content="Certified canine mold detection. 90–97% accuracy, non-invasive, 45–90 minute inspections. Based in Minneapolis, traveling nationwide. Book a free 15-minute consult or get on the schedule." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -103,7 +102,6 @@
     overflow: hidden;
     min-height: 640px;
   }
-  /* Full-width photo bleeding to the right edge */
   .hero::before {
     content: '';
     position: absolute;
@@ -114,8 +112,6 @@
     background-repeat: no-repeat;
     z-index: 0;
   }
-  /* Sage gradient that fades from solid on the left to transparent on the right,
-     keeping the text readable while letting the dog's photo show through */
   .hero::after {
     content: '';
     position: absolute;
@@ -225,48 +221,7 @@
     margin-top: 6px;
   }
 
-  /* Hero photo placeholder */
-  .hero-photo {
-    aspect-ratio: 4/5;
-    background: linear-gradient(135deg, rgba(239,233,220,0.08), rgba(239,233,220,0.18));
-    border: 1px dashed rgba(239, 233, 220, 0.45);
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 4px;
-    position: relative;
-    text-align: center;
-    padding: 20px;
-  }
-  .hero-photo .photo-meta {
-    color: rgba(239, 233, 220, 0.7);
-    font-size: 13px;
-    letter-spacing: 0.04em;
-  }
-  .hero-photo .photo-meta strong {
-    display: block;
-    font-family: var(--display);
-    font-size: 22px;
-    color: var(--bone);
-    margin-bottom: 6px;
-    font-weight: 500;
-  }
-  .photo-tag {
-    position: absolute;
-    top: 14px; left: 14px;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    background: var(--brick);
-    color: var(--bone);
-    padding: 4px 10px;
-    border-radius: 2px;
-  }
-
-  /* ---------- UPCOMING TRIPS ---------- */
-  .trips {
-    background: var(--bone);
-    padding: 90px 0;
-    border-bottom: 1px solid rgba(139, 111, 78, 0.18);
-  }
+  /* ---------- SECTION HEADS ---------- */
   .section-head {
     display: flex; align-items: flex-end; justify-content: space-between;
     margin-bottom: 44px;
@@ -290,90 +245,6 @@
     font-size: 15px;
     color: var(--walnut);
     max-width: 360px;
-  }
-
-  .trip-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 18px;
-  }
-  .trip-card {
-    background: #FFFFFF00;
-    background-color: var(--bone-deep);
-    border: 1px solid rgba(139, 111, 78, 0.25);
-    padding: 26px 24px;
-    border-radius: 4px;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-    cursor: pointer;
-    position: relative;
-  }
-  .trip-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--brick);
-    box-shadow: 0 18px 40px rgba(42, 42, 40, 0.10);
-  }
-  .trip-card .trip-region {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--walnut);
-    margin-bottom: 14px;
-  }
-  .trip-card h3 {
-    font-size: 26px;
-    margin-bottom: 6px;
-    color: var(--ink);
-  }
-  .trip-card .trip-state {
-    font-size: 14px;
-    color: var(--walnut);
-    margin-bottom: 18px;
-  }
-  .trip-card .trip-dates {
-    display: flex; align-items: center; gap: 10px;
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--ink);
-    padding-top: 16px;
-    border-top: 1px solid rgba(139, 111, 78, 0.22);
-  }
-  .trip-card .trip-dates::before {
-    content: '';
-    width: 8px; height: 8px;
-    background: var(--sage);
-    border-radius: 50%;
-  }
-  .trip-card .trip-slots {
-    margin-top: 8px;
-    font-size: 12px;
-    color: var(--brick);
-    font-weight: 600;
-    letter-spacing: 0.04em;
-  }
-  .trip-card .trip-slots.full { color: var(--walnut); }
-
-  .map-banner {
-    margin-top: 44px;
-    background: var(--ink);
-    color: var(--bone);
-    padding: 36px 40px;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .map-banner h3 {
-    font-size: 24px;
-    margin-bottom: 6px;
-    color: var(--bone);
-  }
-  .map-banner p {
-    color: rgba(239, 233, 220, 0.75);
-    font-size: 15px;
-    max-width: 540px;
   }
 
   /* ---------- WHY ---------- */
@@ -418,219 +289,7 @@
     line-height: 1.55;
   }
 
-  /* ---------- THE DOGS ON MOLD WAY ---------- */
-  .the-way {
-    padding: 110px 0;
-    background: var(--bone);
-  }
-  .way-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-top: 56px;
-  }
-  @media (max-width: 800px) { .way-grid { grid-template-columns: 1fr; } }
-  .way-card {
-    background: var(--sage);
-    color: var(--bone);
-    padding: 44px 40px;
-    border-radius: 4px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
-  .way-card:nth-child(even) { background: var(--ink); }
-  .way-card:hover { transform: translateY(-4px); }
-  .way-card .way-index {
-    font-family: var(--display);
-    font-size: 14px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(239, 233, 220, 0.6);
-    margin-bottom: 18px;
-  }
-  .way-card h3 {
-    font-size: 32px;
-    margin-bottom: 16px;
-    color: var(--bone);
-    font-weight: 400;
-  }
-  .way-card h3 em { font-style: italic; color: var(--bone); }
-  .way-card > p {
-    color: rgba(239, 233, 220, 0.85);
-    font-size: 15px;
-    margin-bottom: 22px;
-    max-width: 520px;
-  }
-  .way-card ul {
-    list-style: none;
-    padding: 0;
-    border-top: 1px solid rgba(239, 233, 220, 0.2);
-    padding-top: 22px;
-  }
-  .way-card ul li {
-    color: rgba(239, 233, 220, 0.9);
-    font-size: 14px;
-    padding: 8px 0;
-    padding-left: 24px;
-    position: relative;
-    border-bottom: 1px solid rgba(239, 233, 220, 0.1);
-  }
-  .way-card ul li:last-child { border-bottom: none; }
-  .way-card ul li::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 16px;
-    width: 12px; height: 1px;
-    background: var(--brick);
-  }
-  .way-card ul li strong {
-    color: var(--bone);
-    font-weight: 600;
-    font-family: var(--display);
-    font-size: 15px;
-    display: block;
-    margin-bottom: 2px;
-  }
-  .way-card ul li.sub {
-    padding-left: 38px;
-    font-size: 13px;
-    color: rgba(239, 233, 220, 0.65);
-  }
-  .way-card ul li.sub::before { left: 18px; width: 8px; }
-
-  /* ---------- MOLD LITERACY ---------- */
-  .literacy {
-    background: var(--ink);
-    color: var(--bone);
-    padding: 100px 0;
-  }
-  .literacy .section-eyebrow { color: var(--brick); }
-  .literacy h2 { color: var(--bone); }
-  .literacy h2 em { color: var(--brick); font-style: italic; }
-  .lit-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 60px;
-    align-items: start;
-  }
-  @media (max-width: 880px) { .lit-grid { grid-template-columns: 1fr; gap: 40px; } }
-
-  .lit-comparison {
-    background: rgba(239, 233, 220, 0.04);
-    border: 1px solid rgba(239, 233, 220, 0.12);
-    border-radius: 4px;
-    padding: 36px;
-  }
-  .lit-comparison h3 {
-    color: var(--bone);
-    font-size: 26px;
-    margin-bottom: 24px;
-  }
-  .lit-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    padding: 18px 0;
-    border-bottom: 1px solid rgba(239, 233, 220, 0.12);
-  }
-  .lit-row:last-child { border-bottom: none; }
-  .lit-row .lit-label {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--walnut);
-    margin-bottom: 4px;
-  }
-  .lit-row .lit-value {
-    color: var(--bone);
-    font-size: 15px;
-    font-family: var(--display);
-    font-weight: 400;
-  }
-
-  .lit-content h3 {
-    color: var(--bone);
-    font-size: 28px;
-    margin-bottom: 18px;
-  }
-  .lit-content p {
-    color: rgba(239, 233, 220, 0.78);
-    font-size: 16px;
-    line-height: 1.65;
-    margin-bottom: 16px;
-  }
-  .lit-content .badge {
-    display: inline-block;
-    margin-top: 18px;
-    background: var(--brick);
-    color: var(--bone);
-    padding: 14px 22px;
-    font-family: var(--display);
-    font-style: italic;
-    font-size: 17px;
-    border-radius: 4px;
-  }
-
-  /* ---------- GALLERY ---------- */
-  .gallery {
-    background: var(--bone);
-    padding: 100px 0;
-  }
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 220px;
-    gap: 16px;
-  }
-  @media (max-width: 760px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
-  .ph {
-    background: var(--bone-deep);
-    border: 1px dashed rgba(139, 111, 78, 0.5);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: var(--walnut);
-    text-align: center;
-    padding: 20px;
-    transition: background 0.2s;
-    position: relative;
-  }
-  .ph:hover { background: #DDD3BE; }
-  .ph .ph-icon {
-    width: 28px; height: 28px;
-    border: 1.5px solid var(--walnut);
-    border-radius: 4px;
-    margin-bottom: 10px;
-    position: relative;
-  }
-  .ph .ph-icon::after {
-    content: '';
-    position: absolute;
-    width: 7px; height: 7px;
-    background: var(--walnut);
-    border-radius: 50%;
-    top: 5px; left: 5px;
-  }
-  .ph .ph-title {
-    font-family: var(--display);
-    font-size: 15px;
-    color: var(--ink);
-    margin-bottom: 4px;
-    font-weight: 500;
-  }
-  .ph .ph-sub {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--walnut);
-  }
-  .ph.large { grid-column: span 2; grid-row: span 2; }
-  .ph.tall { grid-row: span 2; }
-
-  /* ---------- ABOUT ---------- */
+  /* ---------- OUR STORY ---------- */
   .about {
     background: var(--sage);
     color: var(--bone);
@@ -697,6 +356,364 @@
     margin-top: 4px;
   }
 
+  /* ---------- MEET THE TEAM ---------- */
+  .team {
+    background: var(--bone-deep);
+    padding: 110px 0;
+  }
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 44px;
+  }
+  @media (max-width: 760px) { .team-grid { grid-template-columns: 1fr; } }
+  .team-card {
+    background: var(--bone);
+    border: 1px solid rgba(139, 111, 78, 0.22);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .team-photo {
+    aspect-ratio: 4/3;
+    background: rgba(107, 128, 115, 0.12);
+    border-bottom: 1px dashed rgba(139, 111, 78, 0.4);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 24px;
+    color: var(--walnut);
+    font-size: 13px;
+  }
+  .team-photo strong {
+    display: block;
+    font-family: var(--display);
+    font-size: 18px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .team-body { padding: 28px 30px 32px; }
+  .team-card h3 { font-size: 28px; margin-bottom: 4px; }
+  .team-card .role {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--brick);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .team-card p { font-size: 15px; color: var(--walnut); line-height: 1.6; }
+  .team-follow {
+    text-align: center;
+    margin-top: 40px;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 19px;
+    color: var(--ink);
+  }
+  .team-follow a { color: var(--brick); }
+  .team-follow small {
+    display: block;
+    font-family: var(--body);
+    font-style: normal;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--walnut);
+    margin-top: 8px;
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery {
+    background: var(--bone);
+    padding: 100px 0;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 220px;
+    gap: 16px;
+  }
+  @media (max-width: 760px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+  .ph {
+    background: var(--bone-deep);
+    border: 1px dashed rgba(139, 111, 78, 0.5);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--walnut);
+    text-align: center;
+    padding: 20px;
+    transition: background 0.2s;
+    position: relative;
+  }
+  .ph:hover { background: #DDD3BE; }
+  .ph .ph-icon {
+    width: 28px; height: 28px;
+    border: 1.5px solid var(--walnut);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .ph .ph-icon::after {
+    content: '';
+    position: absolute;
+    width: 7px; height: 7px;
+    background: var(--walnut);
+    border-radius: 50%;
+    top: 5px; left: 5px;
+  }
+  .ph .ph-title {
+    font-family: var(--display);
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .ph .ph-sub {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--walnut);
+  }
+  .ph.large { grid-column: span 2; grid-row: span 2; }
+  .ph.tall { grid-row: span 2; }
+
+  /* ---------- SERVICES / THE WAY ---------- */
+  .the-way {
+    padding: 110px 0;
+    background: var(--bone);
+  }
+  .way-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 56px;
+  }
+  @media (max-width: 800px) { .way-grid { grid-template-columns: 1fr; } }
+  .way-card {
+    background: var(--sage);
+    color: var(--bone);
+    padding: 44px 40px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  .way-card:nth-child(even) { background: var(--ink); }
+  .way-card:hover { transform: translateY(-4px); }
+  .way-card .way-index {
+    font-family: var(--display);
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(239, 233, 220, 0.6);
+    margin-bottom: 18px;
+  }
+  .way-card h3 {
+    font-size: 30px;
+    margin-bottom: 16px;
+    color: var(--bone);
+    font-weight: 400;
+  }
+  .way-card h3 em { font-style: italic; color: var(--bone); }
+  .way-card > p {
+    color: rgba(239, 233, 220, 0.88);
+    font-size: 15px;
+    line-height: 1.65;
+    max-width: 520px;
+  }
+
+  /* ---------- WHAT'S INCLUDED ---------- */
+  .includes {
+    margin-top: 64px;
+    background: var(--ink);
+    color: var(--bone);
+    border-radius: 4px;
+    padding: 48px 52px;
+  }
+  @media (max-width: 540px) { .includes { padding: 36px 28px; } }
+  .includes .includes-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brick);
+    margin-bottom: 12px;
+  }
+  .includes h3 { color: var(--bone); font-size: 28px; margin-bottom: 28px; }
+  .includes ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 48px;
+  }
+  @media (max-width: 760px) { .includes ul { grid-template-columns: 1fr; } }
+  .includes li {
+    position: relative;
+    padding: 0 0 16px 30px;
+    margin-bottom: 16px;
+    color: rgba(239, 233, 220, 0.88);
+    font-size: 15px;
+    line-height: 1.55;
+    border-bottom: 1px solid rgba(239, 233, 220, 0.12);
+  }
+  .includes li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 6px;
+    width: 13px; height: 7px;
+    border-left: 2px solid var(--brick);
+    border-bottom: 2px solid var(--brick);
+    transform: rotate(-45deg);
+  }
+
+  /* ---------- PRICING ---------- */
+  .pricing {
+    background: var(--bone-deep);
+    padding: 110px 0;
+  }
+  .price-echo {
+    background: var(--sage);
+    color: var(--bone);
+    border-radius: 4px;
+    padding: 30px 36px;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 21px;
+    line-height: 1.5;
+    max-width: 860px;
+    margin: 0 0 48px;
+  }
+  .price-tiers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 760px) { .price-tiers { grid-template-columns: 1fr; } }
+  .tier {
+    background: var(--bone);
+    border: 1px solid rgba(139, 111, 78, 0.25);
+    border-radius: 4px;
+    padding: 34px 32px;
+  }
+  .tier.featured { border-color: var(--brick); border-width: 1.5px; }
+  .tier .tier-name { font-family: var(--display); font-size: 25px; margin-bottom: 4px; }
+  .tier .tier-tag { font-size: 14px; color: var(--brick); font-style: italic; margin-bottom: 22px; }
+  .price-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(139, 111, 78, 0.2);
+    font-size: 15px;
+    color: var(--ink);
+    gap: 16px;
+  }
+  .price-line:last-of-type { border-bottom: none; }
+  .price-line .amt {
+    font-family: var(--display);
+    font-weight: 500;
+    color: var(--brick);
+    white-space: nowrap;
+    font-size: 17px;
+  }
+  .tier .note { font-size: 13px; color: var(--walnut); margin-top: 18px; line-height: 1.6; }
+  .tier .consult-line { font-size: 16px; color: var(--ink); line-height: 1.6; margin-bottom: 18px; }
+  .fine-print {
+    margin-top: 32px;
+    font-size: 13.5px;
+    color: var(--walnut);
+    line-height: 1.8;
+  }
+  .fine-print strong { color: var(--ink); font-weight: 600; }
+  .fine-print .fp-row { padding: 6px 0; }
+
+  /* ---------- UPCOMING TRIPS ---------- */
+  .trips {
+    background: var(--bone);
+    padding: 90px 0;
+    border-bottom: 1px solid rgba(139, 111, 78, 0.18);
+  }
+  .trip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+  }
+  .trip-card {
+    background-color: var(--bone-deep);
+    border: 1px solid rgba(139, 111, 78, 0.25);
+    padding: 26px 24px;
+    border-radius: 4px;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+    position: relative;
+  }
+  .trip-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--brick);
+    box-shadow: 0 18px 40px rgba(42, 42, 40, 0.10);
+  }
+  .trip-card .trip-region {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--walnut);
+    margin-bottom: 14px;
+  }
+  .trip-card h3 {
+    font-size: 26px;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .trip-card .trip-state {
+    font-size: 14px;
+    color: var(--walnut);
+    margin-bottom: 18px;
+  }
+  .trip-card .trip-dates {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    padding-top: 16px;
+    border-top: 1px solid rgba(139, 111, 78, 0.22);
+  }
+  .trip-card .trip-dates::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--sage);
+    border-radius: 50%;
+  }
+  .trip-card .trip-slots {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--brick);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .trip-card .trip-slots.full { color: var(--walnut); }
+  .map-banner {
+    margin-top: 44px;
+    background: var(--ink);
+    color: var(--bone);
+    padding: 36px 40px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .map-banner h3 { font-size: 24px; margin-bottom: 6px; color: var(--bone); }
+  .map-banner p { color: rgba(239, 233, 220, 0.75); font-size: 15px; max-width: 540px; }
+
   /* ---------- CTA / REQUEST FORM ---------- */
   .request {
     background: var(--bone);
@@ -720,10 +737,7 @@
     margin-bottom: 30px;
     max-width: 440px;
   }
-  .request ul.checks {
-    list-style: none; padding: 0;
-    margin-top: 24px;
-  }
+  .request ul.checks { list-style: none; padding: 0; margin-top: 24px; }
   .request ul.checks li {
     padding: 10px 0 10px 28px;
     position: relative;
@@ -746,6 +760,38 @@
     border-radius: 4px;
     border: 1px solid rgba(139, 111, 78, 0.22);
   }
+  /* Intent toggle */
+  .intent-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--walnut);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .intent-toggle {
+    display: flex;
+    border: 1px solid rgba(139, 111, 78, 0.35);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 22px;
+  }
+  .intent-toggle label { flex: 1; margin: 0; cursor: pointer; }
+  .intent-toggle input { position: absolute; opacity: 0; pointer-events: none; }
+  .intent-opt {
+    display: block;
+    text-align: center;
+    padding: 14px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--walnut);
+    background: var(--bone);
+    transition: background 0.2s, color 0.2s;
+  }
+  .intent-toggle label + label .intent-opt { border-left: 1px solid rgba(139, 111, 78, 0.35); }
+  .intent-opt:hover { color: var(--ink); }
+  .intent-toggle input:checked + .intent-opt { background: var(--brick); color: var(--bone); }
   .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -776,13 +822,15 @@
     outline: none;
     border-color: var(--brick);
   }
-  .field textarea {
-    min-height: 110px;
-    resize: vertical;
-    font-family: var(--body);
-  }
+  .field textarea { min-height: 110px; resize: vertical; font-family: var(--body); }
   .field.full { grid-column: 1 / -1; }
   form .btn { width: 100%; margin-top: 8px; }
+  .form-foot {
+    text-align: center;
+    font-size: 13px;
+    color: var(--walnut);
+    margin-top: 16px;
+  }
 
   /* ---------- FOOTER ---------- */
   footer {
@@ -835,7 +883,6 @@
     letter-spacing: 0.04em;
   }
 
-  /* Decorative paw element */
   .paw-divider {
     text-align: center;
     margin: 0 auto 20px;
@@ -863,11 +910,11 @@
   <div class="nav-inner">
     <a href="#" class="logo">Dogs On Mold<span>.</span></a>
     <div class="nav-links">
-      <a href="#trips">Upcoming Trips</a>
-      <a href="#the-way">Our Method</a>
-      <a href="#literacy">Mold Literacy</a>
-      <a href="#about">About</a>
-      <a href="#request" class="btn">Get on the Schedule</a>
+      <a href="#story">Our Story</a>
+      <a href="#team">Meet the Team</a>
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#request" class="btn">Book A Free 15-Min Consult</a>
     </div>
   </div>
 </nav>
@@ -880,8 +927,8 @@
       <h1>Stop guessing.<br/>Start <em>healing.</em></h1>
       <p class="lead">Most homeowners come to us after traditional inspections found nothing — and they were still sick. Certified K9 mold detection backed by building science finds what air samples and visual inspections miss. Minneapolis-based, nationwide travel.</p>
       <div class="hero-cta">
-        <a href="#request" class="btn btn-large">Get on the Schedule</a>
-        <a href="#the-way" class="btn btn-large btn-ghost">See How We Work</a>
+        <a href="#request" class="btn btn-large">Book A Free 15-Min Consult</a>
+        <a href="#request" class="btn btn-large btn-ghost">Get On The Schedule</a>
       </div>
       <div class="hero-stats">
         <div class="stat"><div class="num">90–97%</div><div class="lbl">Detection Accuracy</div></div>
@@ -892,35 +939,8 @@
   </div>
 </section>
 
-<!-- UPCOMING TRIPS -->
-<section class="trips" id="trips">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <div class="section-eyebrow">Where we'll be next</div>
-        <h2>Save thousands by joining an <em>upcoming trip.</em></h2>
-      </div>
-      <div class="head-right">
-        We route the country in clusters so multiple clients share travel costs. If we're already coming your way, you save — and you get on the calendar faster.
-      </div>
-    </div>
-
-    <div class="trip-grid" id="tripGrid">
-      <!-- trips injected by JS -->
-    </div>
-
-    <div class="map-banner">
-      <div>
-        <h3>Don't see your area?</h3>
-        <p>We're routing new trips every month. Request your zip code below and we'll either add you to the closest existing trip — or build a route around your booking.</p>
-      </div>
-      <a href="#request" class="btn btn-large">Request a Visit</a>
-    </div>
-  </div>
-</section>
-
 <!-- WHY -->
-<section class="why">
+<section class="why" id="why">
   <div class="container">
     <div class="section-head">
       <div>
@@ -953,132 +973,72 @@
   </div>
 </section>
 
-<!-- THE DOGS ON MOLD WAY -->
-<section class="the-way" id="the-way">
-  <div class="container">
-    <div class="paw-divider">The Dogs On Mold Way</div>
-    <div class="section-head">
-      <div>
-        <div class="section-eyebrow">Our four-part method</div>
-        <h2>Four disciplines, <em>one honest answer.</em></h2>
-      </div>
-      <div class="head-right">
-        Most inspectors do one thing. We layer four — because mold doesn't show up in just one way, and you deserve to know it everywhere it lives.
+<!-- OUR STORY -->
+<section class="about" id="story">
+  <div class="container about-grid">
+    <div class="about-photo">
+      <div class="photo-meta">
+        <strong>Ben — Founder & Handler</strong>
+        Replace with a portrait of Ben (with or without Winnie).<br/><br/>
+        <em>Recommended: 1200×1600px, portrait orientation. Warm, honest lighting — no studio gloss.</em>
       </div>
     </div>
-
-    <div class="way-grid">
-      <!-- 1 -->
-      <div class="way-card">
-        <div class="way-index">Discipline 01</div>
-        <h3>Mold <em>Literate</em></h3>
-        <p>We know what mold is, how it grows, and — critically — how to read the difference between an old issue and an active one. That distinction changes everything about your next steps.</p>
-        <ul>
-          <li><strong>Old vs. new water damage</strong>Reading staining patterns, growth maturity, and moisture signatures to tell you whether you're looking at history or an active problem.</li>
-          <li><strong>Species behavior</strong>Knowing which molds favor which conditions — and what that tells us about the source.</li>
-        </ul>
-      </div>
-
-      <!-- 2 -->
-      <div class="way-card">
-        <div class="way-index">Discipline 02</div>
-        <h3>Building Science <em>Literate</em></h3>
-        <p>Mold is a symptom. Buildings are the cause. We read pressure dynamics, envelope failures, HVAC behavior, and moisture pathways — so when our dogs alert, we can explain why.</p>
-        <ul>
-          <li><strong>Top-tier building science credentials</strong>Trained beyond detection — we understand the systems creating the problem.</li>
-          <li><strong>Root cause framing</strong>Every alert gets context: what's leaking, what's drying poorly, what the building is doing wrong.</li>
-        </ul>
-      </div>
-
-      <!-- 3 -->
-      <div class="way-card">
-        <div class="way-index">Discipline 03</div>
-        <h3>Persistence of <em>Discovery</em></h3>
-        <p>We don't stop at a sniff. We confirm what the dog finds with a full multi-modal toolkit — so you walk away with evidence, not a hunch.</p>
-        <ul>
-          <li><strong>Smell — the dog</strong>Elite K9 training (Ironheart-trained, 35+ years working-dog lineage) with full handler certification.</li>
-          <li class="sub">Trained on the volatile organic compounds (VOCs) mold produces — not just visible growth.</li>
-          <li><strong>Visual confirmation</strong>High-intensity inspection light, borescope for inside walls and out-of-sight cavities, and thermal-aware moisture metering.</li>
-          <li class="sub">Borescope · High-intensity light · Calibrated moisture meter</li>
-        </ul>
-      </div>
-
-      <!-- 4 -->
-      <div class="way-card">
-        <div class="way-index">Discipline 04</div>
-        <h3>Start-to-Finish <em>Consultancy</em></h3>
-        <p>Finding mold is step one. We stay with you through everything that comes after — because most people get a report and then get lost. Not on our watch.</p>
-        <ul>
-          <li><strong>Hygienist advocacy</strong>We connect you with vetted industrial hygienists and translate their findings into plain English.</li>
-          <li><strong>Remediation "GC"</strong>We act as your general contractor through the remediation process — qualifying companies and protecting you from upsells.</li>
-          <li><strong>Legal advocacy</strong>Documentation that holds up — whether you're negotiating with a seller, a landlord, or in court.</li>
-        </ul>
+    <div>
+      <div class="section-eyebrow">A few years ago, I was the one who was sick.</div>
+      <h2>I lived it. That's why I built <em>this.</em></h2>
+      <p>It started as a migraine that wouldn't quit. Then came more symptoms, and more, until they were debilitating. Many providers and even urgent care visits — and no one could find anything wrong from standard examination or blood tests.</p>
+      <p>A friend asked a question that changed everything: had I tested my house for mold? I did. The air and swab samples came back with elevated levels. The problem wasn't in my head — it was in my home.</p>
+      <p>Over three years, it cost me more than $50,000 — testing, remediation, and clawing my health back. I went on leave from work. I moved out. I went through remediation, then turned to functional health to start rebuilding what the mold had taken. Recovery was slow. But piece by piece, I got my life back.</p>
+      <p>I'm still healing — and I'm honest about that. What I'm not is in the dark anymore. That experience turned me into an advocate against the moldy homes and workplaces quietly making people sick, and convinced me of one thing: when mold is hidden and hard to find, a trained dog is the best answer there is.</p>
+      <p>I built Dogs On Mold so you don't have to lose what I lost to find it. If you're sick and no one can explain why — or you just want to know what's really in your walls — this is for you.</p>
+      <div class="sig">
+        — Ben, with Winnie at my side
+        <small>Founder · Certified handler · Minneapolis, MN</small>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MOLD LITERACY -->
-<section class="literacy" id="literacy">
+<!-- MEET THE TEAM -->
+<section class="team" id="team">
   <div class="container">
     <div class="section-head">
       <div>
-        <div class="section-eyebrow">Mold literacy</div>
-        <h2>The difference between <em>old damage</em> and an <em>active problem</em> changes everything.</h2>
+        <div class="section-eyebrow">Meet the team</div>
+        <h2>Two of us. <em>One nose that matters.</em></h2>
       </div>
     </div>
-
-    <div class="lit-grid">
-      <div class="lit-comparison">
-        <h3>Reading the evidence</h3>
-        <div class="lit-row">
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo">
           <div>
-            <div class="lit-label">Old water damage</div>
-            <div class="lit-value">Dry, stable, historical</div>
-          </div>
-          <div>
-            <div class="lit-label">New water damage</div>
-            <div class="lit-value">Active moisture, ongoing source</div>
+            <strong>Photo — Ben</strong>
+            Portrait of Ben, ideally with Winnie.<br/>Recommended 1200×900px.
           </div>
         </div>
-        <div class="lit-row">
-          <div>
-            <div class="lit-label">Spore signature</div>
-            <div class="lit-value">Dormant, weathered</div>
-          </div>
-          <div>
-            <div class="lit-label">Spore signature</div>
-            <div class="lit-value">Reproducing, off-gassing VOCs</div>
-          </div>
-        </div>
-        <div class="lit-row">
-          <div>
-            <div class="lit-label">Health risk</div>
-            <div class="lit-value">Lower (still verify)</div>
-          </div>
-          <div>
-            <div class="lit-label">Health risk</div>
-            <div class="lit-value">Elevated — needs action</div>
-          </div>
-        </div>
-        <div class="lit-row">
-          <div>
-            <div class="lit-label">Remediation scope</div>
-            <div class="lit-value">Sometimes monitoring only</div>
-          </div>
-          <div>
-            <div class="lit-label">Remediation scope</div>
-            <div class="lit-value">Source fix + containment + removal</div>
-          </div>
+        <div class="team-body">
+          <h3>Ben</h3>
+          <div class="role">Founder &amp; Certified Handler</div>
+          <p>I came to this work the hard way — as the sick guy no one could diagnose. Now I run every inspection myself, handle Winnie in the field, and stay with clients long after the report is done. I don't hand you off to anyone — the restoration of your space is my priority.</p>
         </div>
       </div>
-
-      <div class="lit-content">
-        <h3>Why this matters for your wallet and your health</h3>
-        <p>A water stain on a ceiling could be a fixed leak from five years ago — or a slow-drip disaster happening right now. Air samples can't tell you which. A visual inspector might guess. A canine inspection backed by building science gives you the actual answer.</p>
-        <p>Knowing the difference can save you tens of thousands in unnecessary remediation — or save your health by catching an active problem the last inspector missed.</p>
-        <div class="badge">We tell you what you actually have. Not what's easiest to sell.</div>
+      <div class="team-card">
+        <div class="team-photo">
+          <div>
+            <strong>Photo — Winnie</strong>
+            Action or portrait shot of Winnie.<br/>Recommended 1200×900px.
+          </div>
+        </div>
+        <div class="team-body">
+          <h3>Winnie</h3>
+          <div class="role">Lead Detection Dog · Labrador Retriever</div>
+          <p>Trained at Ironheart, one of the most respected working-dog programs in the country — the same lineage behind 35+ years and hundreds of police K9s trained for drugs, explosives, and mold detection. On the clock, she's all business. Off the clock, she'll turn anything into a game of hide-and-seek — especially if her Kong is involved.</p>
+        </div>
       </div>
+    </div>
+    <div class="team-follow">
+      Want to see Winnie work? Follow along on <a href="#">Instagram</a> · <a href="#">TikTok</a>
+      <small>Social links coming soon</small>
     </div>
   </div>
 </section>
@@ -1088,14 +1048,13 @@
   <div class="container">
     <div class="section-head">
       <div>
-        <div class="section-eyebrow">Winnie & Ben in the field</div>
-        <h2>The dogs do <em>the work.</em> The handler reads the room.</h2>
+        <div class="section-eyebrow">Winnie &amp; Ben in the field</div>
+        <h2>The dog does <em>the work.</em> The handler reads the room.</h2>
       </div>
       <div class="head-right">
         Drop your professional photos into these placeholders. Each is sized to suggest the most impactful crop — action shots, alert moments, behind-the-scenes inspection moments, and portrait moments with the team.
       </div>
     </div>
-
     <div class="gallery-grid">
       <div class="ph large">
         <div class="ph-icon"></div>
@@ -1109,7 +1068,7 @@
       </div>
       <div class="ph tall">
         <div class="ph-icon"></div>
-        <div class="ph-title">Borescope inspection</div>
+        <div class="ph-title">Inspection light at work</div>
         <div class="ph-sub">800 × 1200</div>
       </div>
       <div class="ph">
@@ -1131,26 +1090,142 @@
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="container about-grid">
-    <div class="about-photo">
-      <div class="photo-meta">
-        <strong>Ben — Founder & Handler</strong>
-        Replace with a portrait of Ben (with or without Winnie).<br/><br/>
-        <em>Recommended: 1200×1600px, portrait orientation. Warm, honest lighting — no studio gloss.</em>
+<!-- SERVICES / HOW WE WORK -->
+<section class="the-way" id="services">
+  <div class="container">
+    <div class="paw-divider">The Dogs On Mold Way</div>
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">How we work</div>
+        <h2>Four disciplines, <em>one honest answer.</em></h2>
+      </div>
+      <div class="head-right">
+        Most inspectors do one thing. We layer four — because mold doesn't show up in just one way, and you deserve to know it everywhere it lives.
       </div>
     </div>
-    <div>
-      <div class="section-eyebrow">A few years ago, I was the customer.</div>
-      <h2>I lived it. That's why I built <em>this.</em></h2>
-      <p>For years I had symptoms no one could explain. The fatigue. The brain fog. The respiratory issues that kept coming back. I hired traditional inspectors. They found nothing. I paid for air samples. They came back "within normal range." Meanwhile my health kept slipping.</p>
-      <p>It took a canine mold detection inspection to find what every other method had missed — hidden behind a wall, in a place no human inspector would have thought to open. That single inspection gave me a starting line. Within a year of remediation, I had my life back.</p>
-      <p>Dogs On Mold exists because I refuse to let people spend years in the dark the way I did. If you're sick and no one can tell you why — or if you just want to know what's really in your walls — I built this for you.</p>
-      <div class="sig">
-        — Ben, with Winnie at my side
-        <small>Founder · Certified handler · Minneapolis, MN</small>
+
+    <div class="way-grid">
+      <div class="way-card">
+        <div class="way-index">01</div>
+        <h3>We read the mold, <em>not just the dog</em></h3>
+        <p>A dog finds the scent — but someone has to read what it means. As your handler, I'm trained to interpret the mold itself: how old it is, whether it's active, and what's feeding it. Reading staining patterns, growth maturity, and moisture signatures alongside Winnie's alerts is what turns a "she smelled something" into an actual answer about what you're dealing with.</p>
       </div>
+      <div class="way-card">
+        <div class="way-index">02</div>
+        <h3>We find what the <em>dog alone would miss</em></h3>
+        <p>Most mold-dog companies can read their dog. Few can read the building. Mold is a symptom; the structure is the cause. Because I'm trained in building science — pressure dynamics, envelope failures, HVAC behavior, moisture pathways — I can account for the spaces a dog might miss, sharpen how I read Winnie's cues in a given area, and explain why the mold is there. That's the difference between finding mold and understanding it.</p>
+      </div>
+      <div class="way-card">
+        <div class="way-index">03</div>
+        <h3>Proof, <em>not a hunch</em></h3>
+        <p>We don't stop at a sniff. We confirm what Winnie finds with high-intensity inspection light and calibrated moisture metering — and, at your request, optional air or swab sampling — so you walk away with evidence, not a guess.</p>
+      </div>
+      <div class="way-card">
+        <div class="way-index">04</div>
+        <h3>We don't disappear <em>after the report</em></h3>
+        <p>Finding mold is step one. We stay with you through what comes after — connecting you with vetted hygienists, and acting as your GC through remediation to protect you from bad remediators, because we know what to look for.</p>
+      </div>
+    </div>
+
+    <div class="includes">
+      <div class="includes-eyebrow">What you get</div>
+      <h3>Every inspection includes</h3>
+      <ul>
+        <li>A full canine sweep with Winnie, handler-read in real time.</li>
+        <li>Building-science assessment of moisture sources and problem areas.</li>
+        <li>Confirmation with inspection light and moisture metering — optional air/swab sampling on request.</li>
+        <li>A same-day verbal walkthrough of what we found, plus a written report with photos within 48 hours — what we found, where, and whether it's active.</li>
+        <li>A vetted referral and briefing: we connect you with a trusted hygienist and a remediator who meets our standards, and make sure you understand your report before those conversations.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">All-inclusive pricing</div>
+        <h2>No hidden fees. You'll know your <em>full price</em> before we book.</h2>
+      </div>
+    </div>
+
+    <div class="price-echo">
+      Mold cost me more than $50,000 over three years — because no one found it early. An inspection is a fraction of that, and the cheapest step you'll take in this whole process.
+    </div>
+
+    <div class="price-tiers">
+      <!-- Tier 1 -->
+      <div class="tier featured">
+        <div class="tier-name">Local Pricing</div>
+        <div class="tier-tag">Live in MN? We're local to you.</div>
+        <div class="price-line"><span>Standard home (up to 4,000 sq ft)</span><span class="amt">$1,250</span></div>
+        <div class="price-line"><span>Travel beyond 30 mi from downtown Minneapolis</span><span class="amt">+$2/mi RT</span></div>
+        <p class="note">Local mileage valid up to 300 miles. More than 300 miles from us? See nationwide pricing.</p>
+      </div>
+
+      <!-- Tier 2 -->
+      <div class="tier">
+        <div class="tier-name">Nationwide Pricing</div>
+        <div class="tier-tag">The more bookings in the same market, the more everyone saves.</div>
+        <div class="price-line"><span>1 client</span><span class="amt">$2,250</span></div>
+        <div class="price-line"><span>2 clients</span><span class="amt">$1,800 ea</span></div>
+        <div class="price-line"><span>3–4 clients</span><span class="amt">$1,600 ea</span></div>
+        <div class="price-line"><span>5–6 clients</span><span class="amt">$1,400 ea</span></div>
+        <div class="price-line"><span>7+ clients</span><span class="amt">$1,300 ea</span></div>
+        <p class="note">You're quoted at the current rate for your market. If more clients book your trip before we travel, your price drops automatically. A <em>market</em> is the major city we're serving and its surrounding area.</p>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="tier">
+        <div class="tier-name">Multi-Property Owners</div>
+        <div class="tier-tag">Portfolios &amp; multiple properties.</div>
+        <p class="consult-line">Own multiple properties or manage a portfolio? Every situation is different — book a consult and we'll build a plan around your properties.</p>
+        <a href="#request" class="btn">Book A Consult</a>
+        <p class="note"><strong>Nationwide mileage:</strong> $2/mile beyond 30 miles RT from the destination airport hub.</p>
+      </div>
+
+      <!-- Tier 4 -->
+      <div class="tier">
+        <div class="tier-name">Add-Ons</div>
+        <div class="tier-tag">For larger spaces.</div>
+        <div class="price-line"><span>Large home (4,000–8,000 sq ft)</span><span class="amt">+$300</span></div>
+        <div class="price-line"><span>Estate / very large home (8,000+ sq ft)</span><span class="amt">+$800</span></div>
+        <p class="note">Square footage covers all inspectable areas you'd like swept, including unfinished basements.</p>
+      </div>
+    </div>
+
+    <div class="fine-print">
+      <div class="fp-row"><strong>Booking:</strong> A 50% deposit holds your slot; the remaining 50% is due at completion of the inspection.</div>
+      <div class="fp-row"><strong>Detection only:</strong> remediation is not included. We find it and guide you — we never profit from fixing it.</div>
+    </div>
+  </div>
+</section>
+
+<!-- UPCOMING TRIPS -->
+<section class="trips" id="trips">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">Where we'll be next</div>
+        <h2>Save thousands by joining an <em>upcoming trip.</em></h2>
+      </div>
+      <div class="head-right">
+        We route the country in clusters so multiple clients share travel costs. If we're already coming your way, you save — and you get on the calendar faster.
+      </div>
+    </div>
+
+    <div class="trip-grid" id="tripGrid">
+      <!-- trips injected by JS -->
+    </div>
+
+    <div class="map-banner">
+      <div>
+        <h3>Don't see your area?</h3>
+        <p>We're routing new trips every month. Request your zip code below and we'll either add you to the closest existing trip — or build a route around your booking.</p>
+      </div>
+      <a href="#request" class="btn btn-large">Request a Visit</a>
     </div>
   </div>
 </section>
@@ -1159,9 +1234,9 @@
 <section class="request" id="request">
   <div class="container request-wrap">
     <div>
-      <div class="section-eyebrow">Request an inspection</div>
-      <h2>Get on the <em>schedule.</em></h2>
-      <p class="lead-2">Tell us where you are, what's going on, and when you're available. We'll match you to the closest upcoming trip — or route a new one if you're far from our current path.</p>
+      <div class="section-eyebrow">Get started</div>
+      <h2>Get on the schedule — <em>or just get answers.</em></h2>
+      <p class="lead-2">Ready to book? Get on the schedule. Not quite there yet? Grab a free 15-minute consult and we'll answer your questions, no pressure. Pick whichever fits where you are.</p>
       <ul class="checks">
         <li>Minneapolis-based, traveling all 50 states</li>
         <li>Most clients booked within 2–3 weeks</li>
@@ -1170,6 +1245,17 @@
       </ul>
     </div>
     <form class="req-form" onsubmit="event.preventDefault(); alert('Thanks — this is a placeholder. Wire this up to your CRM or email service of choice (e.g. Formspree, HubSpot, Mailchimp, Notion).'); this.reset();">
+      <div class="intent-label">What are you looking for?</div>
+      <div class="intent-toggle">
+        <label>
+          <input type="radio" name="intent" value="inspection" checked>
+          <span class="intent-opt">Request an inspection</span>
+        </label>
+        <label>
+          <input type="radio" name="intent" value="consult">
+          <span class="intent-opt">Book a free 15-min consult</span>
+        </label>
+      </div>
       <div class="form-row">
         <div class="field">
           <label>First Name</label>
@@ -1209,6 +1295,7 @@
             <option>Condo / townhome</option>
             <option>Pre-purchase inspection</option>
             <option>Commercial / multi-family</option>
+            <option>Multiple properties / portfolio</option>
             <option>Other</option>
           </select>
         </div>
@@ -1231,7 +1318,8 @@
           <textarea placeholder="Symptoms, water history, recent purchase, etc. The more we know up front, the better the visit goes."></textarea>
         </div>
       </div>
-      <button type="submit" class="btn btn-large">Request a Visit</button>
+      <button type="submit" class="btn btn-large">Send My Request</button>
+      <div class="form-foot">We'll reply within one business day.</div>
     </form>
   </div>
 </section>
@@ -1247,14 +1335,15 @@
       </div>
       <div>
         <h5>Navigate</h5>
+        <a href="#story">Our Story</a>
+        <a href="#team">Meet the Team</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
         <a href="#trips">Upcoming Trips</a>
-        <a href="#the-way">The Dogs On Mold Way</a>
-        <a href="#literacy">Mold Literacy</a>
-        <a href="#about">About Ben & Winnie</a>
       </div>
       <div>
         <h5>Get in touch</h5>
-        <a href="#request">Request a Visit</a>
+        <a href="#request">Book a Consult</a>
         <a href="mailto:hello@dogsonmold.com">hello@dogsonmold.com</a>
         <a href="tel:+16125550100">(612) 555-0100</a>
       </div>
