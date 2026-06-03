@@ -105,7 +105,8 @@
   .hero::before {
     content: '';
     position: absolute;
-    inset: 0;
+    top: 0; right: 0; bottom: 0;
+    width: 60%;
     background-image: url('Black_Lab_Cover_photo.avif');
     background-size: cover;
     background-position: center right;
@@ -120,11 +121,11 @@
       linear-gradient(
         90deg,
         var(--sage) 0%,
-        var(--sage) 30%,
-        rgba(107, 128, 115, 0.92) 45%,
-        rgba(107, 128, 115, 0.55) 65%,
-        rgba(107, 128, 115, 0.15) 85%,
-        rgba(107, 128, 115, 0.05) 100%
+        var(--sage) 38%,
+        rgba(107, 128, 115, 0.92) 52%,
+        rgba(107, 128, 115, 0.5) 72%,
+        rgba(107, 128, 115, 0.12) 90%,
+        rgba(107, 128, 115, 0.04) 100%
       );
     z-index: 1;
     pointer-events: none;
@@ -141,6 +142,9 @@
     .hero {
       min-height: auto;
       padding: 90px 0 80px;
+    }
+    .hero::before {
+      width: 100%;
     }
     .hero::after {
       background:
