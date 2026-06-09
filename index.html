@@ -293,6 +293,78 @@
     line-height: 1.55;
   }
 
+  /* ---------- SYMPTOMS ---------- */
+  .symptoms {
+    background: var(--bone);
+    padding: 100px 0;
+  }
+  .symptoms .section-head h2 { max-width: 780px; }
+  .symptoms-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+  @media (max-width: 900px) { .symptoms-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .symptoms-grid { grid-template-columns: 1fr; } }
+  .symptom-card {
+    background: var(--bone-deep);
+    padding: 30px 26px;
+    border-radius: 4px;
+    border-top: 3px solid var(--sage);
+  }
+  .symptom-card:nth-child(2) { border-top-color: var(--brick); }
+  .symptom-card:nth-child(3) { border-top-color: var(--walnut); }
+  .symptom-card:nth-child(4) { border-top-color: var(--ink); }
+  .symptom-icon { width: 56px; height: 56px; margin-bottom: 16px; }
+  .symptom-card h4 { font-size: 21px; margin-bottom: 8px; }
+  .symptom-card .sub {
+    font-size: 13px;
+    color: var(--walnut);
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+  .symptom-card ul { list-style: none; }
+  .symptom-card li {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.4;
+    padding: 7px 0 7px 18px;
+    position: relative;
+    border-bottom: 1px solid rgba(139, 111, 78, 0.14);
+  }
+  .symptom-card li::before {
+    content: "";
+    position: absolute; left: 0; top: 14px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--sage);
+  }
+  .symptom-card li:last-child { border-bottom: none; }
+  .symptom-card li.more {
+    color: var(--brick);
+    font-weight: 600;
+    border-bottom: none;
+  }
+  .symptom-card li.more::before { background: var(--brick); }
+  .symptoms-foot { text-align: center; margin-top: 48px; }
+  .symptoms-foot p {
+    font-size: 16px;
+    color: var(--walnut);
+    max-width: 600px;
+    margin: 0 auto 22px;
+    line-height: 1.6;
+  }
+  .symptoms-disclaimer {
+    font-size: 12px;
+    color: var(--walnut);
+    opacity: 0.7;
+    max-width: 660px;
+    margin: 34px auto 0;
+    text-align: center;
+    line-height: 1.5;
+  }
+
   /* ---------- OUR STORY ---------- */
   .about {
     background: var(--sage);
@@ -932,6 +1004,7 @@
   <div class="nav-inner">
     <a href="#" class="logo">Dogs On Mold<span>.</span></a>
     <div class="nav-links">
+      <a href="#symptoms">Symptoms</a>
       <a href="#story">Our Story</a>
       <a href="#team">Meet the Team</a>
       <a href="#services">Services</a>
@@ -962,6 +1035,101 @@
   </div>
 </section>
 
+<!-- SYMPTOMS -->
+<section class="symptoms" id="symptoms">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">Does any of this sound familiar?</div>
+        <h2>The symptoms people report — <em>long before they find the mold.</em></h2>
+      </div>
+      <div class="head-right">If you've been chasing symptoms no one can explain — or a doctor has pointed to mold — you're not imagining it. These are what people exposed to mold most often describe. We can't diagnose you. But we can find what's hiding in your home.</div>
+    </div>
+    <div class="symptoms-grid">
+
+      <div class="symptom-card">
+        <svg class="symptom-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Neurological"><circle cx="60" cy="60" r="56" fill="#6B8073"/><g fill="none" stroke="#EFE9DC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M60 40 C52 36 44 40 44 48 C38 48 36 56 40 60 C36 64 38 72 46 74 C48 80 56 82 60 78"/><path d="M60 40 C68 36 76 40 76 48 C82 48 84 56 80 60 C84 64 82 72 74 74 C72 80 64 82 60 78"/><line x1="60" y1="40" x2="60" y2="78"/></g></svg>
+        <h4>Neurological &amp; cognitive</h4>
+        <p class="sub">When the fog won't lift and your sharpness feels gone.</p>
+        <ul>
+          <li>Brain fog</li>
+          <li>Headaches &amp; migraines</li>
+          <li>Memory lapses &amp; forgetfulness</li>
+          <li>Trouble concentrating</li>
+          <li>Difficulty finding words</li>
+          <li>Dizziness or vertigo</li>
+          <li>Numbness &amp; tingling</li>
+          <li>Sensitivity to light &amp; sound</li>
+          <li>Anxiety or low mood</li>
+          <li>Trouble sleeping</li>
+          <li class="more">…and more</li>
+        </ul>
+      </div>
+
+      <div class="symptom-card">
+        <svg class="symptom-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Respiratory"><circle cx="60" cy="60" r="56" fill="#A04B2C"/><g fill="none" stroke="#EFE9DC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><line x1="60" y1="32" x2="60" y2="50"/><path d="M60 50 C55 50 53 53 53 58"/><path d="M60 50 C65 50 67 53 67 58"/><path d="M53 58 C44 60 39 70 42 82 C43 88 50 90 53 85 C55 81 55 70 53 58 Z"/><path d="M67 58 C76 60 81 70 78 82 C77 88 70 90 67 85 C65 81 65 70 67 58 Z"/></g></svg>
+        <h4>Respiratory &amp; sinus</h4>
+        <p class="sub">The cough, congestion, and "colds" that never fully clear.</p>
+        <ul>
+          <li>Persistent cough</li>
+          <li>Wheezing or shortness of breath</li>
+          <li>Chronic congestion</li>
+          <li>Sinus pressure &amp; postnasal drip</li>
+          <li>Frequent sinus infections</li>
+          <li>Sore or scratchy throat</li>
+          <li>New or worsening asthma</li>
+          <li>Itchy, watery eyes</li>
+          <li>Sneezing</li>
+          <li>Worse symptoms indoors</li>
+          <li class="more">…and more</li>
+        </ul>
+      </div>
+
+      <div class="symptom-card">
+        <svg class="symptom-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Whole body and mood"><circle cx="60" cy="60" r="56" fill="#8B6F4E"/><g fill="none" stroke="#EFE9DC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M60 82 C42 69 34 58 41 48 C46 41 56 42 60 51 C64 42 74 41 79 48 C86 58 78 69 60 82 Z"/><polyline points="42,61 53,61 57,52 62,70 66,61 78,61"/></g></svg>
+        <h4>Whole-body &amp; mood</h4>
+        <p class="sub">The exhaustion and "off" feeling that rest doesn't fix.</p>
+        <ul>
+          <li>Deep, unshakable fatigue</li>
+          <li>Feel better when you leave home</li>
+          <li>Unrefreshing sleep</li>
+          <li>Mood swings &amp; irritability</li>
+          <li>Getting sick often</li>
+          <li>Night sweats &amp; temperature swings</li>
+          <li>Increased thirst</li>
+          <li>Appetite or weight changes</li>
+          <li>Static "shocks"</li>
+          <li>Metallic taste</li>
+          <li class="more">…and more</li>
+        </ul>
+      </div>
+
+      <div class="symptom-card">
+        <svg class="symptom-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Muscles and joints"><circle cx="60" cy="60" r="56" fill="#2A2A28"/><g fill="none" stroke="#EFE9DC" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><line x1="49" y1="71" x2="71" y2="49"/><circle cx="44" cy="68" r="6"/><circle cx="51" cy="76" r="6"/><circle cx="69" cy="44" r="6"/><circle cx="76" cy="52" r="6"/></g></svg>
+        <h4>Muscles &amp; joints</h4>
+        <p class="sub">Aches that get written off as "just getting older."</p>
+        <ul>
+          <li>Joint pain &amp; stiffness</li>
+          <li>Muscle aches</li>
+          <li>Morning stiffness</li>
+          <li>Muscle cramps or spasms</li>
+          <li>Muscle weakness</li>
+          <li>General inflammation</li>
+          <li>Reduced range of motion</li>
+          <li>Joint swelling</li>
+          <li>Persistent low-grade pain</li>
+          <li class="more">…and more</li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="symptoms-foot">
+      <p>Symptoms like these have many possible causes. But if yours ease when you're away from home and return when you're back, a hidden mold source is worth ruling out.</p>
+    </div>
+    <p class="symptoms-disclaimer">Dogs On Mold provides canine mold detection — not medical diagnosis or treatment. The above reflects symptoms commonly reported in connection with mold exposure and is shared for educational purposes only; it is not medical advice. If you're experiencing health concerns, please consult a qualified healthcare provider.</p>
+  </div>
+</section>
+
 <!-- WHY -->
 <section class="why" id="why">
   <div class="container">
@@ -974,8 +1142,8 @@
     <div class="why-grid">
       <div class="why-card">
         <div class="why-num">01</div>
-        <h4>Scent, not spores</h4>
-        <p>Mold releases microbial gases (MVOCs) as it grows. Winnie is trained to detect those gases at trace concentrations and trace them to the source — even when the mold is behind a wall, under flooring, or in the HVAC, where there's nothing to see and nothing for an air test to catch.</p>
+        <h4>Scent over sight</h4>
+        <p>Mold releases microbial gases (MVOCs) as it grows. Winnie is trained to detect those gases at trace concentrations and trace them back to the source — even when there's no obvious sign of mold growth on a reachable surface, like when it's behind a wall, under flooring, or inside the HVAC. Air sampling, by contrast, is prone to false positives and struggles to capture accurate results unless the sample is pulled in the exact vicinity of the growth.</p>
       </div>
       <div class="why-card">
         <div class="why-num">02</div>
@@ -1057,6 +1225,9 @@
         <h3>We don't disappear <em>after the report</em></h3>
         <p>Finding mold is step one. We stay with you through what comes after — connecting you with vetted hygienists, and acting as your GC through remediation to protect you from bad remediators, because we know what to look for.</p>
       </div>
+    </div>
+    <div style="text-align: center; margin-top: 48px;">
+      <a href="#request" class="btn btn-large">Book A Free 15-Min Consult</a>
     </div>
   </div>
 </section>
@@ -1359,6 +1530,7 @@
       </div>
       <div>
         <h5>Navigate</h5>
+        <a href="#symptoms">Symptoms</a>
         <a href="#story">Our Story</a>
         <a href="#team">Meet the Team</a>
         <a href="#services">Services</a>
