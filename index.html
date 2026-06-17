@@ -834,6 +834,31 @@
     border: 0;
     min-height: 560px;
   }
+  .req-cta {
+    text-align: center;
+    padding: 56px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .req-cta h3 { font-size: 27px; margin-bottom: 12px; }
+  .req-cta p {
+    font-size: 15px;
+    color: var(--walnut);
+    line-height: 1.6;
+    max-width: 380px;
+    margin: 0 auto 28px;
+  }
+  .req-cta .form-foot {
+    margin-top: 18px;
+    font-size: 13px;
+    color: var(--walnut);
+  }
+  button.btn {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
   /* Intent toggle */
   .intent-label {
     font-size: 11px;
@@ -1008,7 +1033,7 @@
       <a href="#services">Services</a>
       <a href="#pricing">Pricing</a>
       <a href="faq.html">FAQ</a>
-      <a href="#request" class="btn">Book A Free 15-Min Consult</a>
+      <a href="#request" data-open-form class="btn">Book A Free 15-Min Consult</a>
     </div>
   </div>
 </nav>
@@ -1021,8 +1046,8 @@
       <h1>Stop guessing.<br/>Start <em>healing.</em></h1>
       <p class="lead">Most homeowners come to us after traditional inspections found nothing — and they were still sick. The problem: air samples only catch spores that happen to be airborne the moment the test runs, so hidden mold slips through. A trained detection dog finds the source by scent — even behind walls. Minneapolis-based, nationwide travel.</p>
       <div class="hero-cta">
-        <a href="#request" class="btn btn-large">Book A Free 15-Min Consult</a>
-        <a href="#request" class="btn btn-large btn-ghost">Get On The Schedule</a>
+        <a href="#request" data-open-form class="btn btn-large">Book A Free 15-Min Consult</a>
+        <a href="#request" data-open-form class="btn btn-large btn-ghost">Get On The Schedule</a>
       </div>
       <div class="hero-stats">
         <div class="stat"><div class="num">60–90 min</div><div class="lbl">Typical Inspection</div></div>
@@ -1228,7 +1253,7 @@
       </div>
     </div>
     <div style="text-align: center; margin-top: 48px;">
-      <a href="#request" class="btn btn-large">Book A Free 15-Min Consult</a>
+      <a href="#request" data-open-form class="btn btn-large">Book A Free 15-Min Consult</a>
     </div>
   </div>
 </section>
@@ -1378,7 +1403,7 @@
         <div class="tier-name">Multi-Property Owners</div>
         <div class="tier-tag">Portfolios &amp; multiple properties.</div>
         <p class="consult-line">Own multiple properties or manage a portfolio? Every situation is different — book a consult and we'll build a plan around your properties.</p>
-        <a href="#request" class="btn">Book A Consult</a>
+        <a href="#request" data-open-form class="btn">Book A Consult</a>
         <p class="note"><strong>Nationwide mileage:</strong> $2/mile beyond 30 miles RT from the destination airport hub.</p>
       </div>
 
@@ -1421,7 +1446,7 @@
         <h3>Don't see your area?</h3>
         <p>We're routing new trips every month. Request your zip code below and we'll either add you to the closest existing trip — or build a route around your booking.</p>
       </div>
-      <a href="#request" class="btn btn-large">Request a Visit</a>
+      <a href="#request" data-open-form class="btn btn-large">Request a Visit</a>
     </div>
   </div>
 </section>
@@ -1440,26 +1465,25 @@
         <li>Detection only — we don't do the remediation we recommend, so we're not upselling you a repair</li>
       </ul>
     </div>
-    <div class="req-embed">
+    <div class="req-embed req-cta">
       <!-- ============================================================
-           TALLY EMBED
-           1. Build your form in Tally with the fields listed in the
-              instructions, then publish it.
-           2. In Tally: Share > Embed > Standard. Copy your form's ID
-              (the code after tally.so/embed/ — e.g. "wAbC12").
-           3. Replace YOUR_FORM_ID below with that ID. Nothing else
-              needs to change.
+           TALLY POPUP TRIGGER
+           The form opens as a modal popup — it is NOT shown inline.
+           Every "Book" / "Consult" / "Request" button on the site
+           (nav, hero, services, pricing, trips, footer) opens this
+           same popup, all routed through one handler.
+           >>> Set your form ID in ONE place: the TALLY_FORM_ID line
+               in the script near the bottom of this file. <<<
            ============================================================ -->
-      <iframe
-        data-tally-src="https://tally.so/embed/81ElPO?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-        loading="lazy"
-        width="100%"
-        height="600"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-        title="Get on the schedule">
-      </iframe>
+      <h3>Ready when you are.</h3>
+      <p>One quick form covers both — booking an inspection or grabbing a free 15-minute consult. Takes about a minute.</p>
+      <button
+        type="button"
+        class="btn btn-large"
+        data-open-form>
+        Inspection / 15-min Consult
+      </button>
+      <div class="form-foot">We'll reply within one business day.</div>
     </div>
   </div>
 </section>
@@ -1485,7 +1509,7 @@
       </div>
       <div>
         <h5>Get in touch</h5>
-        <a href="#request">Book a Consult</a>
+        <a href="#request" data-open-form>Book a Consult</a>
         <a href="mailto:hello@dogsonmold.com">hello@dogsonmold.com</a>
         <a href="tel:+16125550100">(612) 555-0100</a>
       </div>
@@ -1530,6 +1554,7 @@
   trips.forEach(t => {
     const a = document.createElement('a');
     a.href = '#request';
+    a.setAttribute('data-open-form', '');
     a.className = 'trip-card';
     a.style.textDecoration = 'none';
     a.innerHTML = `
@@ -1540,6 +1565,38 @@
       <div class="trip-slots ${t.full ? 'full' : ''}">${t.slots} →</div>
     `;
     grid.appendChild(a);
+  });
+</script>
+
+<!-- ===== Booking popup: SET YOUR TALLY FORM ID HERE (one place) ===== -->
+<script>
+  // Replace YOUR_FORM_ID with your Tally form's ID (the code after tally.so/r/ — e.g. "wAbC12").
+  const TALLY_FORM_ID = "YOUR_FORM_ID";
+  const TALLY_OPTS = {
+    layout: "modal",
+    width: 640,
+    hideTitle: true,
+    overlay: true,
+    emoji: { text: "🐾", animation: "wave" }
+  };
+
+  function openBookingForm() {
+    if (window.Tally && typeof Tally.openPopup === "function") {
+      Tally.openPopup(TALLY_FORM_ID, TALLY_OPTS);
+    } else {
+      // Fallback if the Tally script hasn't loaded yet: go to the booking section.
+      const el = document.getElementById("request");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+
+  // Any element with [data-open-form] opens the popup (nav, hero, services, pricing, trips, footer).
+  document.addEventListener("click", function (e) {
+    const trigger = e.target.closest("[data-open-form]");
+    if (trigger) {
+      e.preventDefault();
+      openBookingForm();
+    }
   });
 </script>
 
