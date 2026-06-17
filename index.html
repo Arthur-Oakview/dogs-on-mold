@@ -97,65 +97,51 @@
   .hero {
     background-color: var(--sage);
     color: var(--bone);
-    padding: 110px 0 100px;
     position: relative;
     overflow: hidden;
-    min-height: 640px;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0; bottom: 0;
-    width: 46%;
-    background-image: url('Black_Lab_Cover_photo.avif');
-    background-size: cover;
-    background-position: center right;
-    background-repeat: no-repeat;
-    z-index: 0;
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(
-        90deg,
-        var(--sage) 0%,
-        var(--sage) 52%,
-        rgba(107, 128, 115, 0.92) 62%,
-        rgba(107, 128, 115, 0.5) 78%,
-        rgba(107, 128, 115, 0.12) 92%,
-        rgba(107, 128, 115, 0.04) 100%
-      );
-    z-index: 1;
-    pointer-events: none;
   }
   .hero-grid {
     display: grid;
-    grid-template-columns: minmax(0, 720px) 1fr;
-    gap: 64px;
-    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    min-height: 540px;
+  }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 76px;
+    padding-bottom: 72px;
+    padding-right: 56px;
+    padding-left: max(28px, calc((100vw - 1240px) / 2 + 28px));
+  }
+  .hero-media {
     position: relative;
-    z-index: 2;
+    min-height: 100%;
+    background-color: var(--sage-deep, #5c7064);
+  }
+  .hero-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
   }
   @media (max-width: 960px) {
-    .hero {
-      min-height: auto;
-      padding: 90px 0 80px;
+    .hero-grid {
+      grid-template-columns: 1fr;
+      min-height: 0;
     }
-    .hero::before {
-      width: 100%;
+    .hero-media {
+      order: -1;
+      min-height: 0;
+      height: 300px;
     }
-    .hero::after {
-      background:
-        linear-gradient(
-          180deg,
-          rgba(107, 128, 115, 0.92) 0%,
-          rgba(107, 128, 115, 0.85) 60%,
-          rgba(107, 128, 115, 0.75) 100%
-        );
+    .hero-content {
+      padding: 52px 28px 56px;
     }
-    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   }
   .eyebrow {
     display: inline-block;
@@ -836,6 +822,18 @@
     border-radius: 4px;
     border: 1px solid rgba(139, 111, 78, 0.22);
   }
+  .req-embed {
+    background: var(--bone-deep);
+    padding: 28px;
+    border-radius: 4px;
+    border: 1px solid rgba(139, 111, 78, 0.22);
+  }
+  .req-embed iframe {
+    display: block;
+    width: 100%;
+    border: 0;
+    min-height: 560px;
+  }
   /* Intent toggle */
   .intent-label {
     font-size: 11px;
@@ -1017,8 +1015,8 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="container hero-grid">
-    <div>
+  <div class="hero-grid">
+    <div class="hero-content">
       <div class="eyebrow"><span class="dot"></span>Now booking nationwide trips — Spring/Summer 2026</div>
       <h1>Stop guessing.<br/>Start <em>healing.</em></h1>
       <p class="lead">Most homeowners come to us after traditional inspections found nothing — and they were still sick. The problem: air samples only catch spores that happen to be airborne the moment the test runs, so hidden mold slips through. A trained detection dog finds the source by scent — even behind walls. Minneapolis-based, nationwide travel.</p>
@@ -1031,6 +1029,9 @@
         <div class="stat"><div class="num">Same-day</div><div class="lbl">On-Site Findings</div></div>
         <div class="stat"><div class="num">50</div><div class="lbl">States — We Come To You</div></div>
       </div>
+    </div>
+    <div class="hero-media">
+      <img src="Black_Lab_Cover_photo.avif" alt="Black Labrador trained for canine mold detection"/>
     </div>
   </div>
 </section>
@@ -1439,83 +1440,27 @@
         <li>Detection only — we don't do the remediation we recommend, so we're not upselling you a repair</li>
       </ul>
     </div>
-    <form class="req-form" onsubmit="event.preventDefault(); alert('Thanks — this is a placeholder. Wire this up to your CRM or email service of choice (e.g. Formspree, HubSpot, Mailchimp, Notion).'); this.reset();">
-      <div class="intent-label">What are you looking for?</div>
-      <div class="intent-toggle">
-        <label>
-          <input type="radio" name="intent" value="inspection" checked>
-          <span class="intent-opt">Request an inspection</span>
-        </label>
-        <label>
-          <input type="radio" name="intent" value="consult">
-          <span class="intent-opt">Book a free 15-min consult</span>
-        </label>
-      </div>
-      <div class="form-row">
-        <div class="field">
-          <label>First Name</label>
-          <input type="text" required placeholder="Jane">
-        </div>
-        <div class="field">
-          <label>Last Name</label>
-          <input type="text" required placeholder="Doe">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="field">
-          <label>Email</label>
-          <input type="email" required placeholder="jane@example.com">
-        </div>
-        <div class="field">
-          <label>Phone</label>
-          <input type="tel" required placeholder="(555) 555-5555">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="field">
-          <label>City / State</label>
-          <input type="text" required placeholder="Minneapolis, MN">
-        </div>
-        <div class="field">
-          <label>Zip Code</label>
-          <input type="text" required placeholder="55401">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="field">
-          <label>Property Type</label>
-          <select required>
-            <option value="">Select one…</option>
-            <option>Single-family home</option>
-            <option>Condo / townhome</option>
-            <option>Pre-purchase inspection</option>
-            <option>Commercial / multi-family</option>
-            <option>Multiple properties / portfolio</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>How did you hear about us?</label>
-          <select>
-            <option value="">Select one…</option>
-            <option>Doctor / practitioner referral</option>
-            <option>Friend / family</option>
-            <option>Google search</option>
-            <option>Instagram / TikTok</option>
-            <option>Realtor</option>
-            <option>Other</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="field full">
-          <label>What's going on?</label>
-          <textarea placeholder="Symptoms, water history, recent purchase, etc. The more we know up front, the better the visit goes."></textarea>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-large">Send My Request</button>
-      <div class="form-foot">We'll reply within one business day.</div>
-    </form>
+    <div class="req-embed">
+      <!-- ============================================================
+           TALLY EMBED
+           1. Build your form in Tally with the fields listed in the
+              instructions, then publish it.
+           2. In Tally: Share > Embed > Standard. Copy your form's ID
+              (the code after tally.so/embed/ — e.g. "wAbC12").
+           3. Replace YOUR_FORM_ID below with that ID. Nothing else
+              needs to change.
+           ============================================================ -->
+      <iframe
+        data-tally-src="https://tally.so/embed/YOUR_FORM_ID?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        loading="lazy"
+        width="100%"
+        height="600"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Get on the schedule">
+      </iframe>
+    </div>
   </div>
 </section>
 
@@ -1597,6 +1542,9 @@
     grid.appendChild(a);
   });
 </script>
+
+<!-- Tally embed loader -->
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
 
 </body>
 </html>
