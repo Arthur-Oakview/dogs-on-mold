@@ -102,52 +102,80 @@
     position: relative;
     overflow: hidden;
   }
+  .hero-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 70px 28px 64px;
+  }
+  /* Row 1: headline spans the full width above everything */
+  .hero-top {
+    margin-bottom: 40px;
+  }
+  /* Row 2: two columns — text left, photo right */
   .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
-    min-height: 540px;
+    grid-template-columns: 1.05fr 1fr;
+    align-items: center;
+    gap: 48px;
   }
   .hero-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 76px;
-    padding-bottom: 72px;
-    padding-right: 56px;
-    padding-left: max(28px, calc((100vw - 1240px) / 2 + 28px));
   }
   .hero-media {
-    position: relative;
-    min-height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 56px 56px 56px 0;
   }
   .hero-media img {
     width: auto;
     max-width: 100%;
-    max-height: 420px;
+    max-height: 380px;
     object-fit: contain;
     border-radius: 6px;
     display: block;
   }
+  /* Row 3: stats span full width, evenly centered across the bottom */
+  .hero-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 24px;
+    margin-top: 52px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(239, 233, 220, 0.25);
+    text-align: center;
+  }
+  .hero-stats .stat {
+    flex: 1;
+    max-width: 280px;
+  }
   @media (max-width: 960px) {
+    .hero-inner { padding: 48px 24px 48px; }
+    .hero-top { margin-bottom: 28px; text-align: center; }
+    .hero-top h1 { max-width: 22ch; margin-left: auto; margin-right: auto; }
     .hero-grid {
       grid-template-columns: 1fr;
-      min-height: 0;
+      gap: 28px;
     }
-    .hero-media {
-      order: -1;
-      min-height: 0;
-      padding: 36px 28px 0;
+    .hero-media { order: -1; }
+    .hero-media img { max-height: 260px; }
+    .hero-content { align-items: center; text-align: center; }
+    .hero p.lead { margin-left: auto; margin-right: auto; }
+  }
+  @media (max-width: 560px) {
+    /* Stats wrap into a tidy centered layout instead of scrunching */
+    .hero-stats {
+      flex-wrap: wrap;
+      gap: 20px 12px;
+      margin-top: 36px;
+      padding-top: 26px;
     }
-    .hero-media img {
-      max-height: 280px;
-    }
-    .hero-content {
-      padding: 40px 28px 56px;
+    .hero-stats .stat {
+      flex: 1 1 30%;
+      min-width: 90px;
+      max-width: none;
     }
   }
   .eyebrow {
@@ -177,12 +205,14 @@
     50% { opacity: 0.4; }
   }
   .hero h1 {
-    font-size: clamp(44px, 5.6vw, 76px);
+    font-size: clamp(40px, 5.6vw, 76px);
     font-weight: 400;
-    margin-bottom: 24px;
+    margin-bottom: 0;
     letter-spacing: -0.025em;
     text-shadow: 0 2px 24px rgba(42, 42, 40, 0.25);
+    max-width: 18ch;
   }
+  .hero-top { /* allow headline to breathe full width */ }
   .hero h1 em {
     font-style: italic;
     color: var(--bone);
@@ -190,22 +220,16 @@
     position: relative;
   }
   .hero p.lead {
-    font-size: 19px;
+    font-size: 18px;
     line-height: 1.55;
     color: rgba(239, 233, 220, 0.92);
-    max-width: 580px;
-    margin-bottom: 36px;
+    max-width: 540px;
+    margin-bottom: 32px;
   }
   .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
-  .hero-stats {
-    display: flex; gap: 40px;
-    margin-top: 56px;
-    padding-top: 28px;
-    border-top: 1px solid rgba(239, 233, 220, 0.25);
-  }
   .stat .num {
     font-family: var(--display);
-    font-size: 38px;
+    font-size: 36px;
     font-weight: 500;
     color: var(--bone);
     line-height: 1;
@@ -1049,6 +1073,74 @@
     margin: 0 14px;
     opacity: 0.5;
   }
+
+  /* ====================================================================
+     MOBILE EXPANDERS + TIGHTENING  (phones only, max-width 760px)
+     Desktop is completely unaffected by everything in this block.
+     ==================================================================== */
+
+  /* The sage "Learn more" expander button — distinct from the brick CTA */
+  .m-expander {
+    display: none; /* hidden on desktop; shown only on mobile */
+  }
+  .m-expand-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background: transparent;
+    color: var(--sage);
+    border: 1.5px solid var(--sage);
+    padding: 13px 22px;
+    border-radius: 3px;
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+  .m-expand-btn:active,
+  .m-expand-btn:hover {
+    background: var(--sage);
+    color: var(--bone);
+  }
+  .m-expand-btn .chev {
+    display: inline-block;
+    transition: transform 0.2s ease;
+    font-size: 12px;
+    transform: translateY(1px);
+  }
+  .m-expand-btn[aria-expanded="true"] .chev {
+    transform: translateY(1px) rotate(180deg);
+  }
+
+  @media (max-width: 760px) {
+    /* ---- Global font + spacing tightening for fewer scrolls ---- */
+    body { font-size: 15px; }
+    section { /* trim vertical padding across the board */ }
+    .section-head h2 { font-size: clamp(26px, 7vw, 32px); }
+    .section-head { margin-bottom: 26px; }
+    h2 { letter-spacing: -0.015em; }
+
+    /* Reveal expander buttons on mobile */
+    .m-expander { display: block; margin-top: 22px; }
+
+    /* ---- SYMPTOMS: show first 2 cards, hide rest until expanded ---- */
+    .symptoms-grid .symptom-card.m-hide { display: none; }
+    .symptoms.m-open .symptoms-grid .symptom-card.m-hide { display: block; }
+
+    /* ---- PRICING: show summary + first tier, hide rest until expanded ---- */
+    .price-tiers .tier.m-hide { display: none; }
+    .pricing.m-open .price-tiers .tier.m-hide { display: block; }
+    .pricing .fine-print.m-hide { display: none; }
+    .pricing.m-open .fine-print.m-hide { display: block; }
+
+    /* ---- TRIPS: show first 3 cards, hide rest until expanded ---- */
+    .trip-grid .trip-card.m-hide { display: none; }
+    .trips.m-open .trip-grid .trip-card.m-hide { display: block; }
+  }
 </style>
 </head>
 <body>
@@ -1070,23 +1162,27 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-grid">
-    <div class="hero-content">
+  <div class="hero-inner">
+    <div class="hero-top">
       <div class="eyebrow"><span class="dot"></span>Booking Nationwide Trips for August</div>
-      <h1>Stop guessing.<br/>Start <em>healing.</em></h1>
-      <p class="lead">Most homeowners come to us after traditional inspections found nothing — and they were still sick. The problem: mold often hides behind perfect-looking walls, and air samples only catch spores that happen to be airborne at time of testing. A trained detection dog finds the source by scent — even behind walls. Minneapolis-based, nationwide travel.</p>
-      <div class="hero-cta">
-        <a href="#request" data-open-form class="btn btn-large">Book A Free 15-Min Consult</a>
-        <a href="#request" data-open-form class="btn btn-large btn-ghost">Get On The Schedule</a>
+      <h1>Stop guessing. Start <em>healing.</em></h1>
+    </div>
+    <div class="hero-grid">
+      <div class="hero-content">
+        <p class="lead">Most homeowners come to us after traditional inspections found nothing — and they were still sick. The problem: mold often hides behind perfect-looking walls, and air samples only catch spores that happen to be airborne at time of testing. A trained detection dog finds the source by scent — even behind walls. Minneapolis-based, nationwide travel.</p>
+        <div class="hero-cta">
+          <a href="#request" data-open-form class="btn btn-large">Book A Free 15-Min Consult</a>
+          <a href="#request" data-open-form class="btn btn-large btn-ghost">Get On The Schedule</a>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div class="stat"><div class="num">60–90 min</div><div class="lbl">Typical Inspection</div></div>
-        <div class="stat"><div class="num">Same-day</div><div class="lbl">On-Site Findings</div></div>
-        <div class="stat"><div class="num">50</div><div class="lbl">States — We Come To You</div></div>
+      <div class="hero-media">
+        <img src="Black_Lab_Cover_photo.avif" alt="Black Labrador trained for canine mold detection"/>
       </div>
     </div>
-    <div class="hero-media">
-      <img src="Black_Lab_Cover_photo.avif" alt="Black Labrador trained for canine mold detection"/>
+    <div class="hero-stats">
+      <div class="stat"><div class="num">60–90 min</div><div class="lbl">Typical Inspection</div></div>
+      <div class="stat"><div class="num">Same-day</div><div class="lbl">On-Site Findings</div></div>
+      <div class="stat"><div class="num">50</div><div class="lbl">States — We Come To You</div></div>
     </div>
   </div>
 </section>
@@ -1141,7 +1237,7 @@
         </ul>
       </div>
 
-      <div class="symptom-card">
+      <div class="symptom-card m-hide">
         <svg class="symptom-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Whole body and mood"><circle cx="60" cy="60" r="56" fill="#8B6F4E"/><g fill="none" stroke="#EFE9DC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M60 82 C42 69 34 58 41 48 C46 41 56 42 60 51 C64 42 74 41 79 48 C86 58 78 69 60 82 Z"/><polyline points="42,61 53,61 57,52 62,70 66,61 78,61"/></g></svg>
         <h4>Whole-body &amp; mood</h4>
         <p class="sub">The exhaustion and "off" feeling that rest doesn't fix.</p>
@@ -1160,7 +1256,7 @@
         </ul>
       </div>
 
-      <div class="symptom-card">
+      <div class="symptom-card m-hide">
         <svg class="symptom-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Muscles and joints"><circle cx="60" cy="60" r="56" fill="#2A2A28"/><g fill="none" stroke="#EFE9DC" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><line x1="49" y1="71" x2="71" y2="49"/><circle cx="44" cy="68" r="6"/><circle cx="51" cy="76" r="6"/><circle cx="69" cy="44" r="6"/><circle cx="76" cy="52" r="6"/></g></svg>
         <h4>Muscles &amp; joints</h4>
         <p class="sub">Aches that get written off as "just getting older."</p>
@@ -1178,6 +1274,11 @@
         </ul>
       </div>
 
+    </div>
+    <div class="m-expander">
+      <button class="m-expand-btn" type="button" data-expander="symptoms" aria-expanded="false">
+        <span class="label">See all symptoms</span><span class="chev">▼</span>
+      </button>
     </div>
     <div class="symptoms-foot">
       <p>Symptoms like these have many possible causes. But if yours ease when you're away from home and return when you're back, a hidden mold source is worth ruling out.</p>
@@ -1348,7 +1449,7 @@
       </div>
 
       <!-- Tier 2 -->
-      <div class="tier">
+      <div class="tier m-hide">
         <div class="tier-name">Nationwide Pricing</div>
         <div class="tier-tag">The more bookings in the same market, the more everyone saves.</div>
         <div class="price-line"><span>1 client</span><span class="amt">$2,250</span></div>
@@ -1360,7 +1461,7 @@
       </div>
 
       <!-- Tier 3 -->
-      <div class="tier">
+      <div class="tier m-hide">
         <div class="tier-name">Multi-Property Owners</div>
         <div class="tier-tag">Portfolios &amp; multiple properties.</div>
         <p class="consult-line">Own multiple properties or manage a portfolio? Every situation is different — book a consult and we'll build a plan around your properties.</p>
@@ -1369,7 +1470,7 @@
       </div>
 
       <!-- Tier 4 -->
-      <div class="tier">
+      <div class="tier m-hide">
         <div class="tier-name">Add-Ons</div>
         <div class="tier-tag">For larger spaces.</div>
         <div class="price-line"><span>Large home (4,000–8,000 sq ft)</span><span class="amt">+$300</span></div>
@@ -1378,7 +1479,13 @@
       </div>
     </div>
 
-    <div class="fine-print">
+    <div class="m-expander">
+      <button class="m-expand-btn" type="button" data-expander="pricing" aria-expanded="false">
+        <span class="label">See full pricing</span><span class="chev">▼</span>
+      </button>
+    </div>
+
+    <div class="fine-print m-hide">
       <div class="fp-row"><strong>Booking:</strong> A 50% deposit holds your slot; the remaining 50% is due at completion of the inspection.</div>
       <div class="fp-row"><strong>Detection only:</strong> remediation is not included. We find it and guide you — we don't do the remediation ourselves.</div>
     </div>
@@ -1400,6 +1507,12 @@
 
     <div class="trip-grid" id="tripGrid">
       <!-- trips injected by JS -->
+    </div>
+
+    <div class="m-expander">
+      <button class="m-expand-btn" type="button" data-expander="trips" aria-expanded="false">
+        <span class="label">Show all trips</span><span class="chev">▼</span>
+      </button>
     </div>
 
     <div class="map-banner">
@@ -1511,11 +1624,11 @@
   ];
 
   const grid = document.getElementById('tripGrid');
-  trips.forEach(t => {
+  trips.forEach((t, i) => {
     const a = document.createElement('a');
     a.href = '#request';
     a.setAttribute('data-open-form', '');
-    a.className = 'trip-card';
+    a.className = 'trip-card' + (i >= 3 ? ' m-hide' : '');
     a.style.textDecoration = 'none';
     a.innerHTML = `
       <div class="trip-region">${t.region}</div>
@@ -1526,6 +1639,30 @@
     `;
     grid.appendChild(a);
   });
+
+  /* ---- Shared mobile expander logic ----
+     Each button toggles an .m-open class on its parent section and
+     swaps its own label + arrow. Pure show/hide; no animation jank. */
+  (function () {
+    const LABELS = {
+      symptoms: ['See all symptoms', 'Show fewer symptoms'],
+      pricing:  ['See full pricing', 'Show less'],
+      trips:    ['Show all trips', 'Show fewer trips']
+    };
+    document.querySelectorAll('.m-expand-btn[data-expander]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-expander');
+        const section = btn.closest('section');
+        if (!section) return;
+        const isOpen = section.classList.toggle('m-open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        const labelEl = btn.querySelector('.label');
+        if (labelEl && LABELS[key]) {
+          labelEl.textContent = isOpen ? LABELS[key][1] : LABELS[key][0];
+        }
+      });
+    });
+  })();
 </script>
 
 <!-- ===== Booking popup: SET YOUR TALLY FORM ID HERE (one place) ===== -->
