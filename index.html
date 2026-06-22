@@ -120,15 +120,17 @@
   .hero-media {
     position: relative;
     min-height: 100%;
-    background-color: var(--sage-deep, #5c7064);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 56px 56px 56px 0;
   }
   .hero-media img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+    width: auto;
+    max-width: 100%;
+    max-height: 420px;
+    object-fit: contain;
+    border-radius: 6px;
     display: block;
   }
   @media (max-width: 960px) {
@@ -139,10 +141,13 @@
     .hero-media {
       order: -1;
       min-height: 0;
-      height: 300px;
+      padding: 36px 28px 0;
+    }
+    .hero-media img {
+      max-height: 280px;
     }
     .hero-content {
-      padding: 52px 28px 56px;
+      padding: 40px 28px 56px;
     }
   }
   .eyebrow {
@@ -1214,10 +1219,10 @@
     <div class="section-head">
       <div>
         <div class="section-eyebrow">How we work</div>
-        <h2>Four disciplines, <em>one honest answer.</em></h2>
+        <h2>Five disciplines, <em>one honest answer.</em></h2>
       </div>
       <div class="head-right">
-        Most inspectors do one thing. We layer four — because mold doesn't show up in just one way, and you deserve to know it everywhere it lives.
+        Most inspectors do one thing. We layer five — because mold doesn't show up in just one way, and you deserve to know it everywhere it lives.
       </div>
     </div>
 
@@ -1386,7 +1391,7 @@
     <div class="section-head">
       <div>
         <div class="section-eyebrow">Where we'll be next</div>
-        <h2>Save thousands by joining an <em>upcoming trip.</em></h2>
+        <h2>Save hundreds by joining an <em>upcoming trip.</em></h2>
       </div>
       <div class="head-right">
         We route the country in clusters so multiple clients share travel costs. If we're already coming your way, you save — and you get on the calendar faster.
