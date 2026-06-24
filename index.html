@@ -384,7 +384,7 @@
   /* ---------- SYMPTOMS ---------- */
   .symptoms {
     background: var(--bone);
-    padding: 100px 0;
+    padding: 72px 0;
   }
   .symptoms .section-head h2 { max-width: 780px; }
   .symptoms-grid {
@@ -481,7 +481,7 @@
   .about {
     background: var(--sage);
     color: var(--bone);
-    padding: 110px 0;
+    padding: 72px 0;
     position: relative;
   }
   .about-grid {
@@ -544,10 +544,10 @@
     margin-top: 4px;
   }
 
-  /* ---------- MEET THE TEAM ---------- */
+  /* ---------- SEE WINNIE WORK (socials) ---------- */
   .team {
     background: var(--bone-deep);
-    padding: 110px 0;
+    padding: 56px 0;
   }
   .team-grid {
     display: grid;
@@ -595,7 +595,7 @@
   .team-card p { font-size: 15px; color: var(--walnut); line-height: 1.6; }
   .team-follow {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 0;
     font-family: var(--display);
     font-style: italic;
     font-size: 19px;
@@ -697,50 +697,53 @@
 
   /* ---------- SERVICES / THE WAY ---------- */
   .the-way {
-    padding: 110px 0;
+    padding: 72px 0;
     background: var(--bone);
   }
   .way-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-top: 56px;
+    gap: 18px;
+    margin-top: 40px;
   }
   @media (max-width: 800px) { .way-grid { grid-template-columns: 1fr; } }
   .way-card {
-    background: var(--sage);
-    color: var(--bone);
-    padding: 32px 36px;
-    border-radius: 4px;
+    background: var(--bone);
+    color: var(--ink);
+    padding: 28px 30px;
+    border-radius: 8px;
+    border: 2px solid var(--brick);
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: block;
     width: 100%;
     text-align: left;
-    border: none;
     cursor: pointer;
     font: inherit;
   }
-  .way-card:nth-child(even) { background: var(--ink); }
-  .way-card:hover { transform: translateY(-4px); }
+  .way-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(160, 75, 44, 0.14);
+  }
   .way-card .way-index {
     font-family: var(--display);
-    font-size: 14px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(239, 233, 220, 0.6);
-    margin-bottom: 14px;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--sage);
+    margin-bottom: 8px;
+    line-height: 1;
   }
   .way-card h3 {
-    font-size: 28px;
+    font-size: 26px;
     margin-bottom: 12px;
-    color: var(--bone);
+    color: var(--ink);
     font-weight: 400;
   }
-  .way-card h3 em { font-style: italic; color: var(--bone); }
+  .way-card h3 em { font-style: italic; color: var(--brick); }
   .way-card > p {
-    color: rgba(239, 233, 220, 0.88);
+    color: var(--ink);
     font-size: 15px;
     line-height: 1.65;
     max-width: 520px;
@@ -762,14 +765,21 @@
     gap: 6px;
     margin-top: 14px;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--bone);
-    opacity: 0.85;
+    color: var(--brick);
   }
   .way-chev { transition: transform 0.2s ease; font-size: 11px; }
   .way-card.open .way-chev { transform: rotate(180deg); }
+  /* Mobile: tighter card padding */
+  @media (max-width: 760px) {
+    .the-way { padding: 48px 0; }
+    .way-grid { gap: 12px; margin-top: 28px; }
+    .way-card { padding: 18px 20px; }
+    .way-card h3 { font-size: 22px; margin-bottom: 8px; }
+    .way-card .way-index { font-size: 22px; }
+  }
 
   /* ---------- WHAT'S INCLUDED ---------- */
   .includes {
@@ -819,7 +829,7 @@
   /* ---------- PRICING ---------- */
   .pricing {
     background: var(--bone-deep);
-    padding: 110px 0;
+    padding: 72px 0;
   }
   .price-echo {
     background: var(--sage);
@@ -880,7 +890,7 @@
   /* ---------- UPCOMING TRIPS ---------- */
   .trips {
     background: var(--bone);
-    padding: 90px 0;
+    padding: 64px 0;
     border-bottom: 1px solid rgba(139, 111, 78, 0.18);
   }
   .trip-grid {
@@ -960,7 +970,7 @@
   /* ---------- CTA / REQUEST FORM ---------- */
   .request {
     background: var(--bone);
-    padding: 110px 0;
+    padding: 72px 0;
   }
   .request-wrap {
     display: grid;
@@ -1245,7 +1255,9 @@
   @media (max-width: 760px) {
     /* ---- Global font + spacing tightening for fewer scrolls ---- */
     body { font-size: 15px; }
-    section { /* trim vertical padding across the board */ }
+    .symptoms, .about, .pricing, .request { padding: 48px 0; }
+    .trips { padding: 44px 0; }
+    .team { padding: 40px 0; }
     .section-head h2 { font-size: clamp(26px, 7vw, 32px); }
     .section-head { margin-bottom: 26px; }
     h2 { letter-spacing: -0.015em; }
@@ -1404,7 +1416,7 @@
     <a href="#" class="logo">Dogs On Mold<span>.</span></a>
     <div class="nav-links">
       <a href="#story">Our Story</a>
-      <a href="#team">Meet the Team</a>
+      <a href="team.html">Meet the Team</a>
       <a href="#services">Services</a>
       <a href="#pricing">Pricing</a>
       <a href="faq.html">FAQ</a>
@@ -1418,7 +1430,7 @@
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <a href="#story">Our Story</a>
-    <a href="#team">Meet the Team</a>
+    <a href="team.html">Meet the Team</a>
     <a href="#services">Services</a>
     <a href="#pricing">Pricing</a>
     <a href="faq.html">FAQ</a>
@@ -1605,9 +1617,6 @@
         <div class="section-eyebrow">How we work</div>
         <h2>Five disciplines, <em>one honest answer.</em></h2>
       </div>
-      <div class="head-right">
-        Most inspectors do one thing. We layer five — because mold doesn't show up in just one way, and you deserve to know it everywhere it lives.
-      </div>
     </div>
 
     <div class="way-grid">
@@ -1645,43 +1654,9 @@
   </div>
 </section>
 
-<!-- MEET THE TEAM -->
-<section class="team" id="team">
+<!-- SEE WINNIE WORK (socials) -->
+<section class="team" id="winnie">
   <div class="container">
-    <div class="section-head">
-      <div>
-        <div class="section-eyebrow">Meet the team</div>
-        <h2>Two of us. <em>One nose that matters.</em></h2>
-      </div>
-    </div>
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-photo">
-          <div>
-            <strong>Photo — Ben</strong>
-            Portrait of Ben, ideally with Winnie.<br/>Recommended 1200×900px.
-          </div>
-        </div>
-        <div class="team-body">
-          <h3>Ben</h3>
-          <div class="role">Founder &amp; Certified Handler</div>
-          <p>I came to this work the hard way — as the sick guy no one could diagnose. Now I run every inspection myself, handle Winnie in the field, and stay with clients long after the report is done. I don't hand you off to anyone — the restoration of your space is my priority.</p>
-        </div>
-      </div>
-      <div class="team-card">
-        <div class="team-photo">
-          <div>
-            <strong>Photo — Winnie</strong>
-            Action or portrait shot of Winnie.<br/>Recommended 1200×900px.
-          </div>
-        </div>
-        <div class="team-body">
-          <h3>Winnie</h3>
-          <div class="role">Lead Detection Dog · Labrador Retriever</div>
-          <p>Trained at Ironheart, one of the most respected working-dog programs in the country — the same lineage behind 35+ years and hundreds of police K9s trained for drugs, explosives, and mold detection. On the clock, she's all business. Off the clock, she'll turn anything into a game of hide-and-seek — especially if her Kong is involved.</p>
-        </div>
-      </div>
-    </div>
     <div class="team-follow">
       Want to see Winnie work?
       <div class="team-social">
@@ -1871,7 +1846,7 @@
         <h5>Navigate</h5>
         <a href="#symptoms">Symptoms</a>
         <a href="#story">Our Story</a>
-        <a href="#team">Meet the Team</a>
+        <a href="team.html">Meet the Team</a>
         <a href="#services">Services</a>
         <a href="#pricing">Pricing</a>
         <a href="faq.html">FAQ</a>
@@ -2024,7 +1999,6 @@
       '.symptoms-grid',
       '.trip-grid',
       '.price-tiers',
-      '.team-grid',
       '.foot-grid'
     ];
 
