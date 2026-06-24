@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>FAQ — Dogs On Mold · Canine Mold Detection</title>
+<title>Meet the Team — Dogs On Mold · Ben &amp; Winnie</title>
 <meta name="description" content="Answers to common questions about canine mold detection: the inspection process, pricing, travel, what happens after, and health and safety." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -181,6 +181,54 @@
     max-width: 620px;
   }
 
+  /* ---------- TEAM ---------- */
+  .team-body-section { padding: 70px 0 80px; background: var(--bone); }
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  @media (max-width: 760px) { .team-grid { grid-template-columns: 1fr; gap: 20px; } }
+  .team-card {
+    background: var(--bone);
+    border: 1px solid rgba(139, 111, 78, 0.22);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .team-photo {
+    aspect-ratio: 4/3;
+    background: rgba(107, 128, 115, 0.12);
+    border-bottom: 1px dashed rgba(139, 111, 78, 0.4);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 24px;
+    color: var(--walnut);
+    font-size: 13px;
+  }
+  .team-photo strong {
+    display: block;
+    font-family: var(--display);
+    font-size: 18px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .team-body { padding: 28px 30px 32px; }
+  .team-card h3 { font-size: 28px; margin-bottom: 4px; }
+  .team-card .role {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--brick);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .team-card p { font-size: 15px; color: var(--walnut); line-height: 1.6; }
+
   /* ---------- FAQ BODY ---------- */
   .faq-body { padding: 80px 0 90px; }
   .faq-group { margin-bottom: 52px; }
@@ -314,120 +362,42 @@
 <!-- HEADER -->
 <header class="faq-head">
   <div class="container narrow">
-    <div class="eyebrow">Questions &amp; answers</div>
-    <h1>Everything you'd want to know <em>before you book.</em></h1>
+    <div class="eyebrow">Meet the team</div>
+    <h1>Two of us. <em>One nose that matters.</em></h1>
   </div>
 </header>
 
-<!-- FAQ BODY -->
-<section class="faq-body">
-  <div class="container narrow">
-
-    <!-- THE PROCESS & OUR METHOD -->
-    <div class="faq-group">
-      <div class="faq-group-title">The process &amp; our method</div>
-
-      <details class="faq-item" open>
-        <summary>How accurate is a detection dog, really?</summary>
-        <div class="answer">Trained detection dogs run far higher than conventional methods, and we provide extra evidence for every alert when possible. Rather than leaning on a single accuracy figure, we confirm what Winnie finds with inspection light and moisture metering — and optional air or swab sampling on request — so you walk away with evidence you can act on.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>What actually happens during an inspection?</summary>
-        <div class="answer">I first walk through the entire home without Winnie to do an initial sweep of the property, assessing visually and with tools. Then I bring Winnie through the entire property — with the central A/C off — marking areas where she alerts. Next, we turn the central A/C on and do another pass, looking for indications on airflow. Lastly, I walk you through everything we found and provide a recommendation for next steps.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>What makes you different from other mold-dog companies?</summary>
-        <div class="answer">Most can read their dog. Few can read the building. I'm trained in building science, so I can explain why the mold is there, account for spots a dog might miss, and sharpen how I read Winnie's cues. Just as important: I've lived this myself. That experience gives me real empathy for what you're going through and a persistence of discovery — I don't stop until we have a real answer.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Can you tell if the mold is old or active?</summary>
-        <div class="answer">Often, yes. Active growth, dormant-but-viable, and old remediated damage look different — in staining, texture, moisture readings, and how the dog alerts. We read those signals together to tell you whether you're dealing with a current problem or a historical one, because that impacts what your immediate options are. That said, all mold — whether old or new — is considered a health concern, despite the varied opinions out there.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Is it invasive? Will you cut into my walls?</summary>
-        <div class="answer">No. The inspection is completely non-invasive — no drilling, no demolition. The dog finds the source first, so any future work is targeted instead of exploratory.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>How do I prepare my home?</summary>
-        <div class="answer">Keep the areas you want inspected accessible, secure other pets during the visit, and hold off on heavy cleaning or air fresheners beforehand so they don't interfere.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>How soon do I get results?</summary>
-        <div class="answer">A same-day verbal walkthrough on site, plus a written report with photos within 48 hours.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>What if Winnie doesn't find anything?</summary>
-        <div class="answer">That's a real, valuable result — ruling mold out with confidence is part of what you're paying for. You still get the walkthrough and report.</div>
-      </details>
+<!-- TEAM -->
+<section class="team-body-section">
+  <div class="container">
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo">
+          <div>
+            <strong>Photo — Ben</strong>
+            Portrait of Ben, ideally with Winnie.<br/>Recommended 1200×900px.
+          </div>
+        </div>
+        <div class="team-body">
+          <h3>Ben</h3>
+          <div class="role">Founder &amp; Certified Handler</div>
+          <p>I came to this work the hard way — as the sick guy no one could diagnose. Now I run every inspection myself, handle Winnie in the field, and stay with clients long after the report is done. I don't hand you off to anyone — the restoration of your space is my priority.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">
+          <div>
+            <strong>Photo — Winnie</strong>
+            Action or portrait shot of Winnie.<br/>Recommended 1200×900px.
+          </div>
+        </div>
+        <div class="team-body">
+          <h3>Winnie</h3>
+          <div class="role">Lead Detection Dog · Labrador Retriever</div>
+          <p>Trained at Ironheart, one of the most respected working-dog programs in the country — the same lineage behind 35+ years and hundreds of police K9s trained for drugs, explosives, and mold detection. On the clock, she's all business. Off the clock, she'll turn anything into a game of hide-and-seek — especially if her Kong is involved.</p>
+        </div>
+      </div>
     </div>
-
-    <!-- PRICING & BOOKING -->
-    <div class="faq-group">
-      <div class="faq-group-title">Pricing &amp; booking</div>
-
-      <details class="faq-item">
-        <summary>How much does an inspection cost?</summary>
-        <div class="answer">Local standard homes start at $1,250; nationwide pricing depends on how many clients share your trip. Full breakdown is on our <a href="index.html#pricing">Pricing section</a>.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Do I pay for travel?</summary>
-        <div class="answer">Local: a $2/mile round-trip charge applies beyond 30 miles from downtown Minneapolis. For nationwide trips, the costs of travel are factored into the price of the inspection, with $2/mile beyond 30 miles round trip from the destination airport hub. No hidden fees — you'll know your full price before booking.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>How does the nationwide group discount work?</summary>
-        <div class="answer">You're quoted at the current rate for your market — the major city we're serving and its surrounding area. If more clients book your trip before we travel, your price drops automatically and you are notified ahead of time.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>How do I book and pay?</summary>
-        <div class="answer">A 50% deposit holds your slot; the remaining 50% is due at completion of the inspection.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>What's your cancellation or rescheduling policy?</summary>
-        <div class="answer">Cancellations are generally not allowed after airfare has been booked. However, we will work with you to find a different date if possible, provided it's more than 30 days out. We would require payment for the difference to switch any airfare or lodging arrangements. Any cancellation less than 3 days prior to the inspection will require full payment of services at the time of cancellation.</div>
-      </details>
-    </div>
-
-    <!-- AFTER THE INSPECTION -->
-    <div class="faq-group">
-      <div class="faq-group-title">After the inspection</div>
-
-      <details class="faq-item">
-        <summary>You don't do remediation — so what happens after you find mold?</summary>
-        <div class="answer">We connect you with a vetted hygienist and a remediator who meets our standards, and make sure you understand your report before those conversations.<span class="note">Note: we may receive a referral payment from hygienists or remediators in the area, always less than 5% of the service charge.</span></div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Do you offer a re-inspection after remediation?</summary>
-        <div class="answer">We generally recommend an immediate re-inspection after remediation, performed by the hygienist. We also recommend annual inspections by a certified mold dog to ensure no new issues have come up.</div>
-      </details>
-    </div>
-
-    <!-- HEALTH & SAFETY -->
-    <div class="faq-group">
-      <div class="faq-group-title">Health &amp; safety</div>
-
-      <details class="faq-item">
-        <summary>Is the inspection safe for my kids and pets?</summary>
-        <div class="answer">Yes. It's non-invasive and Winnie is a trained, focused working dog. We'll just have you secure other pets so she can work.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>I'm sick and no one can tell me why — can you help?</summary>
-        <div class="answer">Maybe. I've been there. We can't diagnose you, but we can tell you whether hidden mold is in your environment — which is often the missing piece other inspections and tests overlook. What you learn here is something you and your practitioner can act on.</div>
-      </details>
-    </div>
-
   </div>
 </section>
 
