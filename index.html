@@ -1307,10 +1307,32 @@
     color: var(--ink);
   }
   .photo-ph .ph-meta { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
-  /* Full-bleed family photo band, spans the full screen width */
+  /* Full-bleed parallax family photo band — pinned while content scrolls over it */
   .family-band {
     width: 100%;
-    height: clamp(280px, 38vw, 520px);
+    height: clamp(340px, 56vh, 620px);
+    background-image: url('Family_1.jpg');
+    background-size: cover;
+    background-position: center 38%;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* the parallax pin (desktop) */
+    position: relative;
+  }
+  /* subtle dark veil so it reads as intentional and ties to the palette */
+  .family-band::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(42,42,40,0.10), rgba(42,42,40,0.05));
+    pointer-events: none;
+  }
+  /* Mobile / touch: background-attachment:fixed is unreliable on iOS/Android,
+     so fall back to a normal scrolling cover band (still full-bleed). */
+  @media (max-width: 900px), (hover: none) {
+    .family-band {
+      background-attachment: scroll;
+      height: clamp(260px, 50vh, 440px);
+    }
   }
   /* Alert photo sits below the socials, centered, contained width */
   .alert-photo-wrap { background: var(--bone); padding: 0 0 90px; }
@@ -1334,6 +1356,43 @@
   }
   @media (max-width: 760px) {
     .alert-photo-wrap { padding: 0 24px 60px; }
+  }
+  /* ---- Scroll reveal: elements fade/rise in as they enter the viewport ---- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.revealed {
+    opacity: 1;
+    transform: none;
+  }
+  /* Stagger children within a grid/row for a cascading feel */
+  .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+                transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .reveal-stagger.revealed > * {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-stagger.revealed > *:nth-child(1) { transition-delay: 0s; }
+  .reveal-stagger.revealed > *:nth-child(2) { transition-delay: 0.08s; }
+  .reveal-stagger.revealed > *:nth-child(3) { transition-delay: 0.16s; }
+  .reveal-stagger.revealed > *:nth-child(4) { transition-delay: 0.24s; }
+  .reveal-stagger.revealed > *:nth-child(5) { transition-delay: 0.32s; }
+  .reveal-stagger.revealed > *:nth-child(6) { transition-delay: 0.40s; }
+  /* Respect users who prefer reduced motion — show everything, no animation */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-stagger > * {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
   }
 </style>
 </head>
@@ -1535,10 +1594,8 @@
 </section>
 
 <!-- FAMILY PHOTO (full-width band) -->
-<div class="photo-ph family-band">
-  <div class="ph-label">Family photo</div>
-  <div class="ph-meta">Replace with a full-width family photo · spans the screen · ~2000×700</div>
-</div>
+<!-- FAMILY PHOTO (full-width parallax band) -->
+<div class="family-band" role="img" aria-label="A family with their dog at home"></div>
 
 <!-- SERVICES / HOW WE WORK -->
 <section class="the-way" id="services">
@@ -1944,6 +2001,56 @@
         toggle();
       });
     });
+  })();
+
+  /* ---- Scroll reveal: tag elements, then reveal as they enter view ---- */
+  (function () {
+    /* Elements to animate. Hero is intentionally excluded so the first
+       screen is never blank on load. */
+    const single = [
+      '.section-head',
+      '.about p',
+      '.about .sig',
+      '.map-banner',
+      '.symptoms-foot',
+      '.alert-photo',
+      '.family-band',
+      '.fine-print',
+      '.request-wrap > *'
+    ];
+    const staggerGroups = [
+      '.why-grid',
+      '.way-grid',
+      '.symptoms-grid',
+      '.trip-grid',
+      '.price-tiers',
+      '.team-grid',
+      '.foot-grid'
+    ];
+
+    single.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => el.classList.add('reveal'));
+    });
+    staggerGroups.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => el.classList.add('reveal-stagger'));
+    });
+
+    const targets = document.querySelectorAll('.reveal, .reveal-stagger');
+    if (!('IntersectionObserver' in window) || !targets.length) {
+      /* No observer support → just show everything */
+      targets.forEach(t => t.classList.add('revealed'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          io.unobserve(entry.target); /* reveal once, then stop watching */
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+    targets.forEach(t => io.observe(t));
   })();
 
   /* ---- Mobile hamburger menu ---- */
