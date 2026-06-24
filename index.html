@@ -405,7 +405,21 @@
   .symptom-card:nth-child(3) { border-top-color: var(--walnut); }
   .symptom-card:nth-child(4) { border-top-color: var(--ink); }
   .symptom-icon { width: 56px; height: 56px; margin-bottom: 16px; }
-  .symptom-card h4 { font-size: 21px; margin-bottom: 8px; }
+  /* Card header acts as a button; on desktop it's not interactive-looking */
+  .symptom-head {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    cursor: default;
+    color: inherit;
+    font: inherit;
+  }
+  .symptom-title h4 { font-size: 21px; margin-bottom: 8px; }
+  .symptom-chev { display: none; }
   .symptom-card .sub {
     font-size: 13px;
     color: var(--walnut);
@@ -435,6 +449,16 @@
     border-bottom: none;
   }
   .symptom-card li.more::before { background: var(--brick); }
+
+  /* WEB: show the first 3 symptoms per card; reveal the rest when the card
+     is opened. The "…and more" cue acts as the expand affordance. */
+  @media (min-width: 761px) {
+    .symptom-card { cursor: pointer; }
+    .symptom-card li:nth-of-type(n+4):not(.more) { display: none; }
+    .symptom-card.open li:nth-of-type(n+4):not(.more) { display: list-item; }
+    .symptom-card.open li.more { display: none; }
+    .symptom-card li.more { cursor: pointer; }
+  }
   .symptoms-foot { text-align: center; margin-top: 48px; }
   .symptoms-foot p {
     font-size: 16px;
@@ -686,11 +710,17 @@
   .way-card {
     background: var(--sage);
     color: var(--bone);
-    padding: 44px 40px;
+    padding: 32px 36px;
     border-radius: 4px;
     position: relative;
     overflow: hidden;
     transition: transform 0.3s ease;
+    display: block;
+    width: 100%;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    font: inherit;
   }
   .way-card:nth-child(even) { background: var(--ink); }
   .way-card:hover { transform: translateY(-4px); }
@@ -700,11 +730,11 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: rgba(239, 233, 220, 0.6);
-    margin-bottom: 18px;
+    margin-bottom: 14px;
   }
   .way-card h3 {
-    font-size: 30px;
-    margin-bottom: 16px;
+    font-size: 28px;
+    margin-bottom: 12px;
     color: var(--bone);
     font-weight: 400;
   }
@@ -714,7 +744,32 @@
     font-size: 15px;
     line-height: 1.65;
     max-width: 520px;
+    margin: 0;
+    /* Collapsed: show a single line trailing off with "…" */
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
+  .way-card.open > p {
+    -webkit-line-clamp: unset;
+    display: block;
+    overflow: visible;
+  }
+  .way-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bone);
+    opacity: 0.85;
+  }
+  .way-chev { transition: transform 0.2s ease; font-size: 11px; }
+  .way-card.open .way-chev { transform: rotate(180deg); }
 
   /* ---------- WHAT'S INCLUDED ---------- */
   .includes {
@@ -1198,9 +1253,31 @@
     /* Reveal expander buttons on mobile */
     .m-expander { display: block; margin-top: 22px; }
 
-    /* ---- SYMPTOMS: show first 2 cards, hide rest until expanded ---- */
-    .symptoms-grid .symptom-card.m-hide { display: none; }
-    .symptoms.m-open .symptoms-grid .symptom-card.m-hide { display: block; }
+    /* ---- SYMPTOMS: each card collapses to its heading; tap to expand ---- */
+    .symptom-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      padding: 4px 0;
+    }
+    .symptom-head .symptom-icon { width: 40px; height: 40px; margin-bottom: 0; flex: 0 0 auto; }
+    .symptom-title { flex: 1; }
+    .symptom-title h4 { margin-bottom: 0; }
+    .symptom-chev {
+      display: inline-block;
+      color: var(--brick);
+      font-size: 13px;
+      transition: transform 0.2s ease;
+      flex: 0 0 auto;
+    }
+    .symptom-head[aria-expanded="true"] .symptom-chev { transform: rotate(180deg); }
+    .symptom-card { padding: 18px 22px; }
+    /* Body hidden until the card is opened */
+    .symptom-body { display: none; padding-top: 14px; }
+    .symptom-card.open .symptom-body { display: block; }
+    /* On mobile show the full list inside an opened card (no 3-item cap) */
+    .symptom-card li:nth-of-type(n+4):not(.more) { display: list-item; }
 
     /* ---- PRICING: show summary + first tier, hide rest until expanded ---- */
     .price-tiers .tier.m-hide { display: none; }
@@ -1211,6 +1288,40 @@
     /* ---- TRIPS: show first 3 cards, hide rest until expanded ---- */
     .trip-grid .trip-card.m-hide { display: none; }
     .trips.m-open .trip-grid .trip-card.m-hide { display: block; }
+  }
+  /* ---- Photo placeholders ---- */
+  .photo-ph {
+    background: var(--bone-deep);
+    border: 2px dashed rgba(139, 111, 78, 0.45);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--walnut);
+    gap: 6px;
+  }
+  .photo-ph .ph-label {
+    font-family: var(--display);
+    font-size: 19px;
+    color: var(--ink);
+  }
+  .photo-ph .ph-meta { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+  /* Full-bleed family photo band, spans the full screen width */
+  .family-band {
+    width: 100%;
+    height: clamp(280px, 38vw, 520px);
+  }
+  /* Alert photo sits below the socials, centered, contained width */
+  .alert-photo-wrap { background: var(--bone); padding: 0 0 90px; }
+  .alert-photo {
+    max-width: 760px;
+    margin: 0 auto;
+    height: clamp(260px, 40vw, 460px);
+    border-radius: 6px;
+  }
+  @media (max-width: 760px) {
+    .alert-photo-wrap { padding: 0 24px 60px; }
   }
 </style>
 </head>
@@ -1279,90 +1390,104 @@
         <div class="section-eyebrow">Does any of this sound familiar?</div>
         <h2>The symptoms people report — <em>long before they find the mold.</em></h2>
       </div>
-      <div class="head-right">If you've been chasing symptoms no one can explain — or a doctor has pointed to mold — you're not imagining it. These are what people exposed to mold most often describe. We can't diagnose you. But we can find what's hiding in your home.</div>
     </div>
     <div class="symptoms-grid">
 
       <div class="symptom-card">
-        <svg class="symptom-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Neurological"><circle cx="60" cy="60" r="56" fill="#6B8073"/><g fill="none" stroke="#EFE9DC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M60 40 C52 36 44 40 44 48 C38 48 36 56 40 60 C36 64 38 72 46 74 C48 80 56 82 60 78"/><path d="M60 40 C68 36 76 40 76 48 C82 48 84 56 80 60 C84 64 82 72 74 74 C72 80 64 82 60 78"/><line x1="60" y1="40" x2="60" y2="78"/></g></svg>
-        <h4>Neurological &amp; cognitive</h4>
-        <p class="sub">When the fog won't lift and your sharpness feels gone.</p>
-        <ul>
-          <li>Brain fog</li>
-          <li>Headaches &amp; migraines</li>
-          <li>Memory lapses &amp; forgetfulness</li>
-          <li>Trouble concentrating</li>
-          <li>Difficulty finding words</li>
-          <li>Dizziness or vertigo</li>
-          <li>Numbness &amp; tingling</li>
-          <li>Sensitivity to light &amp; sound</li>
-          <li>Anxiety or low mood</li>
-          <li>Trouble sleeping</li>
-          <li class="more">…and more</li>
-        </ul>
+        <button class="symptom-head" type="button" aria-expanded="false">
+          <svg class="symptom-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Neurological"><circle cx="60" cy="60" r="56" fill="#6B8073"/><g fill="none" stroke="#EFE9DC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M60 40 C52 36 44 40 44 48 C38 48 36 56 40 60 C36 64 38 72 46 74 C48 80 56 82 60 78"/><path d="M60 40 C68 36 76 40 76 48 C82 48 84 56 80 60 C84 64 82 72 74 74 C72 80 64 82 60 78"/><line x1="60" y1="40" x2="60" y2="78"/></g></svg>
+          <span class="symptom-title"><h4>Neurological &amp; cognitive</h4></span>
+          <span class="symptom-chev">▼</span>
+        </button>
+        <div class="symptom-body">
+          <p class="sub">When the fog won't lift and your sharpness feels gone.</p>
+          <ul>
+            <li>Brain fog</li>
+            <li>Headaches &amp; migraines</li>
+            <li>Memory lapses &amp; forgetfulness</li>
+            <li>Trouble concentrating</li>
+            <li>Difficulty finding words</li>
+            <li>Dizziness or vertigo</li>
+            <li>Numbness &amp; tingling</li>
+            <li>Sensitivity to light &amp; sound</li>
+            <li>Anxiety or low mood</li>
+            <li>Trouble sleeping</li>
+            <li class="more">…and more</li>
+          </ul>
+        </div>
       </div>
 
       <div class="symptom-card">
-        <svg class="symptom-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Respiratory"><circle cx="60" cy="60" r="56" fill="#A04B2C"/><g fill="none" stroke="#EFE9DC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><line x1="60" y1="32" x2="60" y2="50"/><path d="M60 50 C55 50 53 53 53 58"/><path d="M60 50 C65 50 67 53 67 58"/><path d="M53 58 C44 60 39 70 42 82 C43 88 50 90 53 85 C55 81 55 70 53 58 Z"/><path d="M67 58 C76 60 81 70 78 82 C77 88 70 90 67 85 C65 81 65 70 67 58 Z"/></g></svg>
-        <h4>Respiratory &amp; sinus</h4>
-        <p class="sub">The cough, congestion, and "colds" that never fully clear.</p>
-        <ul>
-          <li>Persistent cough</li>
-          <li>Wheezing or shortness of breath</li>
-          <li>Chronic congestion</li>
-          <li>Sinus pressure &amp; postnasal drip</li>
-          <li>Frequent sinus infections</li>
-          <li>Sore or scratchy throat</li>
-          <li>New or worsening asthma</li>
-          <li>Itchy, watery eyes</li>
-          <li>Sneezing</li>
-          <li>Worse symptoms indoors</li>
-          <li class="more">…and more</li>
-        </ul>
+        <button class="symptom-head" type="button" aria-expanded="false">
+          <svg class="symptom-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Respiratory"><circle cx="60" cy="60" r="56" fill="#A04B2C"/><g fill="none" stroke="#EFE9DC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><line x1="60" y1="32" x2="60" y2="50"/><path d="M60 50 C55 50 53 53 53 58"/><path d="M60 50 C65 50 67 53 67 58"/><path d="M53 58 C44 60 39 70 42 82 C43 88 50 90 53 85 C55 81 55 70 53 58 Z"/><path d="M67 58 C76 60 81 70 78 82 C77 88 70 90 67 85 C65 81 65 70 67 58 Z"/></g></svg>
+          <span class="symptom-title"><h4>Respiratory &amp; sinus</h4></span>
+          <span class="symptom-chev">▼</span>
+        </button>
+        <div class="symptom-body">
+          <p class="sub">The cough, congestion, and "colds" that never fully clear.</p>
+          <ul>
+            <li>Persistent cough</li>
+            <li>Wheezing or shortness of breath</li>
+            <li>Chronic congestion</li>
+            <li>Sinus pressure &amp; postnasal drip</li>
+            <li>Frequent sinus infections</li>
+            <li>Sore or scratchy throat</li>
+            <li>New or worsening asthma</li>
+            <li>Itchy, watery eyes</li>
+            <li>Sneezing</li>
+            <li>Worse symptoms indoors</li>
+            <li class="more">…and more</li>
+          </ul>
+        </div>
       </div>
 
-      <div class="symptom-card m-hide">
-        <svg class="symptom-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Whole body and mood"><circle cx="60" cy="60" r="56" fill="#8B6F4E"/><g fill="none" stroke="#EFE9DC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M60 82 C42 69 34 58 41 48 C46 41 56 42 60 51 C64 42 74 41 79 48 C86 58 78 69 60 82 Z"/><polyline points="42,61 53,61 57,52 62,70 66,61 78,61"/></g></svg>
-        <h4>Whole-body &amp; mood</h4>
-        <p class="sub">The exhaustion and "off" feeling that rest doesn't fix.</p>
-        <ul>
-          <li>Deep, unshakable fatigue</li>
-          <li>Feel better when you leave home</li>
-          <li>Unrefreshing sleep</li>
-          <li>Mood swings &amp; irritability</li>
-          <li>Getting sick often</li>
-          <li>Night sweats &amp; temperature swings</li>
-          <li>Increased thirst</li>
-          <li>Appetite or weight changes</li>
-          <li>Static "shocks"</li>
-          <li>Metallic taste</li>
-          <li class="more">…and more</li>
-        </ul>
+      <div class="symptom-card">
+        <button class="symptom-head" type="button" aria-expanded="false">
+          <svg class="symptom-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Whole body and mood"><circle cx="60" cy="60" r="56" fill="#8B6F4E"/><g fill="none" stroke="#EFE9DC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M60 82 C42 69 34 58 41 48 C46 41 56 42 60 51 C64 42 74 41 79 48 C86 58 78 69 60 82 Z"/><polyline points="42,61 53,61 57,52 62,70 66,61 78,61"/></g></svg>
+          <span class="symptom-title"><h4>Whole-body &amp; mood</h4></span>
+          <span class="symptom-chev">▼</span>
+        </button>
+        <div class="symptom-body">
+          <p class="sub">The exhaustion and "off" feeling that rest doesn't fix.</p>
+          <ul>
+            <li>Deep, unshakable fatigue</li>
+            <li>Feel better when you leave home</li>
+            <li>Unrefreshing sleep</li>
+            <li>Mood swings &amp; irritability</li>
+            <li>Getting sick often</li>
+            <li>Night sweats &amp; temperature swings</li>
+            <li>Increased thirst</li>
+            <li>Appetite or weight changes</li>
+            <li>Static "shocks"</li>
+            <li>Metallic taste</li>
+            <li class="more">…and more</li>
+          </ul>
+        </div>
       </div>
 
-      <div class="symptom-card m-hide">
-        <svg class="symptom-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Muscles and joints"><circle cx="60" cy="60" r="56" fill="#2A2A28"/><g fill="none" stroke="#EFE9DC" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><line x1="49" y1="71" x2="71" y2="49"/><circle cx="44" cy="68" r="6"/><circle cx="51" cy="76" r="6"/><circle cx="69" cy="44" r="6"/><circle cx="76" cy="52" r="6"/></g></svg>
-        <h4>Muscles &amp; joints</h4>
-        <p class="sub">Aches that get written off as "just getting older."</p>
-        <ul>
-          <li>Joint pain &amp; stiffness</li>
-          <li>Muscle aches</li>
-          <li>Morning stiffness</li>
-          <li>Muscle cramps or spasms</li>
-          <li>Muscle weakness</li>
-          <li>General inflammation</li>
-          <li>Reduced range of motion</li>
-          <li>Joint swelling</li>
-          <li>Persistent low-grade pain</li>
-          <li class="more">…and more</li>
-        </ul>
+      <div class="symptom-card">
+        <button class="symptom-head" type="button" aria-expanded="false">
+          <svg class="symptom-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Muscles and joints"><circle cx="60" cy="60" r="56" fill="#2A2A28"/><g fill="none" stroke="#EFE9DC" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><line x1="49" y1="71" x2="71" y2="49"/><circle cx="44" cy="68" r="6"/><circle cx="51" cy="76" r="6"/><circle cx="69" cy="44" r="6"/><circle cx="76" cy="52" r="6"/></g></svg>
+          <span class="symptom-title"><h4>Muscles &amp; joints</h4></span>
+          <span class="symptom-chev">▼</span>
+        </button>
+        <div class="symptom-body">
+          <p class="sub">Aches that get written off as "just getting older."</p>
+          <ul>
+            <li>Joint pain &amp; stiffness</li>
+            <li>Muscle aches</li>
+            <li>Morning stiffness</li>
+            <li>Muscle cramps or spasms</li>
+            <li>Muscle weakness</li>
+            <li>General inflammation</li>
+            <li>Reduced range of motion</li>
+            <li>Joint swelling</li>
+            <li>Persistent low-grade pain</li>
+            <li class="more">…and more</li>
+          </ul>
+        </div>
       </div>
 
-    </div>
-    <div class="m-expander">
-      <button class="m-expand-btn" type="button" data-expander="symptoms" aria-expanded="false">
-        <span class="label">See all symptoms</span><span class="chev">▼</span>
-      </button>
     </div>
     <div class="symptoms-foot">
       <p>Symptoms like these have many possible causes. But if yours ease when you're away from home and return when you're back, a hidden mold source is worth ruling out.</p>
@@ -1385,10 +1510,10 @@
       <div class="section-eyebrow">A few years ago, I was the one who was sick.</div>
       <h2>I lived it. That's why I built <em>this.</em></h2>
       <p>It started as a migraine that wouldn't quit. Then came more symptoms, and more, until they were debilitating. Many providers and even urgent care visits — and no one could find anything wrong from standard examination or blood tests.</p>
-      <p>A friend asked a question that changed everything: had I tested my house for mold? I did. The air and swab samples came back with elevated levels. The problem wasn't in my head — it was in my home.</p>
-      <p>Over three years, it cost me more than $50,000 — testing, remediation, and clawing my health back. I went on leave from work. I moved out. I went through remediation, then turned to functional health to start rebuilding what the mold had taken. Recovery was slow. But piece by piece, I got my life back.</p>
+      <p>A friend brought up potential long-term mold exposure from my home. Elevated levels were found — the problem wasn't in my head, it was in my home.</p>
+      <p>Over three years, it cost me more than $50,000 — testing, remediation, and clawing my health back. I went on leave from work. I moved out. I went through remediation, and turned to functional health to start rebuilding what the mold had taken. Recovery was slow. But piece by piece, I got my life back.</p>
       <p>I'm still healing — and I'm honest about that. What I'm not is in the dark anymore. That experience turned me into an advocate against the moldy homes and workplaces quietly making people sick, and convinced me of one thing: when mold is hidden and hard to find, a trained dog is the best answer there is.</p>
-      <p>I built Dogs On Mold so you don't have to lose what I lost to find it. If you're sick and no one can explain why — or you just want to know what's really in your walls — this is for you.</p>
+      <p>Dogs On Mold exists so you don't have to lose what I lost along my journey. If you're sick and no one can explain why — or you just want to know what's really in your walls — this is for you.</p>
       <div class="sig">
         — Ben, with Winnie at my side
         <small>Founder · Certified handler · Minneapolis, MN</small>
@@ -1397,10 +1522,15 @@
   </div>
 </section>
 
+<!-- FAMILY PHOTO (full-width band) -->
+<div class="photo-ph family-band">
+  <div class="ph-label">Family photo</div>
+  <div class="ph-meta">Replace with a full-width family photo · spans the screen · ~2000×700</div>
+</div>
+
 <!-- SERVICES / HOW WE WORK -->
 <section class="the-way" id="services">
   <div class="container">
-    <div class="paw-divider">The &ldquo;Dogs On Mold&rdquo; Way</div>
     <div class="section-head">
       <div>
         <div class="section-eyebrow">How we work</div>
@@ -1412,31 +1542,36 @@
     </div>
 
     <div class="way-grid">
-      <div class="way-card">
+      <button class="way-card" type="button" aria-expanded="false">
         <div class="way-index">01</div>
         <h3>Scent over <em>sight</em></h3>
         <p>Mold releases microbial gases (MVOCs) as it grows and has a scent profile long after. Winnie is trained to detect those gases at trace concentrations and trace them to the source — even when there's no visible sign on a reachable surface, like behind a wall, under flooring, or inside the HVAC. Air sampling, by contrast, is prone to false positives and only catches what's airborne the moment the test runs.</p>
-      </div>
-      <div class="way-card">
+        <span class="way-toggle">Read more <span class="way-chev">▼</span></span>
+      </button>
+      <button class="way-card" type="button" aria-expanded="false">
         <div class="way-index">02</div>
         <h3>We read the mold <em>and the building</em></h3>
         <p>A dog finds the scent — someone has to read what it means. In addition to reading Winnie, I leverage my training in mold detection to interpret Winnie's alerts and the building science behind what could be happening — pressure dynamics, envelope failures, HVAC behavior, moisture pathways. That's the difference between a mold dog handler who can read their dog and one who understands the bigger picture to give you more confidence.</p>
-      </div>
-      <div class="way-card">
+        <span class="way-toggle">Read more <span class="way-chev">▼</span></span>
+      </button>
+      <button class="way-card" type="button" aria-expanded="false">
         <div class="way-index">03</div>
         <h3>Proof, <em>not a hunch</em></h3>
         <p>We don't stop at a sniff. We confirm what Winnie finds with appropriate tools such as high-intensity inspection light and calibrated moisture metering — and, at your request, optional air or swab sampling — so you walk away with more evidence for next steps.</p>
-      </div>
-      <div class="way-card">
+        <span class="way-toggle">Read more <span class="way-chev">▼</span></span>
+      </button>
+      <button class="way-card" type="button" aria-expanded="false">
         <div class="way-index">04</div>
         <h3>Non-invasive, <em>start to finish</em></h3>
         <p>No drilling, no demolition, no tearing into walls just to look. The dog finds the source first, so any work that follows is targeted instead of exploratory.</p>
-      </div>
-      <div class="way-card">
+        <span class="way-toggle">Read more <span class="way-chev">▼</span></span>
+      </button>
+      <button class="way-card" type="button" aria-expanded="false">
         <div class="way-index">05</div>
         <h3>We don't disappear <em>after the report</em></h3>
         <p>Finding mold is step one. We want to help you get connected to hygienists and remediators we have personally vetted in your area. We also can be hired for additional consultation through all steps of your remediation at a flat rate to give you the peace of mind you are looking for.</p>
-      </div>
+        <span class="way-toggle">Read more <span class="way-chev">▼</span></span>
+      </button>
     </div>
   </div>
 </section>
@@ -1494,6 +1629,14 @@
     </div>
   </div>
 </section>
+
+<!-- ALERT PHOTO (below socials) -->
+<div class="alert-photo-wrap">
+  <div class="photo-ph alert-photo">
+    <div class="ph-label">Winnie in alert</div>
+    <div class="ph-meta">Replace with your dog-in-alert photo · ~1200×800</div>
+  </div>
+</div>
 
 <!-- PRICING -->
 <section class="pricing" id="pricing">
@@ -1668,8 +1811,6 @@
       <div>
         <h5>Get in touch</h5>
         <a href="#request" data-open-form>Book a Consult</a>
-        <a href="mailto:hello@dogsonmold.com">hello@dogsonmold.com</a>
-        <a href="tel:+16125550100">(612) 555-0100</a>
       </div>
       <div>
         <h5>Follow along</h5>
@@ -1744,6 +1885,51 @@
         if (labelEl && LABELS[key]) {
           labelEl.textContent = isOpen ? LABELS[key][1] : LABELS[key][0];
         }
+        /* On collapse, content above the button vanishes and the page would
+           jump. Re-anchor the section heading to the top so it collapses
+           back to where it started. */
+        if (!isOpen) {
+          const navH = 70;
+          const top = section.getBoundingClientRect().top + window.pageYOffset - navH;
+          window.scrollTo({ top: top, behavior: 'auto' });
+        }
+      });
+    });
+  })();
+
+  /* ---- The Dogs On Mold Way: tap a card to expand its paragraph ---- */
+  (function () {
+    document.querySelectorAll('.way-card').forEach(card => {
+      const toggle = card.querySelector('.way-toggle');
+      card.addEventListener('click', () => {
+        const open = card.classList.toggle('open');
+        card.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (toggle) {
+          toggle.childNodes[0].nodeValue = open ? 'Show less ' : 'Read more ';
+        }
+      });
+    });
+  })();
+
+  /* ---- Symptom cards: tap to expand the full list (web + mobile) ----
+     Mobile: the heading is the tap target (body is hidden until open).
+     Web: the whole card is the tap target (shows 3, reveals rest on open). */
+  (function () {
+    function isMobile() { return window.matchMedia('(max-width: 760px)').matches; }
+    document.querySelectorAll('.symptom-card').forEach(card => {
+      const head = card.querySelector('.symptom-head');
+      function toggle() {
+        const open = card.classList.toggle('open');
+        if (head) head.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      /* Mobile: only the heading toggles */
+      if (head) head.addEventListener('click', (e) => { if (isMobile()) toggle(); });
+      /* Web: clicking anywhere on the card toggles (heading handled above
+         only fires on mobile, so no double-toggle) */
+      card.addEventListener('click', (e) => {
+        if (isMobile()) return;
+        if (head && head.contains(e.target)) { /* let heading path handle nothing on web */ }
+        toggle();
       });
     });
   })();
