@@ -68,6 +68,39 @@
     text-decoration: none; letter-spacing: 0.02em;
   }
   .nav-links a:hover { color: var(--brick); text-decoration: none; }
+  /* "More" dropdown */
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-toggle {
+    background: none; border: none; cursor: pointer;
+    color: var(--ink); font-family: var(--body); font-size: 14px; font-weight: 500;
+    letter-spacing: 0.02em; padding: 0; display: inline-flex; align-items: center; gap: 5px;
+  }
+  .nav-dropdown-toggle:hover { color: var(--brick); }
+  .dd-chev { font-size: 10px; transition: transform 0.2s ease; }
+  .nav-dropdown-toggle[aria-expanded="true"] .dd-chev { transform: rotate(180deg); }
+  .nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 14px);
+    right: 0;
+    background: var(--bone);
+    border: 1px solid rgba(139, 111, 78, 0.22);
+    border-radius: 8px;
+    box-shadow: 0 14px 34px rgba(42, 42, 40, 0.14);
+    min-width: 200px;
+    padding: 8px;
+    display: none;
+    flex-direction: column;
+    z-index: 60;
+  }
+  .nav-dropdown-menu.open { display: flex; }
+  .nav-dropdown-menu a {
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .nav-dropdown-menu a:hover { background: var(--bone-deep); color: var(--brick); }
   .btn {
     display: inline-block;
     background: var(--brick);
@@ -1190,6 +1223,13 @@
     color: rgba(239, 233, 220, 0.55);
     letter-spacing: 0.04em;
   }
+  .foot-legal {
+    display: flex; flex-wrap: wrap; gap: 18px;
+    margin-top: 40px;
+    font-size: 12px; letter-spacing: 0.04em;
+  }
+  .foot-legal a { color: rgba(239, 233, 220, 0.7); text-decoration: none; }
+  .foot-legal a:hover { color: var(--brick); }
 
   .paw-divider {
     text-align: center;
@@ -1420,6 +1460,14 @@
       <a href="#services">Services</a>
       <a href="#pricing">Pricing</a>
       <a href="faq.html">FAQ</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-haspopup="true">More <span class="dd-chev">▾</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="Termsconditions.html">Terms &amp; Conditions</a>
+          <a href="Privacy.html">Privacy Policy</a>
+          <a href="Disclaimer.html">Disclaimer</a>
+        </div>
+      </div>
       <a href="#request" data-open-form class="btn">Book A Free 15-Min Consult</a>
     </div>
     <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -1434,6 +1482,9 @@
     <a href="#services">Services</a>
     <a href="#pricing">Pricing</a>
     <a href="faq.html">FAQ</a>
+    <a href="Termsconditions.html">Terms &amp; Conditions</a>
+    <a href="Privacy.html">Privacy Policy</a>
+    <a href="Disclaimer.html">Disclaimer</a>
     <a href="#request" data-open-form class="mobile-menu-cta">Book A Free 15-Min Consult</a>
   </div>
 </nav>
@@ -1872,6 +1923,11 @@
         <p style="margin-top: 14px; font-size: 12px; color: var(--walnut);">Facebook coming soon.</p>
       </div>
     </div>
+    <div class="foot-legal">
+      <a href="Termsconditions.html">Terms &amp; Conditions</a>
+      <a href="Privacy.html">Privacy Policy</a>
+      <a href="Disclaimer.html">Disclaimer</a>
+    </div>
     <div class="foot-bottom">
       <div>© 2026 Dogs On Mold. All rights reserved.</div>
       <div>Detection only — we don't do the remediation we recommend.</div>
@@ -2025,6 +2081,25 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 
     targets.forEach(t => io.observe(t));
+  })();
+
+  /* ---- "More" nav dropdown ---- */
+  (function () {
+    const dd = document.querySelector('.nav-dropdown');
+    if (!dd) return;
+    const toggle = dd.querySelector('.nav-dropdown-toggle');
+    const menu = dd.querySelector('.nav-dropdown-menu');
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', (e) => {
+      if (!dd.contains(e.target)) {
+        menu.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
   })();
 
   /* ---- Mobile hamburger menu ---- */
