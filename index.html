@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dogs On Mold — Certified Canine Mold Detection · Minneapolis, MN · Nationwide</title>
-<meta name="description" content="Certified canine mold detection. 90–97% accuracy, non-invasive, 45–90 minute inspections. Based in Minneapolis, traveling nationwide. Book a free 15-minute consult or get on the schedule." />
+<title>Dogs On Mold — Certified Canine Mold Detection · Minneapolis, MN</title>
+<meta name="description" content="Certified canine mold detection. 90–97% accuracy, non-invasive, 45–90 minute inspections. Based in Minneapolis, serving Minnesota, Wisconsin, Iowa, and eastern North & South Dakota. Book a free 15-minute consult or get on the schedule." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -93,6 +93,7 @@
     z-index: 60;
   }
   .nav-dropdown-menu.open { display: flex; }
+  .nav-dropdown-menu--left { right: auto; left: 0; }
   .nav-dropdown-menu a {
     padding: 10px 12px;
     border-radius: 6px;
@@ -345,6 +346,9 @@
     opacity: 0.8;
     margin-top: 6px;
   }
+  /* States list reads as a compact list, not a single big number */
+  .stat--states .num { font-size: 19px; letter-spacing: 0.02em; line-height: 1.3; }
+  @media (max-width: 560px) { .stat--states .num { font-size: 16px; } }
 
   /* ---------- SECTION HEADS ---------- */
   .section-head {
@@ -728,90 +732,94 @@
   .ph.large { grid-column: span 2; grid-row: span 2; }
   .ph.tall { grid-row: span 2; }
 
-  /* ---------- SERVICES / THE WAY ---------- */
+  /* ---------- HOW WE WORK / THE WAY ---------- */
   .the-way {
     padding: 72px 0;
     background: var(--bone);
   }
-  .way-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+  /* One continuous section — no cards. Each discipline is a row with a
+     hairline divider above it. Everything is fully visible on desktop. */
+  .way-list {
     margin-top: 40px;
+    border-top: 1px solid rgba(139, 111, 78, 0.28);
   }
-  @media (max-width: 800px) { .way-grid { grid-template-columns: 1fr; } }
-  .way-card {
-    background: var(--bone);
-    color: var(--ink);
-    padding: 28px 30px;
-    border-radius: 8px;
-    border: 2px solid var(--brick);
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: block;
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
-    font: inherit;
+  .way-item {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 28px;
+    align-items: start;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(139, 111, 78, 0.28);
   }
-  .way-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 32px rgba(160, 75, 44, 0.14);
-  }
-  .way-card .way-index {
+  .way-index {
     font-family: var(--display);
-    font-size: 26px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
+    font-size: 34px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
     color: var(--sage);
-    margin-bottom: 8px;
     line-height: 1;
   }
-  .way-card h3 {
+  .way-item h3 {
     font-size: 26px;
-    margin-bottom: 12px;
+    margin: 2px 0 12px;
     color: var(--ink);
     font-weight: 400;
+    line-height: 1.15;
   }
-  .way-card h3 em { font-style: italic; color: var(--brick); }
-  .way-card > p {
-    color: var(--ink);
-    font-size: 15px;
-    line-height: 1.65;
-    max-width: 520px;
-    margin: 0;
-    /* Collapsed: show a single line trailing off with "…" */
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .way-card.open > p {
-    -webkit-line-clamp: unset;
-    display: block;
-    overflow: visible;
-  }
-  .way-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 14px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+  .way-item h3 em { font-style: italic; color: var(--brick); }
+  .way-item p a {
     color: var(--brick);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 600;
   }
-  .way-chev { transition: transform 0.2s ease; font-size: 11px; }
-  .way-card.open .way-chev { transform: rotate(180deg); }
-  /* Mobile: tighter card padding */
+  .way-item p a:hover { color: var(--brick-dark); }
+  .way-item p {
+    color: var(--ink);
+    font-size: 15.5px;
+    line-height: 1.7;
+    max-width: 640px;
+    margin: 0;
+  }
+  /* Mobile-only expand affordance; hidden on desktop */
+  .way-more { display: none; }
   @media (max-width: 760px) {
     .the-way { padding: 48px 0; }
-    .way-grid { gap: 12px; margin-top: 28px; }
-    .way-card { padding: 18px 20px; }
-    .way-card h3 { font-size: 22px; margin-bottom: 8px; }
-    .way-card .way-index { font-size: 22px; }
+    .way-list { margin-top: 26px; }
+    .way-item {
+      grid-template-columns: 48px 1fr;
+      gap: 16px;
+      padding: 22px 0;
+      cursor: pointer;
+    }
+    .way-index { font-size: 26px; }
+    .way-item h3 { font-size: 21px; margin-bottom: 8px; }
+    /* Collapsed on mobile: clamp to 2 lines until tapped open */
+    .way-item p {
+      font-size: 15px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .way-item.open p {
+      -webkit-line-clamp: unset;
+      display: block;
+      overflow: visible;
+    }
+    .way-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brick);
+    }
+    .way-more .way-chev { transition: transform 0.2s ease; font-size: 10px; }
+    .way-item.open .way-more .way-chev { transform: rotate(180deg); }
   }
 
   /* ---------- WHAT'S INCLUDED ---------- */
@@ -832,31 +840,77 @@
     margin-bottom: 12px;
   }
   .includes h3 { color: var(--bone); font-size: 28px; margin-bottom: 28px; }
-  .includes ul {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 48px;
-  }
-  @media (max-width: 760px) { .includes ul { grid-template-columns: 1fr; } }
-  .includes li {
+
+  /* Vertical journey timeline */
+  .journey { list-style: none; padding: 0; margin: 4px 0 0; }
+  .journey-step {
     position: relative;
-    padding: 0 0 16px 30px;
-    margin-bottom: 16px;
-    color: rgba(239, 233, 220, 0.88);
-    font-size: 15px;
-    line-height: 1.55;
-    border-bottom: 1px solid rgba(239, 233, 220, 0.12);
+    padding: 0 0 34px 44px;
   }
-  .includes li::before {
+  .journey-step:last-child { padding-bottom: 0; }
+  /* connecting vertical line between milestones */
+  .journey-step::before {
     content: '';
     position: absolute;
-    left: 0; top: 6px;
-    width: 13px; height: 7px;
-    border-left: 2px solid var(--brick);
-    border-bottom: 2px solid var(--brick);
-    transform: rotate(-45deg);
+    left: 9px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(160, 75, 44, 0.45);
+  }
+  .journey-step:first-child::before { top: 13px; }
+  .journey-step:last-child::before { bottom: calc(100% - 13px); }
+  /* milestone dot */
+  .journey-dot {
+    position: absolute;
+    left: 2px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--brick);
+    box-shadow: 0 0 0 4px var(--ink), 0 0 0 6px rgba(160, 75, 44, 0.30);
+    z-index: 1;
+  }
+  .journey-time {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--bone);
+    letter-spacing: 0.01em;
+    margin: 0 0 14px;
+    line-height: 1.25;
+  }
+  .journey-time .journey-sub {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(239, 233, 220, 0.60);
+    letter-spacing: 0.02em;
+  }
+  .journey-list { list-style: none; padding: 0; margin: 0; }
+  .journey-list li {
+    position: relative;
+    padding: 0 0 12px 22px;
+    color: rgba(239, 233, 220, 0.90);
+    font-size: 15.5px;
+    line-height: 1.6;
+    max-width: 780px;
+  }
+  .journey-list li:last-child { padding-bottom: 0; }
+  .journey-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brick);
+    opacity: 0.85;
+  }
+  @media (max-width: 540px) {
+    .journey-step { padding-left: 38px; }
+    .journey-time { font-size: 17px; }
+    .journey-time .journey-sub { display: block; margin-top: 3px; }
   }
 
   /* ---------- PRICING ---------- */
@@ -1457,7 +1511,13 @@
     <div class="nav-links">
       <a href="#story">Our Story</a>
       <a href="team.html">Meet the Team</a>
-      <a href="#services">Services</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-haspopup="true">Services <span class="dd-chev">▾</span></button>
+        <div class="nav-dropdown-menu nav-dropdown-menu--left">
+          <a href="#services">How We Work</a>
+          <a href="services.html">Services</a>
+        </div>
+      </div>
       <a href="#pricing">Pricing</a>
       <a href="faq.html">FAQ</a>
       <div class="nav-dropdown">
@@ -1479,7 +1539,8 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="#story">Our Story</a>
     <a href="team.html">Meet the Team</a>
-    <a href="#services">Services</a>
+    <a href="#services">How We Work</a>
+    <a href="services.html">Services</a>
     <a href="#pricing">Pricing</a>
     <a href="faq.html">FAQ</a>
     <a href="Termsconditions.html">Terms &amp; Conditions</a>
@@ -1493,12 +1554,12 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-top">
-      <div class="eyebrow"><span class="dot"></span>Booking Nationwide Trips for August</div>
+      <div class="eyebrow"><span class="dot"></span>Now booking · MN, WI, IA &amp; eastern ND/SD</div>
       <h1>Stop guessing. Start <em>healing.</em></h1>
     </div>
     <div class="hero-grid">
       <div class="hero-content">
-        <p class="lead">Most homeowners come to us after traditional inspections found nothing — and they were still sick. The problem: mold often hides behind perfect-looking walls, and air samples only catch spores that happen to be airborne at time of testing. A trained detection dog finds the source by scent — even behind walls. Minneapolis-based, nationwide travel.</p>
+        <p class="lead">Most homeowners come to us after traditional inspections found nothing — and they were still sick. The problem: mold often hides behind perfect-looking walls, and air samples only catch spores that happen to be airborne at time of testing. A trained detection dog finds the source by scent — even behind walls. Minneapolis-based, serving Minnesota, Wisconsin, Iowa, and eastern North &amp; South Dakota.</p>
         <div class="hero-cta">
           <a href="#request" data-open-form class="btn btn-large">Book A Free 15-Min Consult</a>
           <a href="#request" data-open-form class="btn btn-large btn-ghost">Get On The Schedule</a>
@@ -1511,7 +1572,7 @@
     <div class="hero-stats">
       <div class="stat"><div class="num">60–90 min</div><div class="lbl">Typical Inspection</div></div>
       <div class="stat"><div class="num">Same-day</div><div class="lbl">On-Site Findings</div></div>
-      <div class="stat"><div class="num">50</div><div class="lbl">States — We Come To You</div></div>
+      <div class="stat stat--states"><div class="num">MN, WI, IA, ND, SD</div><div class="lbl">States We Service</div></div>
     </div>
   </div>
 </section>
@@ -1666,41 +1727,51 @@
     <div class="section-head">
       <div>
         <div class="section-eyebrow">How we work</div>
-        <h2>Five disciplines, <em>one honest answer.</em></h2>
+        <h2>Five foundational principles</h2>
       </div>
     </div>
 
-    <div class="way-grid">
-      <button class="way-card" type="button" aria-expanded="false">
+    <div class="way-list">
+      <div class="way-item" aria-expanded="false">
         <div class="way-index">01</div>
-        <h3>Scent over <em>sight</em></h3>
-        <p>Mold releases microbial gases (MVOCs) as it grows and has a scent profile long after. Winnie is trained to detect those gases at trace concentrations and trace them to the source — even when there's no visible sign on a reachable surface, like behind a wall, under flooring, or inside the HVAC. Air sampling, by contrast, is prone to false positives and only catches what's airborne the moment the test runs.</p>
-        <span class="way-toggle">Read more <span class="way-chev">▼</span></span>
-      </button>
-      <button class="way-card" type="button" aria-expanded="false">
+        <div class="way-body">
+          <h3><em>Scent first</em> discovery</h3>
+          <p>Mold releases microbial gases (MVOCs) as it grows and has a scent profile long after. Winnie is trained to detect those gases at trace concentrations and trace them to the source — even when there's no visible sign on a reachable surface, like behind a wall, under flooring, or inside the HVAC.</p>
+          <span class="way-more">Read more <span class="way-chev">▼</span></span>
+        </div>
+      </div>
+      <div class="way-item" aria-expanded="false">
         <div class="way-index">02</div>
-        <h3>We read the mold <em>and the building</em></h3>
-        <p>A dog finds the scent — someone has to read what it means. In addition to reading Winnie, I leverage my training in mold detection to interpret Winnie's alerts and the building science behind what could be happening — pressure dynamics, envelope failures, HVAC behavior, moisture pathways. That's the difference between a mold dog handler who can read their dog and one who understands the bigger picture to give you more confidence.</p>
-        <span class="way-toggle">Read more <span class="way-chev">▼</span></span>
-      </button>
-      <button class="way-card" type="button" aria-expanded="false">
+        <div class="way-body">
+          <h3><em>Proof</em>, not a hunch</h3>
+          <p>You need objective evidence to proceed in any case of needed remediation. As per <a href="https://www.normi.org/" target="_blank" rel="noopener">NORMI</a> professional standards, a minimum of 6 samples (air, swab, bio-tape lift) must be taken in all HVAC serviced areas of a structure to determine the extent of mold contamination. This is the objective evidence that most mold dog companies do not provide when your health is on the line.</p>
+          <span class="way-more">Read more <span class="way-chev">▼</span></span>
+        </div>
+      </div>
+      <div class="way-item" aria-expanded="false">
         <div class="way-index">03</div>
-        <h3>Proof, <em>not a hunch</em></h3>
-        <p>We don't stop at a sniff. We confirm what Winnie finds with appropriate tools such as high-intensity inspection light and calibrated moisture metering — and, at your request, optional air or swab sampling — so you walk away with more evidence for next steps.</p>
-        <span class="way-toggle">Read more <span class="way-chev">▼</span></span>
-      </button>
-      <button class="way-card" type="button" aria-expanded="false">
+        <div class="way-body">
+          <h3>We read the "alert" <em>and the building</em></h3>
+          <p>A certified mold dog alerts on the presence of mold -- you need to know the root cause. As part of our investigation we utilize various tools and techniques to identify appliance installation failures, construction failures, and original sources of persistent moisture.</p>
+          <span class="way-more">Read more <span class="way-chev">▼</span></span>
+        </div>
+      </div>
+      <div class="way-item" aria-expanded="false">
         <div class="way-index">04</div>
-        <h3>Non-invasive, <em>start to finish</em></h3>
-        <p>No drilling, no demolition, no tearing into walls just to look. The dog finds the source first, so any work that follows is targeted instead of exploratory.</p>
-        <span class="way-toggle">Read more <span class="way-chev">▼</span></span>
-      </button>
-      <button class="way-card" type="button" aria-expanded="false">
+        <div class="way-body">
+          <h3><em>Non-invasive</em>, start to finish</h3>
+          <p>A key benefit to a certified mold dog finding source mold is to to avoid any drilling or demolition that may disturb mold and further contaminate your space. We avoid this at all costs to keep your space intact.</p>
+          <span class="way-more">Read more <span class="way-chev">▼</span></span>
+        </div>
+      </div>
+      <div class="way-item" aria-expanded="false">
         <div class="way-index">05</div>
-        <h3>We don't disappear <em>after the report</em></h3>
-        <p>Finding mold is step one. We want to help you get connected to hygienists and remediators we have personally vetted in your area. We also can be hired for additional consultation through all steps of your remediation at a flat rate to give you the peace of mind you are looking for.</p>
-        <span class="way-toggle">Read more <span class="way-chev">▼</span></span>
-      </button>
+        <div class="way-body">
+          <h3><em>We don't disappear</em> after the report</h3>
+          <p>Finding mold is step one. We want to help you get connected to remediators we have personally vetted in your area -- only the best with the highest certifications and ability to clearly communicate their compliant techniques are recommended to you - never more than 3 in a service area.</p>
+          <span class="way-more">Read more <span class="way-chev">▼</span></span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1740,13 +1811,35 @@
     <div class="includes" style="margin-top:0; margin-bottom:56px;">
       <div class="includes-eyebrow">What you get</div>
       <h3>Every inspection includes</h3>
-      <ul>
-        <li>A full canine sweep with Winnie, handler-read in real time.</li>
-        <li>Building-science assessment of moisture sources and problem areas.</li>
-        <li>Confirmation with inspection light and moisture metering — optional air/swab sampling on request.</li>
-        <li>A same-day verbal walkthrough of what we found, plus a written report with photos within 48 hours — what we found, where, and whether it's active.</li>
-        <li>A vetted referral and briefing: we connect you with a trusted hygienist and a remediator who meets our standards, and make sure you understand your report before those conversations.</li>
-      </ul>
+      <ol class="journey">
+        <li class="journey-step">
+          <span class="journey-dot"></span>
+          <div class="journey-time">Inspection Day</div>
+          <ul class="journey-list">
+            <li>1st canine sweep with Winnie, handler-read in real time.</li>
+            <li>Additional visual walkthrough for confirmation of moisture issues using industry tools.</li>
+            <li>2nd canine sweep with Winnie, handler-read in real time looking for consistency of alerting.</li>
+            <li>At least six total mold testing samples (air, swab, or bio-tape lift) taken in places of canine alert.</li>
+            <li>Same-day verbal walkthrough of what was found.</li>
+          </ul>
+        </li>
+        <li class="journey-step">
+          <span class="journey-dot"></span>
+          <div class="journey-time">Day 1-2 <span class="journey-sub">(Next 24-48 Hours)</span></div>
+          <ul class="journey-list">
+            <li>Written pre-final report delivered to customer - this is pre mold test results - including photos and points discussed from the verbal walkthrough.</li>
+          </ul>
+        </li>
+        <li class="journey-step">
+          <span class="journey-dot"></span>
+          <div class="journey-time">Day 5-7</div>
+          <ul class="journey-list">
+            <li>Final report with testing results and recommendation delivered.</li>
+            <li>15-min post assessment call to review results, answer questions, and provide next steps.</li>
+            <li>When applicable, we help you understand remediation and how to select from only a short list of recommended, certified, and industry compliant remediation companies in your area.</li>
+          </ul>
+        </li>
+      </ol>
     </div>
 
     <div class="section-head">
@@ -1763,23 +1856,11 @@
     <div class="price-tiers">
       <!-- Tier 1 -->
       <div class="tier featured">
-        <div class="tier-name">Local Pricing</div>
-        <div class="tier-tag">Live in MN? We're local to you.</div>
-        <div class="price-line"><span>Standard home (up to 4,000 sq ft)</span><span class="amt">$1,250</span></div>
+        <div class="tier-name">Inspection Pricing</div>
+        <div class="tier-tag">Serving MN, WI, IA &amp; eastern ND/SD.</div>
+        <div class="price-line"><span>Standard home (up to 4,000 sq ft)</span><span class="amt">$1,450</span></div>
         <div class="price-line"><span>Travel beyond 30 mi from downtown Minneapolis</span><span class="amt">+$2/mi RT</span></div>
-        <p class="note">Local mileage valid up to 300 miles. More than 300 miles from us? See nationwide pricing.</p>
-      </div>
-
-      <!-- Tier 2 -->
-      <div class="tier m-hide">
-        <div class="tier-name">Nationwide Pricing</div>
-        <div class="tier-tag">The more bookings in the same market, the more everyone saves.</div>
-        <div class="price-line"><span>1 client</span><span class="amt">$2,250</span></div>
-        <div class="price-line"><span>2 clients</span><span class="amt">$1,800 ea</span></div>
-        <div class="price-line"><span>3–4 clients</span><span class="amt">$1,600 ea</span></div>
-        <div class="price-line"><span>5–6 clients</span><span class="amt">$1,400 ea</span></div>
-        <div class="price-line"><span>7+ clients</span><span class="amt">$1,300 ea</span></div>
-        <p class="note">You're quoted at the current rate for your market. If more clients book your trip before we travel, your price drops automatically. A <em>market</em> is the major city we're serving and its surrounding area.</p>
+        <p class="note">Travel is billed round-trip from downtown Minneapolis.</p>
       </div>
 
       <!-- Tier 3 -->
@@ -1788,7 +1869,7 @@
         <div class="tier-tag">Portfolios &amp; multiple properties.</div>
         <p class="consult-line">Own multiple properties or manage a portfolio? Every situation is different — book a consult and we'll build a plan around your properties.</p>
         <a href="#request" data-open-form class="btn">Book A Consult</a>
-        <p class="note"><strong>Nationwide mileage:</strong> $2/mile beyond 30 miles RT from the destination airport hub.</p>
+        <p class="note"><strong>Travel:</strong> $2/mile beyond 30 miles round-trip from downtown Minneapolis.</p>
       </div>
 
       <!-- Tier 4 -->
@@ -1814,39 +1895,6 @@
   </div>
 </section>
 
-<!-- UPCOMING TRIPS -->
-<section class="trips" id="trips">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <div class="section-eyebrow">Where we'll be next</div>
-        <h2>Save hundreds by joining an <em>upcoming trip.</em></h2>
-      </div>
-      <div class="head-right">
-        We route the country in clusters so multiple clients share travel costs. If we're already coming your way, you save — and you get on the calendar faster.
-      </div>
-    </div>
-
-    <div class="trip-grid" id="tripGrid">
-      <!-- trips injected by JS -->
-    </div>
-
-    <div class="m-expander">
-      <button class="m-expand-btn" type="button" data-expander="trips" aria-expanded="false">
-        <span class="label">Show all trips</span><span class="chev">▼</span>
-      </button>
-    </div>
-
-    <div class="map-banner">
-      <div>
-        <h3>Don't see your area?</h3>
-        <p>We're routing new trips every month. Request your zip code below and we'll either add you to the closest existing trip — or build a route around your booking.</p>
-      </div>
-      <a href="#request" data-open-form class="btn btn-large">Request a Visit</a>
-    </div>
-  </div>
-</section>
-
 <!-- REQUEST FORM -->
 <section class="request" id="request">
   <div class="container request-wrap">
@@ -1855,7 +1903,7 @@
       <h2>Get on the schedule — <em>or just get answers.</em></h2>
       <p class="lead-2">Ready to book? Get on the schedule. Not quite there yet? Grab a free 15-minute consult and we'll answer your questions, no pressure. Pick whichever fits where you are.</p>
       <ul class="checks">
-        <li>Minneapolis-based, traveling all 50 states</li>
+        <li>Minneapolis-based, serving MN, WI, IA &amp; eastern ND/SD</li>
         <li>Most clients booked within 2–3 weeks</li>
         <li>Honest pre-quote — no surprise pricing</li>
         <li>Detection only — we don't do the remediation we recommend, so we're not upselling you a repair</li>
@@ -1866,7 +1914,7 @@
            TALLY POPUP TRIGGER
            The form opens as a modal popup — it is NOT shown inline.
            Every "Book" / "Consult" / "Request" button on the site
-           (nav, hero, services, pricing, trips, footer) opens this
+           (nav, hero, services, pricing, footer) opens this
            same popup, all routed through one handler.
            >>> Set your form ID in ONE place: the TALLY_FORM_ID line
                in the script near the bottom of this file. <<<
@@ -1891,17 +1939,17 @@
       <div>
         <div class="foot-logo">Dogs On Mold<span>.</span></div>
         <p>Certified canine mold detection. Honest answers, non-invasive inspections, and start-to-finish guidance.</p>
-        <p style="margin-top: 12px;">Minneapolis, MN · Serving all 50 states</p>
+        <p style="margin-top: 12px;">Minneapolis, MN · Serving MN, WI, IA &amp; eastern ND/SD</p>
       </div>
       <div>
         <h5>Navigate</h5>
         <a href="#symptoms">Symptoms</a>
         <a href="#story">Our Story</a>
         <a href="team.html">Meet the Team</a>
-        <a href="#services">Services</a>
+        <a href="#services">How We Work</a>
+        <a href="services.html">Services</a>
         <a href="#pricing">Pricing</a>
         <a href="faq.html">FAQ</a>
-        <a href="#trips">Upcoming Trips</a>
       </div>
       <div>
         <h5>Get in touch</h5>
@@ -1936,43 +1984,13 @@
 </footer>
 
 <script>
-  // Upcoming trip data — REPLACE with real route schedule
-  const trips = [
-    { region: 'Pacific Northwest', city: 'Seattle / Portland', state: 'WA · OR', dates: 'May 18 – May 23, 2026', slots: '2 of 6 slots open' },
-    { region: 'Southwest', city: 'Phoenix / Scottsdale', state: 'AZ', dates: 'May 26 – May 30, 2026', slots: '4 of 6 slots open' },
-    { region: 'California', city: 'Bay Area & Sacramento', state: 'CA', dates: 'June 2 – June 8, 2026', slots: '1 of 6 slots open' },
-    { region: 'Texas Triangle', city: 'Austin / Dallas / Houston', state: 'TX', dates: 'June 15 – June 22, 2026', slots: '5 of 8 slots open' },
-    { region: 'Southeast', city: 'Atlanta + Carolinas', state: 'GA · NC · SC', dates: 'June 28 – July 5, 2026', slots: '6 of 8 slots open' },
-    { region: 'Northeast', city: 'NYC + Boston', state: 'NY · MA · CT', dates: 'July 12 – July 19, 2026', slots: '7 of 8 slots open' },
-    { region: 'Mountain West', city: 'Denver / Boulder', state: 'CO', dates: 'July 24 – July 28, 2026', slots: '3 of 6 slots open' },
-    { region: 'Florida', city: 'Tampa / Orlando / Miami', state: 'FL', dates: 'August 4 – August 11, 2026', slots: 'Waitlist forming', full: true },
-  ];
-
-  const grid = document.getElementById('tripGrid');
-  trips.forEach((t, i) => {
-    const a = document.createElement('a');
-    a.href = '#request';
-    a.setAttribute('data-open-form', '');
-    a.className = 'trip-card' + (i >= 3 ? ' m-hide' : '');
-    a.style.textDecoration = 'none';
-    a.innerHTML = `
-      <div class="trip-region">${t.region}</div>
-      <h3>${t.city}</h3>
-      <div class="trip-state">${t.state}</div>
-      <div class="trip-dates">${t.dates}</div>
-      <div class="trip-slots ${t.full ? 'full' : ''}">${t.slots} →</div>
-    `;
-    grid.appendChild(a);
-  });
-
   /* ---- Shared mobile expander logic ----
      Each button toggles an .m-open class on its parent section and
      swaps its own label + arrow. Pure show/hide; no animation jank. */
   (function () {
     const LABELS = {
       symptoms: ['See all symptoms', 'Show fewer symptoms'],
-      pricing:  ['See full pricing', 'Show less'],
-      trips:    ['Show all trips', 'Show fewer trips']
+      pricing:  ['See full pricing', 'Show less']
     };
     document.querySelectorAll('.m-expand-btn[data-expander]').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -1997,16 +2015,16 @@
     });
   })();
 
-  /* ---- The Dogs On Mold Way: tap a card to expand its paragraph ---- */
+  /* ---- How We Work: fully visible on desktop; tap to expand on mobile ---- */
   (function () {
-    document.querySelectorAll('.way-card').forEach(card => {
-      const toggle = card.querySelector('.way-toggle');
-      card.addEventListener('click', () => {
-        const open = card.classList.toggle('open');
-        card.setAttribute('aria-expanded', open ? 'true' : 'false');
-        if (toggle) {
-          toggle.childNodes[0].nodeValue = open ? 'Show less ' : 'Read more ';
-        }
+    function isMobile() { return window.matchMedia('(max-width: 760px)').matches; }
+    document.querySelectorAll('.way-item').forEach(item => {
+      const more = item.querySelector('.way-more');
+      item.addEventListener('click', () => {
+        if (!isMobile()) return;               /* desktop: no toggling, all shown */
+        const open = item.classList.toggle('open');
+        item.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (more) more.childNodes[0].nodeValue = open ? 'Show less ' : 'Read more ';
       });
     });
   })();
@@ -2051,7 +2069,7 @@
     ];
     const staggerGroups = [
       '.why-grid',
-      '.way-grid',
+      '.way-list',
       '.symptoms-grid',
       '.trip-grid',
       '.price-tiers',
@@ -2083,23 +2101,31 @@
     targets.forEach(t => io.observe(t));
   })();
 
-  /* ---- "More" nav dropdown ---- */
+  /* ---- Nav dropdowns (Services + More) ---- */
   (function () {
-    const dd = document.querySelector('.nav-dropdown');
-    if (!dd) return;
-    const toggle = dd.querySelector('.nav-dropdown-toggle');
-    const menu = dd.querySelector('.nav-dropdown-menu');
-    toggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const open = menu.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    const dropdowns = Array.from(document.querySelectorAll('.nav-dropdown'));
+    if (!dropdowns.length) return;
+
+    function closeAll(except) {
+      dropdowns.forEach(dd => {
+        if (dd === except) return;
+        dd.querySelector('.nav-dropdown-menu').classList.remove('open');
+        dd.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    dropdowns.forEach(dd => {
+      const toggle = dd.querySelector('.nav-dropdown-toggle');
+      const menu = dd.querySelector('.nav-dropdown-menu');
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeAll(dd);                       /* only one open at a time */
+        const open = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
     });
-    document.addEventListener('click', (e) => {
-      if (!dd.contains(e.target)) {
-        menu.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-    });
+
+    document.addEventListener('click', () => closeAll(null));
   })();
 
   /* ---- Mobile hamburger menu ---- */
@@ -2149,7 +2175,7 @@
     }
   }
 
-  // Any element with [data-open-form] opens the popup (nav, hero, services, pricing, trips, footer).
+  // Any element with [data-open-form] opens the popup (nav, hero, services, pricing, footer).
   document.addEventListener("click", function (e) {
     const trigger = e.target.closest("[data-open-form]");
     if (trigger) {
