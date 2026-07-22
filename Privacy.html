@@ -83,8 +83,11 @@
   }
   .btn:hover { background: var(--brick-dark); text-decoration: none; transform: translateY(-1px); }
   .btn-large { padding: 18px 36px; font-size: 15px; }
-  @media (max-width: 760px) {
-    .nav-links a:not(.btn) { display: none; }
+@media (max-width: 760px) {
+    /* Hide the entire desktop link cluster (links AND the nav CTA) */
+    .nav-links { display: none; }
+    /* Show the hamburger */
+    .nav-toggle { display: flex; }
   }
 
   /* ---------- FAQ HEADER ---------- */
@@ -278,6 +281,130 @@
   }
   .foot-legal a { color: rgba(239, 233, 220, 0.7); text-decoration: none; }
   .foot-legal a:hover { color: var(--brick); }
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-toggle {
+    background: none; border: none; cursor: pointer;
+    color: var(--ink); font-family: var(--body); font-size: 14px; font-weight: 500;
+    letter-spacing: 0.02em; padding: 0; display: inline-flex; align-items: center; gap: 5px;
+  }
+  .nav-dropdown-toggle:hover { color: var(--brick); }
+  .dd-chev { font-size: 10px; transition: transform 0.2s ease; }
+  .nav-dropdown-toggle[aria-expanded="true"] .dd-chev { transform: rotate(180deg); }
+  .nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 14px);
+    right: 0;
+    background: var(--bone);
+    border: 1px solid rgba(139, 111, 78, 0.22);
+    border-radius: 8px;
+    box-shadow: 0 14px 34px rgba(42, 42, 40, 0.14);
+    min-width: 200px;
+    padding: 8px;
+    display: none;
+    flex-direction: column;
+    z-index: 60;
+  }
+  .nav-dropdown-menu.open { display: flex; }
+  .nav-dropdown-menu--left { right: auto; left: 0; }
+  .nav-dropdown-menu a {
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .nav-dropdown-menu a:hover { background: var(--bone-deep); color: var(--brick); }
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .nav-toggle-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  /* Animate into an X when open */
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  /* Mobile dropdown menu — hidden by default, revealed when open */
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    border-top: 1px solid rgba(139, 111, 78, 0.18);
+    background: var(--bone);
+    padding: 8px 28px 18px;
+  }
+  .mobile-menu a {
+    color: var(--ink);
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(139, 111, 78, 0.14);
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--brick); text-decoration: none; }
+  .mobile-menu .mobile-menu-cta {
+    margin-top: 14px;
+    background: var(--brick);
+    color: var(--bone);
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border-bottom: none;
+  }
+  .mobile-menu .mobile-menu-cta:hover {
+    background: var(--brick-dark);
+    color: var(--bone);
+  }
+  .mobile-menu.open { display: flex; }
+  /* ---------- BRAND LOGO (inline SVG, themeable) ---------- */
+  .logo .dom-logo { height: 62px; width: auto; display: block; }
+  /* Dark shapes + wordmark follow the link's text colour, so the same
+     markup works on the light header and the dark footer. */
+  .dom-logo .dom-dark,
+  .dom-logo .dom-word { fill: currentColor; }
+  .dom-logo .dom-sage  { fill: var(--sage); }
+  /* Small highlight on the dog reads as a knockout of the background */
+  .dom-logo .dom-glint { fill: var(--logo-bg, var(--bone)); }
+  .dom-logo .dom-word {
+    font-family: 'Sofia Pro', var(--body), sans-serif;
+    font-size: 65px;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  .footer-brand .dom-logo { height: 50px; }
+  .footer-brand,
+  .foot-grid a.footer-brand,
+  .foot-grid a.footer-brand:hover {
+    --logo-bg: var(--ink);
+    color: var(--bone);
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+  @media (max-width: 760px) { .logo .dom-logo { height: 46px; } }
 </style>
 </head>
 <body>
@@ -285,15 +412,54 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="logo">Dogs On Mold<span>.</span></a>
+    <a href="index.html" class="logo" aria-label="Dogs On Mold - home">
+      <svg class="dom-logo" viewBox="0 0 668.26 183" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dogs On Mold">
+      <path class="dom-dark" d="M62.01,39.33c-2.35,1.93-4.85,2.99-7.17,4.34l-28.22,16.53.03,34.18c-5.13,4.56-9.74,8.99-16.13,11.92-.58-7.53-.28-13.39-.21-19.93.17-5.7.21-11.26-.06-16.97l.17-19.97L76.69,11.09l60.43,36.07.17,26.19c.27,1.11-.54,2.07-1.69,1.88l-13.93-2.71.05-15.11-23.43-13.79-21.46-12.62-14.81,8.34Z"/>
+      <path class="dom-sage" d="M138.55,123.61c-2.2,6.92-6.43,12.35-11.1,17.74-12.73,14.67-33.11,26.18-50.87,35.21l-20.2-11c-15.97-8.7-34.35-22.99-43.13-38.89-1.84-3.33-4.25-8.97-1.65-12.32,2.78-3.57,7.43-6.74,11.62-9.33,3.03,5.66,5.3,12.23,8.66,17.09,9.77,14.13,24.28,22.2,37.48,31.46l7.39,5.18c19.22-10.34,37.44-22.14,49.7-40.97l12.1,5.82Z"/>
+      <path class="dom-dark" d="M46.28,88.14c.02-.11.02-.22.03-.31M46.31,87.68s0-.07,0-.07c-3.46-5.18,1.89-7.08,3.93-11.51,2.46-5.35,6.79-8.77,12.17-10.89,11.24-4.43,23.1-4.03,33.88,1.43,3.54,1.8,6.38,4.34,7.87,8.15s4.77,6.32,8.81,7.18l20.65,4.42c3.14.67,2.2,5.15,1.43,7.32-1.52,4.32-2,8.37-3.79,12.29-4.49,9.85-15.13,8.95-26.69,7.09-2.74-.44-8.53,1.26-9.25,1.35s-.17.11-2.34.14-4.09-.38-4.88-.73-4.49-2.06-5.09-1.35,4.86,2.4,6.39,2.76c1.35.31,4.06.19,4.54,1.02s-8.75,17.53-5.05,30.2c.22.76-.14,1.56-.85,1.92l-9.5,4.83c-.54.28-1.19.23-1.7-.11l-19.58-13.41c-11.19-7.67-21.42-16.24-26.09-29.55-.2-.56-.06-1.19.33-1.64,4.09-4.69,7.28-9.47,10.61-14.56l2.9-4.42c.2-.31.46-.6.82-.71.29-.09.41-.41.46-.7M46.31,87.83c0-.06,0-.11,0-.15M71.51,78.26c-1.81,10.14,5.63,19.51-2.53,26.89-.21.19-.48.33-.76.4-4.34,1-8.16-.87-10.74-4.08l-10.81-13.22-.9.76c7.07,11.31,13.89,20.28,20.83,18.7,6.09-1.39,9.33-7.06,8.32-13.62l-1.65-10.68c-.28-1.84.14-4.44.21-5.19s-1.81-1.17-1.97.04ZM98.55,79.75c-.23-.36-.5-.69-.8-.99-.19-.19-.42-.33-.67-.4-1.68-.45-3.68.29-4.64,1.65-.56.78-.3,1.87.51,2.39,1.5.94,2.92.25,4.52-.07,1.18-.23,1.74-1.57,1.08-2.58Z"/>
+      <path class="dom-glint" d="M99.73,82.31c-3.06-.7-5.25,2.18-7.85-.87.27-2.34,4.79-3.25,5.58-2.95s1.74,2.28,2.27,3.83Z"/>
+      <text class="dom-word" transform="translate(167.57 120.29)"><tspan x="0" y="0">DOGS ON MOLD</tspan></text>
+    </svg>
+    </a>
     <div class="nav-links">
       <a href="index.html#story">Our Story</a>
-      <a href="index.html#team">Meet the Team</a>
-      <a href="index.html#services">Services</a>
+      <a href="team.html">Meet the Team</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-haspopup="true">Services <span class="dd-chev">&#9662;</span></button>
+        <div class="nav-dropdown-menu nav-dropdown-menu--left">
+          <a href="index.html#services">How We Work</a>
+          <a href="services.html">Services</a>
+        </div>
+      </div>
       <a href="index.html#pricing">Pricing</a>
       <a href="faq.html">FAQ</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-haspopup="true">More <span class="dd-chev">&#9662;</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="Termsconditions.html">Terms &amp; Conditions</a>
+          <a href="Privacy.html">Privacy Policy</a>
+          <a href="Disclaimer.html">Disclaimer</a>
+        </div>
+      </div>
       <a href="index.html#request" class="btn">Book A Free 15-Min Consult</a>
     </div>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#story">Our Story</a>
+    <a href="team.html">Meet the Team</a>
+    <a href="index.html#services">How We Work</a>
+    <a href="services.html">Services</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="faq.html">FAQ</a>
+    <a href="Termsconditions.html">Terms &amp; Conditions</a>
+    <a href="Privacy.html">Privacy Policy</a>
+    <a href="Disclaimer.html">Disclaimer</a>
+    <a href="index.html#request" class="mobile-menu-cta">Book A Free 15-Min Consult</a>
   </div>
 </nav>
 
@@ -401,18 +567,26 @@
   <div class="container">
     <div class="foot-grid">
       <div>
-        <div class="foot-logo">Dogs On Mold<span>.</span></div>
+        <a href="index.html" class="footer-brand" aria-label="Dogs On Mold - home">
+          <svg class="dom-logo" viewBox="0 0 668.26 183" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dogs On Mold">
+      <path class="dom-dark" d="M62.01,39.33c-2.35,1.93-4.85,2.99-7.17,4.34l-28.22,16.53.03,34.18c-5.13,4.56-9.74,8.99-16.13,11.92-.58-7.53-.28-13.39-.21-19.93.17-5.7.21-11.26-.06-16.97l.17-19.97L76.69,11.09l60.43,36.07.17,26.19c.27,1.11-.54,2.07-1.69,1.88l-13.93-2.71.05-15.11-23.43-13.79-21.46-12.62-14.81,8.34Z"/>
+      <path class="dom-sage" d="M138.55,123.61c-2.2,6.92-6.43,12.35-11.1,17.74-12.73,14.67-33.11,26.18-50.87,35.21l-20.2-11c-15.97-8.7-34.35-22.99-43.13-38.89-1.84-3.33-4.25-8.97-1.65-12.32,2.78-3.57,7.43-6.74,11.62-9.33,3.03,5.66,5.3,12.23,8.66,17.09,9.77,14.13,24.28,22.2,37.48,31.46l7.39,5.18c19.22-10.34,37.44-22.14,49.7-40.97l12.1,5.82Z"/>
+      <path class="dom-dark" d="M46.28,88.14c.02-.11.02-.22.03-.31M46.31,87.68s0-.07,0-.07c-3.46-5.18,1.89-7.08,3.93-11.51,2.46-5.35,6.79-8.77,12.17-10.89,11.24-4.43,23.1-4.03,33.88,1.43,3.54,1.8,6.38,4.34,7.87,8.15s4.77,6.32,8.81,7.18l20.65,4.42c3.14.67,2.2,5.15,1.43,7.32-1.52,4.32-2,8.37-3.79,12.29-4.49,9.85-15.13,8.95-26.69,7.09-2.74-.44-8.53,1.26-9.25,1.35s-.17.11-2.34.14-4.09-.38-4.88-.73-4.49-2.06-5.09-1.35,4.86,2.4,6.39,2.76c1.35.31,4.06.19,4.54,1.02s-8.75,17.53-5.05,30.2c.22.76-.14,1.56-.85,1.92l-9.5,4.83c-.54.28-1.19.23-1.7-.11l-19.58-13.41c-11.19-7.67-21.42-16.24-26.09-29.55-.2-.56-.06-1.19.33-1.64,4.09-4.69,7.28-9.47,10.61-14.56l2.9-4.42c.2-.31.46-.6.82-.71.29-.09.41-.41.46-.7M46.31,87.83c0-.06,0-.11,0-.15M71.51,78.26c-1.81,10.14,5.63,19.51-2.53,26.89-.21.19-.48.33-.76.4-4.34,1-8.16-.87-10.74-4.08l-10.81-13.22-.9.76c7.07,11.31,13.89,20.28,20.83,18.7,6.09-1.39,9.33-7.06,8.32-13.62l-1.65-10.68c-.28-1.84.14-4.44.21-5.19s-1.81-1.17-1.97.04ZM98.55,79.75c-.23-.36-.5-.69-.8-.99-.19-.19-.42-.33-.67-.4-1.68-.45-3.68.29-4.64,1.65-.56.78-.3,1.87.51,2.39,1.5.94,2.92.25,4.52-.07,1.18-.23,1.74-1.57,1.08-2.58Z"/>
+      <path class="dom-glint" d="M99.73,82.31c-3.06-.7-5.25,2.18-7.85-.87.27-2.34,4.79-3.25,5.58-2.95s1.74,2.28,2.27,3.83Z"/>
+      <text class="dom-word" transform="translate(167.57 120.29)"><tspan x="0" y="0">DOGS ON MOLD</tspan></text>
+    </svg>
+        </a>
         <p>Certified canine mold detection. Honest answers, non-invasive inspections, and start-to-finish guidance.</p>
-        <p style="margin-top: 12px;">Minneapolis, MN · Serving all 50 states</p>
+        <p style="margin-top: 12px;">Minneapolis, MN · Serving MN, WI, IA &amp; eastern ND/SD</p>
       </div>
       <div>
         <h5>Navigate</h5>
         <a href="index.html#story">Our Story</a>
-        <a href="index.html#team">Meet the Team</a>
-        <a href="index.html#services">Services</a>
+        <a href="team.html">Meet the Team</a>
+        <a href="index.html#services">How We Work</a>
+        <a href="services.html">Services</a>
         <a href="index.html#pricing">Pricing</a>
         <a href="faq.html">FAQ</a>
-        <a href="index.html#trips">Upcoming Trips</a>
       </div>
       <div>
         <h5>Get in touch</h5>
@@ -449,5 +623,48 @@
   </div>
 </footer>
 
+<script>
+  /* ---- Nav dropdowns (Services + More) ---- */
+  (function () {
+    const dropdowns = Array.from(document.querySelectorAll('.nav-dropdown'));
+    if (!dropdowns.length) return;
+    function closeAll(except) {
+      dropdowns.forEach(dd => {
+        if (dd === except) return;
+        dd.querySelector('.nav-dropdown-menu').classList.remove('open');
+        dd.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', 'false');
+      });
+    }
+    dropdowns.forEach(dd => {
+      const toggle = dd.querySelector('.nav-dropdown-toggle');
+      const menu = dd.querySelector('.nav-dropdown-menu');
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeAll(dd);
+        const open = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    });
+    document.addEventListener('click', () => closeAll(null));
+  })();
+
+  /* ---- Mobile hamburger menu ---- */
+  (function () {
+    const toggle = document.getElementById('navToggle');
+    const menu = document.getElementById('mobileMenu');
+    if (!toggle || !menu) return;
+    function closeMenu() {
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+    }
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  })();
+</script>
 </body>
 </html>

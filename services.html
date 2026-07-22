@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dogs On Mold — Certified Canine Mold Detection · Minneapolis, MN</title>
-<meta name="description" content="Certified canine mold detection. 90–97% accuracy, non-invasive, 45–90 minute inspections. Based in Minneapolis, serving Minnesota, Wisconsin, Iowa, and eastern North & South Dakota. Book a free 15-minute consult or get on the schedule." />
+<title>Services — Dogs On Mold · Canine Mold Detection for Homes, Commercial, Vehicles & PRV</title>
+<meta name="description" content="What Dogs On Mold inspects: homes, commercial spaces, automobiles (boats, cars/trucks, RVs), and Post-Remediation Verification (PRV). Non-invasive canine mold detection, Minneapolis-based, serving MN, WI, IA & eastern ND/SD." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -244,7 +244,7 @@
   /* Row 3: stats span full width, evenly centered across the bottom */
   .hero-stats {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-start;
     gap: 24px;
     margin-top: 52px;
@@ -253,9 +253,8 @@
     text-align: center;
   }
   .hero-stats .stat {
-    flex: 1 1 0;
-    min-width: 0;
-    padding: 0 8px;
+    flex: 1;
+    max-width: 280px;
   }
   @media (max-width: 960px) {
     .hero-inner { padding: 48px 24px 48px; }
@@ -271,16 +270,17 @@
     .hero p.lead { margin-left: auto; margin-right: auto; }
   }
   @media (max-width: 560px) {
-    /* Stats stay a tidy 3-across ribbon; text scales via clamp below */
+    /* Stats wrap into a tidy centered layout instead of scrunching */
     .hero-stats {
-      gap: 12px;
+      flex-wrap: wrap;
+      gap: 20px 12px;
       margin-top: 36px;
       padding-top: 26px;
     }
     .hero-stats .stat {
-      flex: 1 1 0;
-      min-width: 0;
-      padding: 0 2px;
+      flex: 1 1 30%;
+      min-width: 90px;
+      max-width: none;
     }
   }
   .eyebrow {
@@ -334,10 +334,10 @@
   .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
   .stat .num {
     font-family: var(--display);
-    font-size: clamp(15px, 2.3vw, 34px);
+    font-size: 36px;
     font-weight: 500;
     color: var(--bone);
-    line-height: 1.1;
+    line-height: 1;
   }
   .stat .lbl {
     font-size: 12px;
@@ -764,18 +764,11 @@
     line-height: 1.15;
   }
   .way-item h3 em { font-style: italic; color: var(--brick); }
-  .way-item p a {
-    color: var(--brick);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    font-weight: 600;
-  }
-  .way-item p a:hover { color: var(--brick-dark); }
   .way-item p {
     color: var(--ink);
     font-size: 15.5px;
     line-height: 1.7;
-    max-width: none;
+    max-width: 640px;
     margin: 0;
   }
   /* Mobile-only expand affordance; hidden on desktop */
@@ -837,77 +830,31 @@
     margin-bottom: 12px;
   }
   .includes h3 { color: var(--bone); font-size: 28px; margin-bottom: 28px; }
-
-  /* Vertical journey timeline */
-  .journey { list-style: none; padding: 0; margin: 4px 0 0; }
-  .journey-step {
-    position: relative;
-    padding: 0 0 34px 44px;
+  .includes ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 48px;
   }
-  .journey-step:last-child { padding-bottom: 0; }
-  /* connecting vertical line between milestones */
-  .journey-step::before {
+  @media (max-width: 760px) { .includes ul { grid-template-columns: 1fr; } }
+  .includes li {
+    position: relative;
+    padding: 0 0 16px 30px;
+    margin-bottom: 16px;
+    color: rgba(239, 233, 220, 0.88);
+    font-size: 15px;
+    line-height: 1.55;
+    border-bottom: 1px solid rgba(239, 233, 220, 0.12);
+  }
+  .includes li::before {
     content: '';
     position: absolute;
-    left: 9px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: rgba(160, 75, 44, 0.45);
-  }
-  .journey-step:first-child::before { top: 13px; }
-  .journey-step:last-child::before { bottom: calc(100% - 13px); }
-  /* milestone dot */
-  .journey-dot {
-    position: absolute;
-    left: 2px;
-    top: 5px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--brick);
-    box-shadow: 0 0 0 4px var(--ink), 0 0 0 6px rgba(160, 75, 44, 0.30);
-    z-index: 1;
-  }
-  .journey-time {
-    font-size: 19px;
-    font-weight: 600;
-    color: var(--bone);
-    letter-spacing: 0.01em;
-    margin: 0 0 14px;
-    line-height: 1.25;
-  }
-  .journey-time .journey-sub {
-    font-size: 14px;
-    font-weight: 400;
-    color: rgba(239, 233, 220, 0.60);
-    letter-spacing: 0.02em;
-  }
-  .journey-list { list-style: none; padding: 0; margin: 0; }
-  .journey-list li {
-    position: relative;
-    padding: 0 0 12px 22px;
-    color: rgba(239, 233, 220, 0.90);
-    font-size: 15.5px;
-    line-height: 1.6;
-    max-width: 780px;
-  }
-  .journey-list li:last-child { padding-bottom: 0; }
-  .journey-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 9px;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--brick);
-    opacity: 0.85;
-  }
-  @media (max-width: 540px) {
-    .journey-step { padding-left: 38px; }
-    .journey-time { font-size: 17px; }
-    .journey-time .journey-sub { display: block; margin-top: 3px; }
+    left: 0; top: 6px;
+    width: 13px; height: 7px;
+    border-left: 2px solid var(--brick);
+    border-bottom: 2px solid var(--brick);
+    transform: rotate(-45deg);
   }
 
   /* ---------- PRICING ---------- */
@@ -924,7 +871,7 @@
     font-style: italic;
     font-size: 21px;
     line-height: 1.5;
-    max-width: none;
+    max-width: 860px;
     margin: 0 0 48px;
   }
   .price-tiers {
@@ -1498,6 +1445,122 @@
     }
   }
 
+  /* ---------- SERVICES PAGE ---------- */
+  .svc-hero {
+    padding: 84px 0 20px;
+    background: var(--bone);
+  }
+  .svc-hero h1 {
+    font-size: clamp(38px, 5vw, 62px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 12px 0 18px;
+    font-weight: 400;
+    color: var(--ink);
+  }
+  .svc-hero h1 em { font-style: italic; color: var(--brick); }
+  .svc-hero p.lead {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ink);
+    max-width: 640px;
+    margin: 0;
+  }
+
+  .svc-section { padding: 32px 0 72px; background: var(--bone); }
+  .svc-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin-top: 8px;
+  }
+  .svc-card {
+    background: var(--bone);
+    border: 1px solid rgba(139, 111, 78, 0.30);
+    border-radius: 10px;
+    padding: 34px 34px 30px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .svc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 34px rgba(42, 42, 40, 0.10);
+    border-color: var(--brick);
+  }
+  .svc-kicker {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 12px;
+  }
+  .svc-card h2 {
+    font-size: 28px;
+    line-height: 1.1;
+    font-weight: 400;
+    color: var(--ink);
+    margin: 0 0 12px;
+  }
+  .svc-card h2 em { font-style: italic; color: var(--brick); }
+  .svc-card > p {
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin: 0 0 18px;
+  }
+  .svc-list { list-style: none; padding: 0; margin: 0 0 4px; }
+  .svc-list li {
+    position: relative;
+    padding-left: 24px;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .svc-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--brick);
+  }
+  .svc-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--walnut);
+    background: var(--bone-deep);
+    border-radius: 999px;
+    padding: 5px 12px;
+    margin: 2px 6px 0 0;
+  }
+  .svc-tag-row { margin-bottom: 16px; }
+  .svc-draft-note {
+    max-width: 760px;
+    margin: 0 0 30px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--walnut);
+    border-left: 3px solid var(--sage);
+    padding: 8px 0 8px 16px;
+    background: transparent;
+  }
+
+  @media (max-width: 820px) {
+    .svc-grid { grid-template-columns: 1fr; gap: 16px; }
+  }
+  @media (max-width: 760px) {
+    .svc-hero { padding: 60px 0 12px; }
+    .svc-section { padding: 24px 0 52px; }
+    .svc-card { padding: 26px 24px 24px; }
+    .svc-card h2 { font-size: 24px; }
+  }
   /* ---------- BRAND LOGO (inline SVG, themeable) ---------- */
   .logo .dom-logo { height: 62px; width: auto; display: block; }
   /* Dark shapes + wordmark follow the link's text colour, so the same
@@ -1540,16 +1603,16 @@
     </svg>
     </a>
     <div class="nav-links">
-      <a href="#story">Our Story</a>
+      <a href="index.html#story">Our Story</a>
       <a href="team.html">Meet the Team</a>
       <div class="nav-dropdown">
         <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-haspopup="true">Services <span class="dd-chev">▾</span></button>
         <div class="nav-dropdown-menu nav-dropdown-menu--left">
-          <a href="#services">How We Work</a>
+          <a href="index.html#services">How We Work</a>
           <a href="services.html">Services</a>
         </div>
       </div>
-      <a href="#pricing">Pricing</a>
+      <a href="index.html#pricing">Pricing</a>
       <a href="faq.html">FAQ</a>
       <div class="nav-dropdown">
         <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-haspopup="true">More <span class="dd-chev">▾</span></button>
@@ -1559,7 +1622,7 @@
           <a href="Disclaimer.html">Disclaimer</a>
         </div>
       </div>
-      <a href="#request" data-open-form class="btn">Book A Free 15-Min Consult</a>
+      <a href="index.html#request" data-open-form class="btn">Book A Free 15-Min Consult</a>
     </div>
     <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <span class="nav-toggle-bar"></span>
@@ -1568,420 +1631,107 @@
     </button>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#story">Our Story</a>
+    <a href="index.html#story">Our Story</a>
     <a href="team.html">Meet the Team</a>
-    <a href="#services">How We Work</a>
+    <a href="index.html#services">How We Work</a>
     <a href="services.html">Services</a>
-    <a href="#pricing">Pricing</a>
+    <a href="index.html#pricing">Pricing</a>
     <a href="faq.html">FAQ</a>
     <a href="Termsconditions.html">Terms &amp; Conditions</a>
     <a href="Privacy.html">Privacy Policy</a>
     <a href="Disclaimer.html">Disclaimer</a>
-    <a href="#request" data-open-form class="mobile-menu-cta">Book A Free 15-Min Consult</a>
+    <a href="index.html#request" data-open-form class="mobile-menu-cta">Book A Free 15-Min Consult</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-top">
-      <div class="eyebrow"><span class="dot"></span>Now booking · MN, WI, IA &amp; eastern ND/SD</div>
-      <h1>Stop guessing. Start <em>healing.</em></h1>
-    </div>
-    <div class="hero-grid">
-      <div class="hero-content">
-        <p class="lead">Most homeowners come to us after traditional inspections found nothing — and they were still sick. The problem: mold often hides behind perfect-looking walls, and air samples only catch spores that happen to be airborne at time of testing. A trained detection dog finds the source by scent — even behind walls. Minneapolis-based, serving Minnesota, Wisconsin, Iowa, and eastern North &amp; South Dakota.</p>
-        <div class="hero-cta">
-          <a href="#request" data-open-form class="btn btn-large">Book A Free 15-Min Consult</a>
-          <a href="#request" data-open-form class="btn btn-large btn-ghost">Get On The Schedule</a>
-        </div>
-      </div>
-      <div class="hero-media">
-        <img src="Black_Lab_Cover_photo.avif" alt="Black Labrador trained for canine mold detection"/>
-      </div>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="num">60–90 min</div><div class="lbl">Typical Inspection</div></div>
-      <div class="stat"><div class="num">Same-day</div><div class="lbl">On-Site Findings</div></div>
-      <div class="stat"><div class="num">MN, WI, IA, ND, SD</div><div class="lbl">States We Service</div></div>
-    </div>
-  </div>
-</section>
 
-<!-- SYMPTOMS -->
-<section class="symptoms" id="symptoms">
+<!-- SERVICES HERO -->
+<section class="svc-hero">
   <div class="container">
-    <div class="section-head">
-      <div>
-        <div class="section-eyebrow">Does any of this sound familiar?</div>
-        <h2>The symptoms people report — <em>long before they find the mold.</em></h2>
-      </div>
-    </div>
-    <div class="symptoms-grid">
-
-      <div class="symptom-card">
-        <button class="symptom-head" type="button" aria-expanded="false">
-          <svg class="symptom-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Neurological"><circle cx="60" cy="60" r="56" fill="#6B8073"/><g fill="none" stroke="#EFE9DC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M60 40 C52 36 44 40 44 48 C38 48 36 56 40 60 C36 64 38 72 46 74 C48 80 56 82 60 78"/><path d="M60 40 C68 36 76 40 76 48 C82 48 84 56 80 60 C84 64 82 72 74 74 C72 80 64 82 60 78"/><line x1="60" y1="40" x2="60" y2="78"/></g></svg>
-          <span class="symptom-title"><h4>Neurological &amp; cognitive</h4></span>
-          <span class="symptom-chev">▼</span>
-        </button>
-        <div class="symptom-body">
-          <p class="sub">When the fog won't lift and your sharpness feels gone.</p>
-          <ul>
-            <li>Brain fog</li>
-            <li>Headaches &amp; migraines</li>
-            <li>Memory lapses &amp; forgetfulness</li>
-            <li>Trouble concentrating</li>
-            <li>Difficulty finding words</li>
-            <li>Dizziness or vertigo</li>
-            <li>Numbness &amp; tingling</li>
-            <li>Sensitivity to light &amp; sound</li>
-            <li>Anxiety or low mood</li>
-            <li>Trouble sleeping</li>
-            <li class="more">…and more</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="symptom-card">
-        <button class="symptom-head" type="button" aria-expanded="false">
-          <svg class="symptom-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Respiratory"><circle cx="60" cy="60" r="56" fill="#A04B2C"/><g fill="none" stroke="#EFE9DC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><line x1="60" y1="32" x2="60" y2="50"/><path d="M60 50 C55 50 53 53 53 58"/><path d="M60 50 C65 50 67 53 67 58"/><path d="M53 58 C44 60 39 70 42 82 C43 88 50 90 53 85 C55 81 55 70 53 58 Z"/><path d="M67 58 C76 60 81 70 78 82 C77 88 70 90 67 85 C65 81 65 70 67 58 Z"/></g></svg>
-          <span class="symptom-title"><h4>Respiratory &amp; sinus</h4></span>
-          <span class="symptom-chev">▼</span>
-        </button>
-        <div class="symptom-body">
-          <p class="sub">The cough, congestion, and "colds" that never fully clear.</p>
-          <ul>
-            <li>Persistent cough</li>
-            <li>Wheezing or shortness of breath</li>
-            <li>Chronic congestion</li>
-            <li>Sinus pressure &amp; postnasal drip</li>
-            <li>Frequent sinus infections</li>
-            <li>Sore or scratchy throat</li>
-            <li>New or worsening asthma</li>
-            <li>Itchy, watery eyes</li>
-            <li>Sneezing</li>
-            <li>Worse symptoms indoors</li>
-            <li class="more">…and more</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="symptom-card">
-        <button class="symptom-head" type="button" aria-expanded="false">
-          <svg class="symptom-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Whole body and mood"><circle cx="60" cy="60" r="56" fill="#8B6F4E"/><g fill="none" stroke="#EFE9DC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M60 82 C42 69 34 58 41 48 C46 41 56 42 60 51 C64 42 74 41 79 48 C86 58 78 69 60 82 Z"/><polyline points="42,61 53,61 57,52 62,70 66,61 78,61"/></g></svg>
-          <span class="symptom-title"><h4>Whole-body &amp; mood</h4></span>
-          <span class="symptom-chev">▼</span>
-        </button>
-        <div class="symptom-body">
-          <p class="sub">The exhaustion and "off" feeling that rest doesn't fix.</p>
-          <ul>
-            <li>Deep, unshakable fatigue</li>
-            <li>Feel better when you leave home</li>
-            <li>Unrefreshing sleep</li>
-            <li>Mood swings &amp; irritability</li>
-            <li>Getting sick often</li>
-            <li>Night sweats &amp; temperature swings</li>
-            <li>Increased thirst</li>
-            <li>Appetite or weight changes</li>
-            <li>Static "shocks"</li>
-            <li>Metallic taste</li>
-            <li class="more">…and more</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="symptom-card">
-        <button class="symptom-head" type="button" aria-expanded="false">
-          <svg class="symptom-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Muscles and joints"><circle cx="60" cy="60" r="56" fill="#2A2A28"/><g fill="none" stroke="#EFE9DC" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><line x1="49" y1="71" x2="71" y2="49"/><circle cx="44" cy="68" r="6"/><circle cx="51" cy="76" r="6"/><circle cx="69" cy="44" r="6"/><circle cx="76" cy="52" r="6"/></g></svg>
-          <span class="symptom-title"><h4>Muscles &amp; joints</h4></span>
-          <span class="symptom-chev">▼</span>
-        </button>
-        <div class="symptom-body">
-          <p class="sub">Aches that get written off as "just getting older."</p>
-          <ul>
-            <li>Joint pain &amp; stiffness</li>
-            <li>Muscle aches</li>
-            <li>Morning stiffness</li>
-            <li>Muscle cramps or spasms</li>
-            <li>Muscle weakness</li>
-            <li>General inflammation</li>
-            <li>Reduced range of motion</li>
-            <li>Joint swelling</li>
-            <li>Persistent low-grade pain</li>
-            <li class="more">…and more</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-    <div class="symptoms-foot">
-      <p>Symptoms like these have many possible causes. But if yours ease when you're away from home and return when you're back, a hidden mold source is worth ruling out.</p>
-    </div>
-    <p class="symptoms-disclaimer">Dogs On Mold provides canine mold detection — not medical diagnosis or treatment. The above reflects symptoms commonly reported in connection with mold exposure and is shared for educational purposes only; it is not medical advice. If you're experiencing health concerns, please consult a qualified healthcare provider.</p>
+    <div class="section-eyebrow">What we inspect</div>
+    <h1>Where we put a <em>nose to work.</em></h1>
+    <p class="lead">Winnie is trained to trace hidden mold to its source — not just in houses, but anywhere moisture hides. Here's what we inspect and how each one works.</p>
   </div>
 </section>
 
-<!-- OUR STORY -->
-<section class="about" id="story">
-  <div class="container about-grid">
-    <div class="about-photo">
-      <div class="photo-meta">
-        <strong>Ben — Founder & Handler</strong>
-        Replace with a portrait of Ben (with or without Winnie).<br/><br/>
-        <em>Recommended: 1200×1600px, portrait orientation. Warm, honest lighting — no studio gloss.</em>
-      </div>
-    </div>
-    <div>
-      <div class="section-eyebrow">A few years ago, I was the one who was sick.</div>
-      <h2>I lived it. Now it's my <em>passion</em> to help others.</h2>
-      <p>It started as a migraine that wouldn't quit. Then came more symptoms, and more, until they were debilitating. Many providers and even urgent care visits — and no one could find anything wrong from standard examination or blood tests.</p>
-      <p>A friend brought up potential long-term mold exposure from my home. Elevated levels were found — the problem wasn't in my head, it was in my home.</p>
-      <p>Over three years, it cost me more than $50,000 — testing, remediation, and clawing my health back. I went on leave from work. I moved out. I went through remediation, and turned to functional health to start rebuilding what the mold had taken. Recovery was slow. But piece by piece, I got my life back.</p>
-      <p>I'm still healing — and I'm honest about that. What I'm not is in the dark anymore. That experience turned me into an advocate against the moldy homes and workplaces quietly making people sick, and convinced me of one thing: when mold is hidden and hard to find, a trained dog is the best answer there is.</p>
-      <p>Dogs On Mold exists so you don't have to lose what I lost along my journey. If you're sick and no one can explain why — or you just want to know what's really in your walls — this is for you.</p>
-      <div class="sig">
-        — Ben, with Winnie at my side
-        <small>Founder · Certified handler · Minneapolis, MN</small>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAMILY PHOTO (full-width band) -->
-<!-- FAMILY PHOTO (full-width parallax band) -->
-<div class="family-band" role="img" aria-label="A family with their dog at home"></div>
-
-<!-- SERVICES / HOW WE WORK -->
-<section class="the-way" id="services">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <div class="section-eyebrow">How we work</div>
-        <h2>Five foundational principles</h2>
-      </div>
-    </div>
-
-    <div class="way-list">
-      <div class="way-item" aria-expanded="false">
-        <div class="way-index">01</div>
-        <div class="way-body">
-          <h3><em>Scent first</em> discovery</h3>
-          <p>Mold releases microbial gases (MVOCs) as it grows and has a scent profile long after. Winnie is trained to detect those gases at trace concentrations and trace them to the source — even when there's no visible sign on a reachable surface, like behind a wall, under flooring, or inside the HVAC.</p>
-          <span class="way-more">Read more <span class="way-chev">▼</span></span>
-        </div>
-      </div>
-      <div class="way-item" aria-expanded="false">
-        <div class="way-index">02</div>
-        <div class="way-body">
-          <h3><em>Proof</em>, not a hunch</h3>
-          <p>You need objective evidence to proceed in any case of needed remediation. As per <a href="https://www.normi.org/" target="_blank" rel="noopener">NORMI</a> professional standards, a minimum of 6 samples (air, swab, bio-tape lift) must be taken in all HVAC serviced areas of a structure to determine the extent of mold contamination. This is the objective evidence that most mold dog companies do not provide when your health is on the line.</p>
-          <span class="way-more">Read more <span class="way-chev">▼</span></span>
-        </div>
-      </div>
-      <div class="way-item" aria-expanded="false">
-        <div class="way-index">03</div>
-        <div class="way-body">
-          <h3>We read the "alert" <em>and the building</em></h3>
-          <p>A certified mold dog alerts on the presence of mold -- you need to know the root cause. As part of our investigation we utilize various tools and techniques to identify appliance installation failures, construction failures, and original sources of persistent moisture.</p>
-          <span class="way-more">Read more <span class="way-chev">▼</span></span>
-        </div>
-      </div>
-      <div class="way-item" aria-expanded="false">
-        <div class="way-index">04</div>
-        <div class="way-body">
-          <h3><em>Non-invasive</em>, start to finish</h3>
-          <p>A key benefit to a certified mold dog finding source mold is to to avoid any drilling or demolition that may disturb mold and further contaminate your space. We avoid this at all costs to keep your space intact.</p>
-          <span class="way-more">Read more <span class="way-chev">▼</span></span>
-        </div>
-      </div>
-      <div class="way-item" aria-expanded="false">
-        <div class="way-index">05</div>
-        <div class="way-body">
-          <h3><em>We don't disappear</em> after the report</h3>
-          <p>Finding mold is step one. We want to help you get connected to remediators we have personally vetted in your area -- only the best with the highest certifications and ability to clearly communicate their compliant techniques are recommended to you - never more than 3 in a service area.</p>
-          <span class="way-more">Read more <span class="way-chev">▼</span></span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SEE WINNIE WORK (socials) -->
-<section class="team" id="winnie">
-  <div class="container">
-    <div class="team-follow">
-      Want to see Winnie work?
-      <div class="team-social">
-        <a href="https://www.instagram.com/dogsonmold/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
-        </a>
-        <a href="https://www.tiktok.com/@dogsonmold" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-2.9v11.6a2.45 2.45 0 1 1-2.45-2.45c.26 0 .5.04.74.11V9.3a5.34 5.34 0 0 0-.74-.05 5.35 5.35 0 1 0 5.35 5.35V8.9a7.13 7.13 0 0 0 4.16 1.33V7.33a4.28 4.28 0 0 1-3.1-1.51z"/></svg>
-        </a>
-        <a href="#" aria-label="Facebook" title="Facebook (coming soon)">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ALERT PHOTO (below socials) -->
-<div class="alert-photo-wrap">
-  <figure class="alert-photo">
-    <img src="Winnie_Alert.jpg" alt="Winnie, a black Labrador mold detection dog, alerting at the base of a door during an inspection"/>
-    <figcaption>Winnie alerting on a hidden source during an inspection.</figcaption>
-  </figure>
-</div>
-
-<!-- PRICING -->
-<section class="pricing" id="pricing">
+<!-- SERVICES GRID -->
+<section class="svc-section">
   <div class="container">
 
-    <div class="section-head">
+    <p class="svc-draft-note"><strong>Draft copy:</strong> the descriptions below are placeholders. We'll refine the wording for each service in the next pass.</p>
+
+    <div class="svc-grid">
+
+      <!-- 1. HOMES -->
+      <div class="svc-card">
+        <div class="svc-kicker">Residential</div>
+        <h2>Homes</h2>
+        <p>Single-family homes, condos, townhomes, and rentals. Winnie sweeps living spaces, basements, crawlspaces, and problem areas so you know whether mold is present — and where — before you buy, sell, or remediate.</p>
+        <ul class="svc-list">
+          <li>Whole-home canine sweep, handler-read in real time</li>
+          <li>Basements, crawlspaces, and unfinished areas included</li>
+          <li>Pre-purchase and post-water-damage peace of mind</li>
+          <li>Confirmation with inspection light and moisture metering</li>
+        </ul>
+      </div>
+
+      <!-- 2. COMMERCIAL -->
+      <div class="svc-card">
+        <div class="svc-kicker">Commercial</div>
+        <h2>Commercial <em>spaces</em></h2>
+        <p>Businesses, offices, retail, and other commercial buildings. Non-invasive detection keeps your space open while we locate hidden moisture problems that affect air quality, tenants, and liability.</p>
+        <ul class="svc-list">
+          <li>Offices, retail, and multi-tenant buildings</li>
+          <li>Non-invasive — no shutdown, no demolition to look</li>
+          <li>Written report suitable for owners, tenants, and insurers</li>
+          <li>Referrals to vetted hygienists and remediators</li>
+        </ul>
+      </div>
+
+      <!-- 3. AUTOMOBILES -->
+      <div class="svc-card">
+        <div class="svc-kicker">On wheels &amp; water</div>
+        <h2>Automobiles <em>&amp; RVs</em></h2>
+        <p>Moisture gets trapped in vehicles just like buildings — and it's easy to miss. Winnie inspects the spaces where mold hides in boats, cars, trucks, and RVs.</p>
+        <div class="svc-tag-row">
+          <span class="svc-tag">Boats</span>
+          <span class="svc-tag">Cars &amp; Trucks</span>
+          <span class="svc-tag">RVs</span>
+        </div>
+        <ul class="svc-list">
+          <li>Cabins, upholstery, and enclosed storage areas</li>
+          <li>Common after leaks, flooding, or long storage</li>
+          <li>Source-first detection before you tear anything apart</li>
+        </ul>
+      </div>
+
+      <!-- 4. PRV -->
+      <div class="svc-card">
+        <div class="svc-kicker">After remediation</div>
+        <h2>Post-Remediation <em>Verification</em></h2>
+        <p>Remediation is done — but is it actually clear? Post-Remediation Verification (PRV) uses Winnie to confirm the source has been resolved, so you're not taking anyone's word for it.</p>
+        <ul class="svc-list">
+          <li>Independent check after remediation work is complete</li>
+          <li>Confirms the source — not just the visible surface</li>
+          <li>Optional air or swab sampling on request</li>
+          <li>Documentation for your records and next steps</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- CTA BAND (reuses site map-banner style) -->
+    <div class="map-banner" style="margin-top: 48px;">
       <div>
-        <div class="section-eyebrow">What it costs</div>
-        <h2>Pricing <em>transparency</em></h2>
+        <h3>Not sure which one fits?</h3>
+        <p>Tell us what you're dealing with and we'll point you to the right service — or grab a free 15-minute consult.</p>
       </div>
+      <a href="index.html#request" data-open-form class="btn btn-large">Book a Free Consult</a>
     </div>
 
-    <div class="includes" style="margin-top:0; margin-bottom:56px;">
-      <div class="includes-eyebrow">What you get</div>
-      <h3>Every inspection includes</h3>
-      <ol class="journey">
-        <li class="journey-step">
-          <span class="journey-dot"></span>
-          <div class="journey-time">Inspection Day</div>
-          <ul class="journey-list">
-            <li>1st canine sweep with Winnie, handler-read in real time.</li>
-            <li>Additional visual walkthrough for confirmation of moisture issues using industry tools.</li>
-            <li>2nd canine sweep with Winnie, handler-read in real time looking for consistency of alerting.</li>
-            <li>At least six total mold testing samples (air, swab, or bio-tape lift) taken in places of canine alert.</li>
-            <li>Same-day verbal walkthrough of what was found.</li>
-          </ul>
-        </li>
-        <li class="journey-step">
-          <span class="journey-dot"></span>
-          <div class="journey-time">Day 1-2 <span class="journey-sub">(Next 24-48 Hours)</span></div>
-          <ul class="journey-list">
-            <li>Written pre-final report delivered to customer - this is pre mold test results - including photos and points discussed from the verbal walkthrough.</li>
-          </ul>
-        </li>
-        <li class="journey-step">
-          <span class="journey-dot"></span>
-          <div class="journey-time">Day 5-7</div>
-          <ul class="journey-list">
-            <li>Final report with testing results and recommendation delivered.</li>
-            <li>15-min post assessment call to review results, answer questions, and provide next steps.</li>
-            <li>When applicable, we help you understand remediation and how to select from only a short list of recommended, certified, and industry compliant remediation companies in your area.</li>
-          </ul>
-        </li>
-      </ol>
-    </div>
-
-    <div class="section-head">
-      <div>
-        <div class="section-eyebrow">All-inclusive pricing</div>
-        <h2>No hidden fees. You'll know your <em>full price</em> before we book.</h2>
-      </div>
-    </div>
-
-    <div class="price-echo">
-      Mold cost me more than $50,000 over three years — because no one found it early. An inspection is a fraction of that, and the cheapest step you'll take in this whole process.
-    </div>
-
-    <div class="price-tiers">
-      <!-- Tier 1 -->
-      <div class="tier featured">
-        <div class="tier-name">Inspection Pricing</div>
-        <div class="tier-tag">Serving MN, WI, IA &amp; eastern ND/SD.</div>
-        <div class="price-line"><span>Standard home (up to 4,000 sq ft)</span><span class="amt">$1,450</span></div>
-        <div class="price-line"><span>Vehicle, boat, or RV while on-site (up to 3)</span><span class="amt">Included</span></div>
-        <div class="price-line"><span>Travel beyond 30 mi from downtown Minneapolis</span><span class="amt">+$2/mi RT</span></div>
-        <p class="note">Travel is billed round-trip from downtown Minneapolis. See <em>Boats, RVs &amp; Vehicles</em> for standalone pricing.</p>
-      </div>
-
-      <!-- Tier 2 -->
-      <div class="tier m-hide">
-        <div class="tier-name">Boats, RVs &amp; Vehicles</div>
-        <div class="tier-tag">Usually included with your home inspection.</div>
-        <div class="price-line"><span>Any combination of vehicle, boat, or RV while on-site (up to 3)</span><span class="amt">Included</span></div>
-        <div class="price-line"><span>Each additional beyond 3</span><span class="amt">+$100 ea</span></div>
-        <div class="price-line"><span>Standalone boat or RV (no home inspection)</span><span class="amt">$500</span></div>
-        <p class="note">If we're already on-site for your home, we'll check any combination of up to three vehicles, boats, or RVs as part of the base fee — no add-on charge. Each additional one beyond three is $100. A boat or RV inspected on its own, with no home inspection attached, is $500.</p>
-      </div>
-
-      <!-- Tier 3 -->
-      <div class="tier m-hide">
-        <div class="tier-name">Multi-Property Owners</div>
-        <div class="tier-tag">Portfolios &amp; multiple properties.</div>
-        <p class="consult-line">Own multiple properties or manage a portfolio? Every situation is different — book a consult and we'll build a plan around your properties.</p>
-        <a href="#request" data-open-form class="btn">Book A Consult</a>
-        <p class="note"><strong>Travel:</strong> $2/mile beyond 30 miles round-trip from downtown Minneapolis.</p>
-      </div>
-
-      <!-- Tier 4 -->
-      <div class="tier m-hide">
-        <div class="tier-name">Add-Ons</div>
-        <div class="tier-tag">For larger spaces.</div>
-        <div class="price-line"><span>Large home (4,000–8,000 sq ft)</span><span class="amt">+$300</span></div>
-        <div class="price-line"><span>Estate / very large home (8,000+ sq ft)</span><span class="amt">+$800</span></div>
-        <p class="note">Square footage covers all inspectable areas you'd like swept, including unfinished basements.</p>
-      </div>
-    </div>
-
-    <div class="m-expander">
-      <button class="m-expand-btn" type="button" data-expander="pricing" aria-expanded="false">
-        <span class="label">See full pricing</span><span class="chev">▼</span>
-      </button>
-    </div>
-
-    <div class="fine-print m-hide">
-      <div class="fp-row"><strong>Booking:</strong> A 50% deposit holds your slot; the remaining 50% is due at completion of the inspection.</div>
-      <div class="fp-row"><strong>Detection only:</strong> remediation is not included. We find it and guide you — we don't do the remediation ourselves.</div>
-    </div>
   </div>
 </section>
 
-<!-- REQUEST FORM -->
-<section class="request" id="request">
-  <div class="container request-wrap">
-    <div>
-      <div class="section-eyebrow">Get started</div>
-      <h2>Get on the schedule — <em>or just get answers.</em></h2>
-      <p class="lead-2">Ready to book? Get on the schedule. Not quite there yet? Grab a free 15-minute consult and we'll answer your questions, no pressure. Pick whichever fits where you are.</p>
-      <ul class="checks">
-        <li>Minneapolis-based, serving MN, WI, IA &amp; eastern ND/SD</li>
-        <li>Most clients booked within 2–3 weeks</li>
-        <li>Honest pre-quote — no surprise pricing</li>
-        <li>Detection only — we don't do the remediation we recommend, so we're not upselling you a repair</li>
-      </ul>
-    </div>
-    <div class="req-embed req-cta">
-      <!-- ============================================================
-           TALLY POPUP TRIGGER
-           The form opens as a modal popup — it is NOT shown inline.
-           Every "Book" / "Consult" / "Request" button on the site
-           (nav, hero, services, pricing, footer) opens this
-           same popup, all routed through one handler.
-           >>> Set your form ID in ONE place: the TALLY_FORM_ID line
-               in the script near the bottom of this file. <<<
-           ============================================================ -->
-      <h3>Ready when you are.</h3>
-      <p>One quick form covers both — booking an inspection or grabbing a free 15-minute consult. Takes about a minute.</p>
-      <button
-        type="button"
-        class="btn btn-large"
-        data-open-form>
-        Inspection / 15-min Consult
-      </button>
-      <div class="form-foot">We'll reply within one business day.</div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="foot-grid">
@@ -2000,17 +1750,17 @@
       </div>
       <div>
         <h5>Navigate</h5>
-        <a href="#symptoms">Symptoms</a>
-        <a href="#story">Our Story</a>
+        <a href="index.html#symptoms">Symptoms</a>
+        <a href="index.html#story">Our Story</a>
         <a href="team.html">Meet the Team</a>
-        <a href="#services">How We Work</a>
+        <a href="index.html#services">How We Work</a>
         <a href="services.html">Services</a>
-        <a href="#pricing">Pricing</a>
+        <a href="index.html#pricing">Pricing</a>
         <a href="faq.html">FAQ</a>
       </div>
       <div>
         <h5>Get in touch</h5>
-        <a href="#request" data-open-form>Book a Consult</a>
+        <a href="index.html#request" data-open-form>Book a Consult</a>
       </div>
       <div>
         <h5>Follow along</h5>
@@ -2040,121 +1790,24 @@
   </div>
 </footer>
 
+
 <script>
-  /* ---- Shared mobile expander logic ----
-     Each button toggles an .m-open class on its parent section and
-     swaps its own label + arrow. Pure show/hide; no animation jank. */
+  /* ---- Scroll reveal ---- */
   (function () {
-    const LABELS = {
-      symptoms: ['See all symptoms', 'Show fewer symptoms'],
-      pricing:  ['See full pricing', 'Show less']
-    };
-    document.querySelectorAll('.m-expand-btn[data-expander]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const key = btn.getAttribute('data-expander');
-        const section = btn.closest('section');
-        if (!section) return;
-        const isOpen = section.classList.toggle('m-open');
-        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        const labelEl = btn.querySelector('.label');
-        if (labelEl && LABELS[key]) {
-          labelEl.textContent = isOpen ? LABELS[key][1] : LABELS[key][0];
-        }
-        /* On collapse, content above the button vanishes and the page would
-           jump. Re-anchor the section heading to the top so it collapses
-           back to where it started. */
-        if (!isOpen) {
-          const navH = 70;
-          const top = section.getBoundingClientRect().top + window.pageYOffset - navH;
-          window.scrollTo({ top: top, behavior: 'auto' });
-        }
-      });
-    });
-  })();
-
-  /* ---- How We Work: fully visible on desktop; tap to expand on mobile ---- */
-  (function () {
-    function isMobile() { return window.matchMedia('(max-width: 760px)').matches; }
-    document.querySelectorAll('.way-item').forEach(item => {
-      const more = item.querySelector('.way-more');
-      item.addEventListener('click', () => {
-        if (!isMobile()) return;               /* desktop: no toggling, all shown */
-        const open = item.classList.toggle('open');
-        item.setAttribute('aria-expanded', open ? 'true' : 'false');
-        if (more) more.childNodes[0].nodeValue = open ? 'Show less ' : 'Read more ';
-      });
-    });
-  })();
-
-  /* ---- Symptom cards: tap to expand the full list (web + mobile) ----
-     Mobile: the heading is the tap target (body is hidden until open).
-     Web: the whole card is the tap target (shows 3, reveals rest on open). */
-  (function () {
-    function isMobile() { return window.matchMedia('(max-width: 760px)').matches; }
-    document.querySelectorAll('.symptom-card').forEach(card => {
-      const head = card.querySelector('.symptom-head');
-      function toggle() {
-        const open = card.classList.toggle('open');
-        if (head) head.setAttribute('aria-expanded', open ? 'true' : 'false');
-      }
-      /* Mobile: only the heading toggles */
-      if (head) head.addEventListener('click', (e) => { if (isMobile()) toggle(); });
-      /* Web: clicking anywhere on the card toggles (heading handled above
-         only fires on mobile, so no double-toggle) */
-      card.addEventListener('click', (e) => {
-        if (isMobile()) return;
-        if (head && head.contains(e.target)) { /* let heading path handle nothing on web */ }
-        toggle();
-      });
-    });
-  })();
-
-  /* ---- Scroll reveal: tag elements, then reveal as they enter view ---- */
-  (function () {
-    /* Elements to animate. Hero is intentionally excluded so the first
-       screen is never blank on load. */
-    const single = [
-      '.section-head',
-      '.about p',
-      '.about .sig',
-      '.map-banner',
-      '.symptoms-foot',
-      '.alert-photo',
-      '.family-band',
-      '.fine-print',
-      '.request-wrap > *'
-    ];
-    const staggerGroups = [
-      '.why-grid',
-      '.way-list',
-      '.symptoms-grid',
-      '.trip-grid',
-      '.price-tiers',
-      '.foot-grid'
-    ];
-
-    single.forEach(sel => {
-      document.querySelectorAll(sel).forEach(el => el.classList.add('reveal'));
-    });
-    staggerGroups.forEach(sel => {
-      document.querySelectorAll(sel).forEach(el => el.classList.add('reveal-stagger'));
-    });
-
+    const single = ['.section-eyebrow', '.svc-hero h1', '.svc-hero p.lead', '.svc-draft-note', '.map-banner'];
+    const staggerGroups = ['.svc-grid', '.foot-grid'];
+    single.forEach(sel => document.querySelectorAll(sel).forEach(el => el.classList.add('reveal')));
+    staggerGroups.forEach(sel => document.querySelectorAll(sel).forEach(el => el.classList.add('reveal-stagger')));
     const targets = document.querySelectorAll('.reveal, .reveal-stagger');
     if (!('IntersectionObserver' in window) || !targets.length) {
-      /* No observer support → just show everything */
       targets.forEach(t => t.classList.add('revealed'));
       return;
     }
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          io.unobserve(entry.target); /* reveal once, then stop watching */
-        }
+        if (entry.isIntersecting) { entry.target.classList.add('revealed'); io.unobserve(entry.target); }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-
     targets.forEach(t => io.observe(t));
   })();
 
@@ -2162,7 +1815,6 @@
   (function () {
     const dropdowns = Array.from(document.querySelectorAll('.nav-dropdown'));
     if (!dropdowns.length) return;
-
     function closeAll(except) {
       dropdowns.forEach(dd => {
         if (dd === except) return;
@@ -2170,18 +1822,16 @@
         dd.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', 'false');
       });
     }
-
     dropdowns.forEach(dd => {
       const toggle = dd.querySelector('.nav-dropdown-toggle');
       const menu = dd.querySelector('.nav-dropdown-menu');
       toggle.addEventListener('click', (e) => {
         e.stopPropagation();
-        closeAll(dd);                       /* only one open at a time */
+        closeAll(dd);
         const open = menu.classList.toggle('open');
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
     });
-
     document.addEventListener('click', () => closeAll(null));
   })();
 
@@ -2190,55 +1840,34 @@
     const toggle = document.getElementById('navToggle');
     const menu = document.getElementById('mobileMenu');
     if (!toggle || !menu) return;
-
     function closeMenu() {
       menu.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
       toggle.setAttribute('aria-label', 'Open menu');
     }
-
     toggle.addEventListener('click', () => {
       const isOpen = menu.classList.toggle('open');
       toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
     });
-
-    /* Close the menu after tapping any link inside it */
-    menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
   })();
 </script>
 
-<!-- ===== Booking popup: SET YOUR TALLY FORM ID HERE (one place) ===== -->
 <script>
-  // Replace YOUR_FORM_ID with your Tally form's ID (the code after tally.so/r/ — e.g. "wAbC12").
   const TALLY_FORM_ID = "81ElPO";
-  const TALLY_OPTS = {
-    layout: "modal",
-    width: 640,
-    hideTitle: true,
-    overlay: true,
-    emoji: { text: "🐾", animation: "wave" }
-  };
-
+  const TALLY_OPTS = { layout: "modal", width: 640, hideTitle: true, overlay: true, emoji: { text: "🐾", animation: "wave" } };
   function openBookingForm() {
     if (window.Tally && typeof Tally.openPopup === "function") {
       Tally.openPopup(TALLY_FORM_ID, TALLY_OPTS);
     } else {
-      // Fallback if the Tally script hasn't loaded yet: go to the booking section.
-      const el = document.getElementById("request");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      /* Tally not loaded yet — send them to the booking section on the home page. */
+      window.location.href = "index.html#request";
     }
   }
-
-  // Any element with [data-open-form] opens the popup (nav, hero, services, pricing, footer).
   document.addEventListener("click", function (e) {
     const trigger = e.target.closest("[data-open-form]");
-    if (trigger) {
-      e.preventDefault();
-      openBookingForm();
-    }
+    if (trigger) { e.preventDefault(); openBookingForm(); }
   });
 </script>
 
