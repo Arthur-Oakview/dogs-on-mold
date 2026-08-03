@@ -914,7 +914,7 @@
   /* ---------- PRICING ---------- */
   .pricing {
     background: var(--bone-deep);
-    padding: 72px 0;
+    padding: 72px 0 44px;
   }
   .price-echo {
     background: var(--sage);
@@ -1537,11 +1537,11 @@
   .thin-quote blockquote { font-family: var(--display); font-style: italic; font-size: clamp(18px, 2.1vw, 23px); line-height: 1.45; margin-bottom: 12px; }
   .thin-quote .attrib { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(239,233,220,0.65); display: inline-flex; align-items: center; justify-content: center; gap: 7px; }
   .thin-quote .attrib svg { width: 14px; height: 14px; }
-  .reviews { padding: 84px 0; background: var(--bone-deep); }
+  .reviews { padding: 52px 0 84px; background: var(--sage); }
   .reviews-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; margin-bottom: 40px; }
-  .reviews .r-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); margin-bottom: 12px; }
-  .reviews h2 { font-family: var(--display); font-size: clamp(30px, 4vw, 46px); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; color: var(--ink); }
-  .reviews h2 em { font-style: italic; color: var(--brick); }
+  .reviews .r-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bone); opacity: 0.8; margin-bottom: 12px; }
+  .reviews h2 { font-family: var(--display); font-size: clamp(30px, 4vw, 46px); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; color: var(--bone); }
+  .reviews h2 em { font-style: italic; color: var(--bone); }
   .g-rating { display: inline-flex; align-items: center; gap: 11px; background: var(--bone); border: 1px solid rgba(139,111,78,0.25); border-radius: 999px; padding: 11px 20px; text-decoration: none; }
   .g-rating svg.glogo { width: 20px; height: 20px; }
   .g-rating .stars svg { width: 17px; height: 17px; }
@@ -1563,11 +1563,11 @@
   .carousel-controls { display: flex; align-items: center; justify-content: space-between; margin-top: 32px; }
   .carousel-controls.hidden { display: none; }
   .carousel-dots { display: flex; gap: 8px; }
-  .r-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(139,111,78,0.35); border: none; cursor: pointer; padding: 0; transition: 0.2s; }
-  .r-dot.active { background: var(--brick); transform: scale(1.25); }
+  .r-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(239,233,220,0.4); border: none; cursor: pointer; padding: 0; transition: 0.2s; }
+  .r-dot.active { background: var(--bone); transform: scale(1.25); }
   .carousel-arrows { display: flex; gap: 10px; }
-  .r-arrow { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
-  .r-arrow:hover { background: var(--ink); color: var(--bone); }
+  .r-arrow { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--bone); background: transparent; color: var(--bone); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+  .r-arrow:hover { background: var(--bone); color: var(--ink); }
   .r-arrow svg { width: 18px; height: 18px; }
   .reviews-cta { text-align: center; margin-top: 40px; }
   .btn-reviews { display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: var(--bone); text-decoration: none; padding: 15px 28px; border-radius: 10px; font-weight: 600; font-size: 15px; transition: 0.2s; }
