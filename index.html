@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mold Dog Midwest – Certified Canine Mold Detection</title>
+<title>Dogs On Mold – Certified Canine Mold Detection · Minneapolis, MN</title>
     <!-- Favicon: swaps with the browser light/dark theme -->
     <link rel="icon" href="MDM_LogoOnly.svg" type="image/svg+xml" sizes="any" media="(prefers-color-scheme: light)">
     <link rel="icon" href="MDM_LogoOnlyNegative.svg" type="image/svg+xml" sizes="any" media="(prefers-color-scheme: dark)">
-<meta name="description" content="A certified mold dog is the most reliable way to find hidden mold—behind walls, floors &amp; HVAC. Serving MN, WI, IA &amp; the Dakotas. Book a free consult today." />
+<meta name="description" content="Certified canine mold detection. 90–97% accuracy, non-invasive, 45–90 minute inspections. Based in Minneapolis, serving Minnesota, Wisconsin, Iowa, and eastern North & South Dakota. Book a free 15-minute consult or get on the schedule." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -21,6 +21,7 @@
     --ink: #2A2A28;
     --bone: #EFE9DC;
     --bone-deep: #E3DBC8;
+    --gold: #E0A526;
     --display: 'Fraunces', Georgia, serif;
     --body: 'Inter Tight', system-ui, sans-serif;
   }
@@ -516,8 +517,8 @@
 
   /* ---------- OUR STORY ---------- */
   .about {
-    background: var(--sage);
-    color: var(--bone);
+    background: var(--bone);
+    color: var(--ink);
     padding: 72px 0;
     position: relative;
   }
@@ -530,13 +531,10 @@
   @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
   .about-photo {
     aspect-ratio: 3/4;
-    background: rgba(239, 233, 220, 0.08);
-    border: 1px dashed rgba(239, 233, 220, 0.4);
     border-radius: 4px;
-    display: flex; align-items: center; justify-content: center;
-    text-align: center;
-    padding: 30px;
+    overflow: hidden;
   }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
   .about-photo .photo-meta {
     color: rgba(239, 233, 220, 0.7);
     font-size: 13px;
@@ -549,15 +547,15 @@
     margin-bottom: 6px;
     font-weight: 500;
   }
-  .about .section-eyebrow { color: var(--bone); opacity: 0.7; }
+  .about .section-eyebrow { color: var(--brick); opacity: 1; }
   .about h2 {
-    color: var(--bone);
+    color: var(--ink);
     font-size: clamp(32px, 4vw, 50px);
     margin-bottom: 28px;
   }
-  .about h2 em { font-style: italic; }
+  .about h2 em { font-style: italic; color: var(--brick); }
   .about p {
-    color: rgba(239, 233, 220, 0.92);
+    color: var(--ink);
     font-size: 17px;
     line-height: 1.7;
     margin-bottom: 18px;
@@ -568,7 +566,7 @@
     font-family: var(--display);
     font-style: italic;
     font-size: 20px;
-    color: var(--bone);
+    color: var(--ink);
   }
   .about .sig small {
     display: block;
@@ -1503,7 +1501,7 @@
 
   /* ---------- BRAND LOGO (inline SVG, themeable) ---------- */
   .logo .dom-logo { height: 62px; width: auto; display: block; }
-  .logo .logo-img { height: 108px; width: auto; display: block; }
+  .logo .logo-img { height: 84px; width: auto; display: block; }
   /* Dark shapes + wordmark follow the link's text colour, so the same
      markup works on the light header and the dark footer. */
   .dom-logo .dom-dark,
@@ -1527,7 +1525,54 @@
     display: inline-block;
     margin-bottom: 4px;
   }
-  @media (max-width: 760px) { .logo .dom-logo { height: 46px; } .logo .logo-img { height: 66px; } }
+  @media (max-width: 760px) { .logo .dom-logo { height: 46px; } .logo .logo-img { height: 56px; } }
+
+  /* ===================== TESTIMONIALS ===================== */
+  .stars { display: inline-flex; gap: 2px; color: var(--gold); }
+  .stars svg { width: 16px; height: 16px; }
+  .thin-quote { background: var(--ink); color: var(--bone); padding: 42px 0; }
+  .thin-quote .container { max-width: 900px; text-align: center; }
+  .thin-quote .stars { justify-content: center; margin-bottom: 12px; }
+  .thin-quote .stars svg { width: 18px; height: 18px; }
+  .thin-quote blockquote { font-family: var(--display); font-style: italic; font-size: clamp(18px, 2.1vw, 23px); line-height: 1.45; margin-bottom: 12px; }
+  .thin-quote .attrib { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(239,233,220,0.65); display: inline-flex; align-items: center; justify-content: center; gap: 7px; }
+  .thin-quote .attrib svg { width: 14px; height: 14px; }
+  .reviews { padding: 84px 0; background: var(--bone-deep); }
+  .reviews-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; margin-bottom: 40px; }
+  .reviews .r-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); margin-bottom: 12px; }
+  .reviews h2 { font-family: var(--display); font-size: clamp(30px, 4vw, 46px); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; color: var(--ink); }
+  .reviews h2 em { font-style: italic; color: var(--brick); }
+  .g-rating { display: inline-flex; align-items: center; gap: 11px; background: var(--bone); border: 1px solid rgba(139,111,78,0.25); border-radius: 999px; padding: 11px 20px; text-decoration: none; }
+  .g-rating svg.glogo { width: 20px; height: 20px; }
+  .g-rating .stars svg { width: 17px; height: 17px; }
+  .g-rating .lbl { font-size: 14px; font-weight: 600; color: var(--ink); }
+  .carousel { position: relative; }
+  .carousel-viewport { overflow: hidden; }
+  .carousel-track { display: flex; gap: 22px; transition: transform 0.45s cubic-bezier(.4,0,.2,1); }
+  .review-card { flex: 0 0 calc((100% - 44px)/3); background: var(--bone); border: 1px solid rgba(139,111,78,0.22); border-radius: 14px; padding: 28px 26px; display: flex; flex-direction: column; }
+  @media (max-width: 900px) { .review-card { flex-basis: calc((100% - 22px)/2); } }
+  @media (max-width: 620px) { .review-card { flex-basis: 100%; } }
+  .rc-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .rc-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--sage); color: var(--bone); font-family: var(--display); font-size: 20px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+  .rc-name { font-weight: 600; font-size: 15px; line-height: 1.2; }
+  .rc-via { font-size: 12px; color: var(--walnut); display: flex; align-items: center; gap: 4px; margin-top: 2px; }
+  .rc-via svg { width: 13px; height: 13px; }
+  .rc-stars { margin-bottom: 12px; }
+  .rc-text { font-size: 14.5px; line-height: 1.6; color: var(--ink); flex: 1; display: -webkit-box; -webkit-line-clamp: 9; -webkit-box-orient: vertical; overflow: hidden; }
+  .rc-date { font-size: 12.5px; color: var(--walnut); margin-top: 18px; }
+  .carousel-controls { display: flex; align-items: center; justify-content: space-between; margin-top: 32px; }
+  .carousel-controls.hidden { display: none; }
+  .carousel-dots { display: flex; gap: 8px; }
+  .r-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(139,111,78,0.35); border: none; cursor: pointer; padding: 0; transition: 0.2s; }
+  .r-dot.active { background: var(--brick); transform: scale(1.25); }
+  .carousel-arrows { display: flex; gap: 10px; }
+  .r-arrow { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+  .r-arrow:hover { background: var(--ink); color: var(--bone); }
+  .r-arrow svg { width: 18px; height: 18px; }
+  .reviews-cta { text-align: center; margin-top: 40px; }
+  .btn-reviews { display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: var(--bone); text-decoration: none; padding: 15px 28px; border-radius: 10px; font-weight: 600; font-size: 15px; transition: 0.2s; }
+  .btn-reviews:hover { background: var(--brick); }
+  .btn-reviews svg { width: 18px; height: 18px; }
 </style>
 </head>
 <body>
@@ -1717,7 +1762,16 @@
     <div class="symptoms-foot">
       <p>Symptoms like these have many possible causes. But if yours ease when you're away from home and return when you're back, a hidden mold source is worth ruling out.</p>
     </div>
-    <p class="symptoms-disclaimer">Mold Dog Midwest provides canine mold detection – not medical diagnosis or treatment. The above reflects symptoms commonly reported in connection with mold exposure and is shared for educational purposes only; it is not medical advice. If you're experiencing health concerns, please consult a qualified healthcare provider.</p>
+    <p class="symptoms-disclaimer">Dogs On Mold provides canine mold detection – not medical diagnosis or treatment. The above reflects symptoms commonly reported in connection with mold exposure and is shared for educational purposes only; it is not medical advice. If you're experiencing health concerns, please consult a qualified healthcare provider.</p>
+  </div>
+</section>
+
+<!-- THIN TESTIMONIAL BAND -->
+<section class="thin-quote">
+  <div class="container">
+    <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <blockquote>&ldquo;Ben and Winnie were fantastic. Ben is knowledgeable, friendly, and takes time to walk through his process and why moisture may be accumulating. Winnie did a great job finding very specific areas of mold growth. Highly recommend!&rdquo;</blockquote>
+    <div class="attrib"><strong>Nick R.</strong> <span style="opacity:.45">&middot;</span> <svg viewBox="0 0 24 24"><path fill="#fff" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#fff" opacity=".85" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#fff" opacity=".7" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#fff" opacity=".92" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1a11 11 0 0 0-9.82 6.06l3.66 2.84C6.71 7.3 9.14 5.38 12 5.38z"/></svg> via Google</div>
   </div>
 </section>
 
@@ -1725,11 +1779,7 @@
 <section class="about" id="story">
   <div class="container about-grid">
     <div class="about-photo">
-      <div class="photo-meta">
-        <strong>Ben – Founder & Handler</strong>
-        Replace with a portrait of Ben (with or without Winnie).<br/><br/>
-        <em>Recommended: 1200×1600px, portrait orientation. Warm, honest lighting – no studio gloss.</em>
-      </div>
+      <img src="Ben_ProfilePic.jpeg" alt="Ben, founder and handler at Dogs On Mold"/>
     </div>
     <div>
       <div class="section-eyebrow">A few years ago, I was the one who was sick.</div>
@@ -1738,7 +1788,7 @@
       <p>A friend brought up potential long-term mold exposure from my home. Elevated levels were found – the problem wasn't in my head, it was in my home.</p>
       <p>Over three years, it cost me more than $50,000 – testing, remediation, and clawing my health back. I went on leave from work. I moved out. I went through remediation, and turned to functional health to start rebuilding what the mold had taken. Recovery was slow. But piece by piece, I got my life back.</p>
       <p>I'm still healing – and I'm honest about that. What I'm not is in the dark anymore. That experience turned me into an advocate against the moldy homes and workplaces quietly making people sick, and convinced me of one thing: when mold is hidden and hard to find, a trained dog is the best answer there is.</p>
-      <p>Mold Dog Midwest exists so you don't have to lose what I lost along my journey. If you're sick and no one can explain why – or you just want to know what's really in your walls – this is for you.</p>
+      <p>Dogs On Mold exists so you don't have to lose what I lost along my journey. If you're sick and no one can explain why – or you just want to know what's really in your walls – this is for you.</p>
       <div class="sig">
         – Ben, with Winnie at my side
         <small>Founder · Certified handler · Minneapolis, MN</small>
@@ -1812,10 +1862,10 @@
     <div class="team-follow">
       Want to see Winnie work?
       <div class="team-social">
-        <a href="https://www.instagram.com/molddogmidwest/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+        <a href="https://www.instagram.com/dogsonmold/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
         </a>
-        <a href="https://www.tiktok.com/@molddog_midwest" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+        <a href="https://www.tiktok.com/@dogsonmold" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-2.9v11.6a2.45 2.45 0 1 1-2.45-2.45c.26 0 .5.04.74.11V9.3a5.34 5.34 0 0 0-.74-.05 5.35 5.35 0 1 0 5.35 5.35V8.9a7.13 7.13 0 0 0 4.16 1.33V7.33a4.28 4.28 0 0 1-3.1-1.51z"/></svg>
         </a>
         <a href="#" aria-label="Facebook" title="Facebook (coming soon)">
@@ -1829,7 +1879,7 @@
 <!-- ALERT PHOTO (below socials) -->
 <div class="alert-photo-wrap">
   <figure class="alert-photo">
-    <img src="Winnie_Alert.jpg" alt="Winnie, a black Labrador mold detection dog, alerting at the base of a door during an inspection"/>
+    <img src="Winnie_Action1.jpg" alt="Winnie alerting at the base of a wall during an inspection"/>
     <figcaption>Winnie alerting on a hidden source during an inspection.</figcaption>
   </figure>
 </div>
@@ -1943,6 +1993,30 @@
   </div>
 </section>
 
+<!-- TESTIMONIALS CAROUSEL -->
+<section class="reviews">
+  <div class="container">
+    <div class="reviews-head">
+      <div>
+        <div class="r-eyebrow">Reviews</div>
+        <h2>What clients <em>are saying.</em></h2>
+      </div>
+      <a class="g-rating" href="https://g.page/r/CdZcvWPoBCl1EAI" target="_blank" rel="noopener"><svg class="glogo" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1a11 11 0 0 0-9.82 6.06l3.66 2.84C6.71 7.3 9.14 5.38 12 5.38z"/></svg><span class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="lbl">Reviews on Google</span></a>
+    </div>
+    <div class="carousel">
+      <div class="carousel-viewport"><div class="carousel-track" id="rvTrack"></div></div>
+      <div class="carousel-controls" id="rvControls">
+        <div class="carousel-dots" id="rvDots"></div>
+        <div class="carousel-arrows">
+          <button class="r-arrow" id="rvPrev" aria-label="Previous reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button class="r-arrow" id="rvNext" aria-label="Next reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-cta"><a href="https://g.page/r/CdZcvWPoBCl1EAI" target="_blank" rel="noopener" class="btn-reviews"><svg viewBox="0 0 24 24"><path fill="#fff" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#fff" opacity=".85" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#fff" opacity=".7" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#fff" opacity=".92" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1a11 11 0 0 0-9.82 6.06l3.66 2.84C6.71 7.3 9.14 5.38 12 5.38z"/></svg> Read all reviews on Google</a></div>
+  </div>
+</section>
+
 <!-- REQUEST FORM -->
 <section class="request" id="request">
   <div class="container request-wrap">
@@ -2004,16 +2078,16 @@
       <div>
         <h5>Get in touch</h5>
         <a href="#request" data-open-form>Book a Consult</a>
-        <a href="mailto:hello@molddog-midwest.com">hello@molddog-midwest.com</a>
+        <a href="mailto:hello@dogsonmold.com">hello@dogsonmold.com</a>
         <a href="tel:+15074569094">(507) 456-9094</a>
       </div>
       <div>
         <h5>Follow along</h5>
         <div class="foot-social">
-          <a href="https://www.instagram.com/molddogmidwest/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+          <a href="https://www.instagram.com/dogsonmold/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
           </a>
-          <a href="https://www.tiktok.com/@molddog_midwest" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+          <a href="https://www.tiktok.com/@dogsonmold" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-2.9v11.6a2.45 2.45 0 1 1-2.45-2.45c.26 0 .5.04.74.11V9.3a5.34 5.34 0 0 0-.74-.05 5.35 5.35 0 1 0 5.35 5.35V8.9a7.13 7.13 0 0 0 4.16 1.33V7.33a4.28 4.28 0 0 1-3.1-1.51z"/></svg>
           </a>
           <a href="#" aria-label="Facebook" title="Facebook (coming soon)">
@@ -2029,7 +2103,7 @@
       <a href="Disclaimer.html">Disclaimer</a>
     </div>
     <div class="foot-bottom">
-      <div>© 2026 Mold Dog Midwest. All rights reserved.</div>
+      <div>© 2026 Dogs On Mold. All rights reserved.</div>
       <div>Detection only – we don't do the remediation we recommend.</div>
     </div>
   </div>
@@ -2240,5 +2314,49 @@
 <!-- Tally embed loader -->
 <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
 
+<script>
+(function(){
+  var GVIA='<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1a11 11 0 0 0-9.82 6.06l3.66 2.84C6.71 7.3 9.14 5.38 12 5.38z"/></svg>';
+  var STAR='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+  function starsHtml(n){var s='';for(var i=0;i<n;i++){s+=STAR;}return s;}
+  var REVIEWS=[
+    { name:"Nick R.", initial:"N", stars:5, date:"3 days ago",  text:"Ben and Winnie were fantastic. Ben is knowledgeable, friendly, and takes time to walk through his process and why moisture may be accumulating. Winnie did a great job finding very specific areas of mold growth. Highly recommend!" },
+    { name:"Kim A.",  initial:"K", stars:5, date:"1 week ago",  text:"Ben and his dog Winnie did an excellent job searching our family home for areas of potential water intrusion and mold! Winnie detected this one spot downstairs twice and after moving a few things around we found this mold on the wall! Feels good to know other areas we were worried about (related to smell) did not detect anything. Can sleep soundly with our littles knowing they are safe :) Thanks again Ben! I\u2019d recommend Mold Dog Midwest to everyone!" },
+    { name:"Max A.",  initial:"M", stars:5, date:"25 days ago", text:"We recently had Ben and his amazing mold dog, Winnie, out to our home in New Hope, and we couldn\u2019t be more grateful for their help! As a family, having peace of mind about our home\u2019s air quality and safety is everything to us. Ben was incredibly professional, thorough, and patient with all our questions, and watching Winnie work was incredible\u2014she is super accurate and so sweet with our family! She detected two hidden mold areas that we never would have found on our own, including a critical spot right by our HVAC unit behind the freezer. Catching the mold before it spread through the whole HVAC system saved us so much time, money, and stress. We are beyond thankful for Ben and Winnie\u2019s expertise. If you suspect mold in your home, do not hesitate to call them\u2014we cannot recommend them highly enough!" }
+  ];
+  var track=document.getElementById('rvTrack'); if(!track) return;
+  var html='';
+  for(var i=0;i<REVIEWS.length;i++){var r=REVIEWS[i];
+    html+='<article class="review-card"><div class="rc-head"><div class="rc-avatar">'+r.initial+'</div>'
+      +'<div><div class="rc-name">'+r.name+'</div><div class="rc-via">'+GVIA+' via Google</div></div></div>'
+      +'<div class="rc-stars stars">'+starsHtml(r.stars)+'</div>'
+      +'<p class="rc-text">'+r.text+'</p><div class="rc-date">'+r.date+'</div></article>';
+  }
+  track.innerHTML=html;
+  var cards=Array.prototype.slice.call(track.children);
+  var dotsWrap=document.getElementById('rvDots'), controls=document.getElementById('rvControls');
+  var index=0, autoTimer=null;
+  function perView(){var w=window.innerWidth; if(w<=620)return 1; if(w<=900)return 2; return 3;}
+  function maxIndex(){return Math.max(0, cards.length - perView());}
+  function buildDots(){dotsWrap.innerHTML='';for(var i=0;i<=maxIndex();i++){var b=document.createElement('button');b.className='r-dot'+(i===index?' active':'');(function(i){b.addEventListener('click',function(){index=i;update();resetAuto();});})(i);dotsWrap.appendChild(b);}}
+  function update(){
+    if(maxIndex()===0){controls.className='carousel-controls hidden';clearInterval(autoTimer);index=0;track.style.transform='translateX(0)';return;}
+    controls.className='carousel-controls';
+    if(index>maxIndex())index=maxIndex();
+    var w=cards[0].getBoundingClientRect().width;
+    track.style.transform='translateX(-'+(index*(w+22))+'px)';
+    var ds=dotsWrap.children;for(var i=0;i<ds.length;i++){ds[i].className='r-dot'+(i===index?' active':'');}
+  }
+  function go(dr){var mx=maxIndex();index+=dr;if(index>mx)index=0;if(index<0)index=mx;update();}
+  function resetAuto(){clearInterval(autoTimer);if(maxIndex()>0)autoTimer=setInterval(function(){go(1);},6000);}
+  document.getElementById('rvPrev').addEventListener('click',function(){go(-1);resetAuto();});
+  document.getElementById('rvNext').addEventListener('click',function(){go(1);resetAuto();});
+  var cel=document.querySelector('.carousel');
+  cel.addEventListener('mouseenter',function(){clearInterval(autoTimer);});
+  cel.addEventListener('mouseleave',resetAuto);
+  window.addEventListener('resize',function(){buildDots();update();});
+  buildDots();update();resetAuto();
+})();
+</script>
 </body>
 </html>
