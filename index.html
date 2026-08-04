@@ -1357,6 +1357,11 @@
     /* Reveal expander buttons on mobile */
     .m-expander { display: block; margin-top: 22px; }
 
+    /* Founder story: collapse to a "Read my story" button on mobile */
+    .about .story-body.m-hide { display: none; }
+    .about.m-open .story-body.m-hide { display: block; }
+    .about .story-toggle { margin-top: 20px; }
+
     /* ---- SYMPTOMS: each card collapses to its heading; tap to expand ---- */
     .symptom-head {
       display: flex;
@@ -1859,6 +1864,12 @@
     <div>
       <div class="section-eyebrow">A few years ago, I was the one who was sick.</div>
       <h2>I lived it. Now it's my <em>passion</em> to help others.</h2>
+      <div class="m-expander story-toggle">
+        <button class="m-expand-btn" type="button" data-expander="story" aria-expanded="false">
+          <span class="label">Read my story</span><span class="chev">▼</span>
+        </button>
+      </div>
+      <div class="story-body m-hide">
       <p>It started as a migraine that wouldn't quit. Then came more symptoms, and more, until they were debilitating. Many providers and even urgent care visits – and no one could find anything wrong from standard examination or blood tests.</p>
       <p>A friend brought up potential long-term mold exposure from my home. Elevated levels were found – the problem wasn't in my head, it was in my home.</p>
       <p>Over three years, it cost me more than $50,000 – testing, remediation, and clawing my health back. I went on leave from work. I moved out. I went through remediation, and turned to functional health to start rebuilding what the mold had taken. Recovery was slow. But piece by piece, I got my life back.</p>
@@ -1867,6 +1878,7 @@
       <div class="sig">
         – Ben, with Winnie at my side
         <small>Founder · Certified handler · Minneapolis, MN</small>
+      </div>
       </div>
     </div>
   </div>
@@ -2185,7 +2197,8 @@
   (function () {
     const LABELS = {
       symptoms: ['See all symptoms', 'Show fewer symptoms'],
-      pricing:  ['See full pricing', 'Show less']
+      pricing:  ['See full pricing', 'Show less'],
+      story:    ['Read my story', 'Show less']
     };
     document.querySelectorAll('.m-expand-btn[data-expander]').forEach(btn => {
       btn.addEventListener('click', () => {
