@@ -2141,13 +2141,13 @@
     </div>
     <div class="req-embed req-cta">
       <!-- ============================================================
-           TALLY POPUP TRIGGER
-           The form opens as a modal popup – it is NOT shown inline.
-           Every "Book" / "Consult" / "Request" button on the site
-           (nav, hero, services, pricing, footer) opens this
-           same popup, all routed through one handler.
-           >>> Set your form ID in ONE place: the TALLY_FORM_ID line
-               in the script near the bottom of this file. <<<
+           JOTFORM LIGHTBOX (modal popup)
+           The booking / 15-min consult form opens in a modal.
+           Every "Book" / "Consult" button on the site (nav, hero,
+           services, pricing, footer) carries [data-open-form]; the
+           handler near the bottom of this file opens the popup by
+           triggering the hidden Jotform anchor (#jfLightboxTrigger).
+           The Lightbox scripts live just before </body>.
            ============================================================ -->
       <h3>Ready when you are.</h3>
       <p>One quick form covers both – booking an inspection or grabbing a free 15-minute consult. Takes about a minute.</p>
@@ -2158,6 +2158,14 @@
         Inspection / 15-min Consult
       </button>
       <div class="form-foot">We'll reply within one business day.</div>
+
+      <!-- Hidden Jotform lightbox trigger — feedback2.js binds the popup to its class.
+           Do NOT remove the lightbox-262216902953054 class. -->
+      <a id="jfLightboxTrigger"
+         class="lightbox-262216902953054"
+         style="display:none"
+         aria-hidden="true"
+         tabindex="-1">Open booking form</a>
     </div>
   </div>
 </section>
@@ -2388,23 +2396,17 @@
   })();
 </script>
 
-<!-- ===== Booking popup: SET YOUR TALLY FORM ID HERE (one place) ===== -->
+<!-- ===== Booking CTA handler: open the Jotform Lightbox popup ===== -->
 <script>
-  // Replace YOUR_FORM_ID with your Tally form's ID (the code after tally.so/r/ – e.g. "wAbC12").
-  const TALLY_FORM_ID = "81ElPO";
-  const TALLY_OPTS = {
-    layout: "modal",
-    width: 640,
-    hideTitle: true,
-    overlay: true,
-    emoji: { text: "🐾", animation: "wave" }
-  };
-
+  // The booking / 15-min consult form opens as a Jotform Lightbox (modal).
+  // Every element with [data-open-form] triggers the hidden Jotform anchor
+  // (#jfLightboxTrigger), which feedback2.js has bound to open the popup.
   function openBookingForm() {
-    if (window.Tally && typeof Tally.openPopup === "function") {
-      Tally.openPopup(TALLY_FORM_ID, TALLY_OPTS);
+    const trigger = document.getElementById("jfLightboxTrigger");
+    if (trigger) {
+      trigger.click();
     } else {
-      // Fallback if the Tally script hasn't loaded yet: go to the booking section.
+      // Fallback if the lightbox script hasn't loaded yet: jump to the form section.
       const el = document.getElementById("request");
       if (el) el.scrollIntoView({ behavior: "smooth" });
     }
@@ -2412,16 +2414,14 @@
 
   // Any element with [data-open-form] opens the popup (nav, hero, services, pricing, footer).
   document.addEventListener("click", function (e) {
-    const trigger = e.target.closest("[data-open-form]");
-    if (trigger) {
+    const btn = e.target.closest("[data-open-form]");
+    if (btn) {
       e.preventDefault();
       openBookingForm();
     }
   });
 </script>
 
-<!-- Tally embed loader -->
-<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
 
 <script>
 (function(){
@@ -2467,5 +2467,22 @@
   buildDots();update();resetAuto();
 })();
 </script>
+<!-- ===== Jotform Lightbox scripts (opened by the hidden #jfLightboxTrigger) ===== -->
+<script src="https://cdn.jotfor.ms/s/static/latest/static/feedback2.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var JFL_262216902953054 = new JotformFeedback({
+    formId: '262216902953054',
+    base: 'https://form.jotform.com/',
+    windowTitle: 'Inspection / 15-min Consult',
+    backgroundColor: '#6B8073',
+    fontColor: '#FFFFFF',
+    type: 'false',
+    height: 500,
+    width: 700,
+    openOnLoad: false
+  });
+</script>
+<script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
+<script>window.jotformEmbedHandler("iframe[id='262216902953054']", "https://form.jotform.com/")</script>
 </body>
 </html>
