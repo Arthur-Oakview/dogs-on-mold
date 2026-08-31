@@ -1558,22 +1558,68 @@
   /* Alert photo sits below the socials, centered, contained width */
   .alert-photo-wrap { background: var(--bone); padding: 0 0 90px; }
   .alert-photo {
-    max-width: 560px;
+    max-width: 780px;
     margin: 0 auto;
-    text-align: center;
+    position: relative;
   }
-  .alert-photo img {
-    width: 100%;
-    height: auto;
-    display: block;
+  .pc-viewport {
+    overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 18px 44px rgba(42, 42, 40, 0.16);
   }
-  .alert-photo figcaption {
-    margin-top: 14px;
-    font-size: 13px;
-    color: var(--walnut);
-    font-style: italic;
+  .pc-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+  }
+  .pc-slide { flex: 0 0 100%; min-width: 0; }
+  .pc-slide img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
+  .pc-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(42,42,40,0.18);
+    background: rgba(239,233,220,0.92);
+    color: var(--ink);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0;
+    transition: 0.2s;
+    z-index: 2;
+  }
+  .pc-arrow:hover { background: var(--ink); color: var(--bone); border-color: var(--ink); }
+  .pc-arrow svg { width: 18px; height: 18px; }
+  .pc-prev { left: 14px; }
+  .pc-next { right: 14px; }
+  .pc-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .pc-dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: rgba(42,42,40,0.22);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .pc-dot.active { background: var(--ink); transform: scale(1.25); }
+  @media (max-width: 620px) {
+    .pc-arrow { width: 38px; height: 38px; }
+    .pc-prev { left: 8px; }
+    .pc-next { right: 8px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pc-track { transition: none; }
   }
   @media (max-width: 760px) {
     .alert-photo-wrap { padding: 0 24px 60px; }
@@ -2104,10 +2150,20 @@
 
 <!-- ALERT PHOTO (below socials) -->
 <div class="alert-photo-wrap">
-  <figure class="alert-photo">
-    <img src="Winnie_Action1.jpg" alt="Winnie alerting at the base of a wall during an inspection"/>
-    <figcaption>Winnie alerting on a hidden source during an inspection.</figcaption>
-  </figure>
+  <div class="alert-photo" id="winnieCarousel" aria-roledescription="carousel" aria-label="Winnie on the job">
+    <div class="pc-viewport">
+      <div class="pc-track" id="pcTrack">
+        <div class="pc-slide"><img src="BenWinnieWork.jpg" alt="Ben working Winnie along a kitchen cabinet run during a mold inspection" loading="lazy" decoding="async"/></div>
+        <div class="pc-slide"><img src="WinnieAlert2.jpg" alt="Winnie in a trained alert, lying down and nosing the base of a dishwasher" loading="lazy" decoding="async"/></div>
+        <div class="pc-slide"><img src="BenWinnieWork2.jpg" alt="Ben directing Winnie to search the base of a refrigerator" loading="lazy" decoding="async"/></div>
+        <div class="pc-slide"><img src="WinnieAlert3.jpg" alt="Winnie holding a passive alert at the toe kick of a kitchen cabinet" loading="lazy" decoding="async"/></div>
+        <div class="pc-slide"><img src="BenWinniePlay.jpg" alt="Ben rewarding Winnie with her toy after a successful find" loading="lazy" decoding="async"/></div>
+      </div>
+    </div>
+    <button class="pc-arrow pc-prev" id="pcPrev" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <button class="pc-arrow pc-next" id="pcNext" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+    <div class="pc-dots" id="pcDots"></div>
+  </div>
 </div>
 
 <!-- PRICING -->
@@ -2630,6 +2686,73 @@
   cel.addEventListener('mouseleave',resetAuto);
   window.addEventListener('resize',function(){buildDots();update();});
   buildDots();update();resetAuto();
+})();
+</script>
+<script>
+/* ---- Winnie photo carousel (independent of the reviews carousel) ---- */
+(function () {
+  var root = document.getElementById('winnieCarousel');
+  if (!root) return;
+  var track = document.getElementById('pcTrack');
+  var dotsWrap = document.getElementById('pcDots');
+  var slides = track.querySelectorAll('.pc-slide');
+  var total = slides.length;
+  var index = 0;
+  var timer = null;
+  var AUTO = 6000;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function update() {
+    track.style.transform = 'translateX(' + (-index * 100) + '%)';
+    var dots = dotsWrap.children;
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].className = 'pc-dot' + (i === index ? ' active' : '');
+      dots[i].setAttribute('aria-current', i === index ? 'true' : 'false');
+    }
+    for (var j = 0; j < total; j++) {
+      slides[j].setAttribute('aria-hidden', j === index ? 'false' : 'true');
+    }
+  }
+  function go(step) { index = (index + step + total) % total; update(); }
+  function resetAuto() {
+    clearInterval(timer);
+    if (!reduce && total > 1) timer = setInterval(function () { go(1); }, AUTO);
+  }
+
+  for (var i = 0; i < total; i++) {
+    (function (i) {
+      var b = document.createElement('button');
+      b.className = 'pc-dot';
+      b.setAttribute('aria-label', 'Go to photo ' + (i + 1) + ' of ' + total);
+      b.addEventListener('click', function () { index = i; update(); resetAuto(); });
+      dotsWrap.appendChild(b);
+    })(i);
+  }
+
+  document.getElementById('pcPrev').addEventListener('click', function () { go(-1); resetAuto(); });
+  document.getElementById('pcNext').addEventListener('click', function () { go(1); resetAuto(); });
+
+  root.addEventListener('mouseenter', function () { clearInterval(timer); });
+  root.addEventListener('mouseleave', resetAuto);
+
+  root.setAttribute('tabindex', '0');
+  root.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { go(-1); resetAuto(); }
+    if (e.key === 'ArrowRight') { go(1); resetAuto(); }
+  });
+
+  var x0 = null;
+  root.addEventListener('touchstart', function (e) {
+    x0 = e.changedTouches[0].clientX; clearInterval(timer);
+  }, { passive: true });
+  root.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+    x0 = null; resetAuto();
+  }, { passive: true });
+
+  update(); resetAuto();
 })();
 </script>
 </body>
