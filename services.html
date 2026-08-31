@@ -44,7 +44,7 @@
     --body: 'Inter Tight', system-ui, sans-serif;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: var(--header-h, 76px); }
   /* Offset anchor jumps so the sticky nav doesn't cover the section top */
   section[id], div[id] { scroll-margin-top: 90px; }
   body {
@@ -110,6 +110,14 @@
     .promo-banner .promo-price { font-size: 15px; }
     .promo-banner .promo-inner { gap: 6px; }
   }
+
+  /* ---------- STICKY HEADER (promo banner + nav travel together) ---------- */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+  }
+  /* nav is sticky on its own; inside the sticky wrapper it must be static
+     or the two compete for top:0 and overlap. */
+  .site-header nav { position: static; }
 
   /* ---------- NAV ---------- */
   nav {
@@ -1660,6 +1668,8 @@
 </head>
 <body>
 
+<div class="site-header" id="siteHeader">
+
 <!-- SEPTEMBER PROMO BANNER (auto-expires — see promo script at end of file) -->
 <div class="promo-banner" id="promoBanner" role="region" aria-label="September promotion" hidden>
   <div class="promo-inner">
@@ -1717,6 +1727,8 @@
     <a href="/#request" data-open-form class="mobile-menu-cta">Book A Free 15-Min Consult</a>
   </div>
 </nav>
+
+</div><!-- /.site-header -->
 
 
 <!-- SERVICES HERO -->
@@ -1877,6 +1889,27 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
     targets.forEach(t => io.observe(t));
+  })();
+
+  /* ---- Keep scroll-padding in sync with the real header height ----
+     Header height changes when the promo banner is dismissed/expired or
+     when its text wraps on narrow screens, so measure it rather than
+     hard-coding a value. */
+  (function () {
+    var header = document.getElementById('siteHeader');
+    if (!header) return;
+
+    function syncHeaderHeight() {
+      document.documentElement.style.setProperty(
+        '--header-h', header.offsetHeight + 'px');
+    }
+
+    syncHeaderHeight();
+    window.addEventListener('resize', syncHeaderHeight);
+    window.addEventListener('orientationchange', syncHeaderHeight);
+    if (window.ResizeObserver) {
+      new ResizeObserver(syncHeaderHeight).observe(header);
+    }
   })();
 
   /* ---- September promo banner: auto-expires after Sept 30, 2026 ---- */
