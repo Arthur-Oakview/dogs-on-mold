@@ -7,14 +7,14 @@
     <!-- Favicon: swaps with the browser light/dark theme -->
     <link rel="icon" href="MDM_LogoOnly.svg" type="image/svg+xml" sizes="any" media="(prefers-color-scheme: light)">
     <link rel="icon" href="MDM_LogoOnlyNegative.svg" type="image/svg+xml" sizes="any" media="(prefers-color-scheme: dark)">
-<meta name="description" content="Common questions about canine mold detection—how it works, pricing, travel, and what to expect after your inspection. Serving MN, WI, IA &amp; the Dakotas." />
+<meta name="description" content="Common questions about canine mold detection—how it works, what to expect, and what happens after your inspection. Serving MN, WI, IA &amp; the Dakotas." />
 <link rel="canonical" href="https://molddog-midwest.com/faq" />
 
 <!-- Social sharing preview (Open Graph) -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Mold Dog Midwest" />
 <meta property="og:title" content="FAQ – Mold Dog Midwest · Canine Mold Detection" />
-<meta property="og:description" content="Common questions about canine mold detection—how it works, pricing, travel, and what to expect after your inspection. Serving MN, WI, IA &amp; the Dakotas." />
+<meta property="og:description" content="Common questions about canine mold detection—how it works, what to expect, and what happens after your inspection. Serving MN, WI, IA &amp; the Dakotas." />
 <meta property="og:url" content="https://molddog-midwest.com/faq" />
 <meta property="og:image" content="https://molddog-midwest.com/MDM_social.png" />
 <meta property="og:image:width" content="1200" />
@@ -24,7 +24,7 @@
 <!-- Social sharing preview (Twitter/X) -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="FAQ – Mold Dog Midwest · Canine Mold Detection" />
-<meta name="twitter:description" content="Common questions about canine mold detection—how it works, pricing, travel, and what to expect after your inspection. Serving MN, WI, IA &amp; the Dakotas." />
+<meta name="twitter:description" content="Common questions about canine mold detection—how it works, what to expect, and what happens after your inspection. Serving MN, WI, IA &amp; the Dakotas." />
 <meta name="twitter:image" content="https://molddog-midwest.com/MDM_social.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,6 +62,52 @@
   a:hover { text-decoration: underline; }
   .container { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
   .narrow { max-width: 880px; }
+
+  /* ---------- SEPTEMBER PROMO BANNER ---------- */
+  .promo-banner {
+    background: var(--brick);
+    color: var(--bone);
+    text-align: center;
+    padding: 11px 44px 11px 20px;
+    font-size: 14.5px;
+    font-weight: 500;
+    line-height: 1.45;
+    position: relative;
+    letter-spacing: 0.01em;
+  }
+  .promo-banner .promo-inner {
+    max-width: 1240px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; flex-wrap: wrap;
+  }
+  .promo-banner strong { font-weight: 700; }
+  .promo-banner .promo-price {
+    font-family: var(--display);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .promo-banner a.promo-cta {
+    color: var(--bone);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .promo-banner a.promo-cta:hover { color: #fff; }
+  .promo-close {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; color: var(--bone);
+    font-size: 20px; line-height: 1; cursor: pointer;
+    padding: 4px 8px; opacity: 0.75;
+  }
+  .promo-close:hover { opacity: 1; }
+  /* Hidden until the date check passes, and after dismissal */
+  .promo-banner[hidden], .promo-banner.is-hidden { display: none; }
+  @media (max-width: 620px) {
+    .promo-banner { font-size: 13px; padding: 10px 38px 10px 14px; }
+    .promo-banner .promo-price { font-size: 15px; }
+    .promo-banner .promo-inner { gap: 6px; }
+  }
 
   /* ---------- NAV ---------- */
   nav {
@@ -375,6 +421,18 @@
 </head>
 <body>
 
+<!-- SEPTEMBER PROMO BANNER (auto-expires — see promo script at end of file) -->
+<div class="promo-banner" id="promoBanner" role="region" aria-label="September promotion" hidden>
+  <div class="promo-inner">
+    <span><strong>September Special:</strong> Book your inspection this month for <span class="promo-price">$995</span> &mdash; homes up to 3,500 sq ft.</span>
+    <a href="/#pricing" class="promo-cta">See Pricing &rarr;</a>
+  </div>
+  <button class="promo-close" type="button" id="promoClose" aria-label="Dismiss announcement">&times;</button>
+</div>
+
+
+
+
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
@@ -480,31 +538,6 @@
       </details>
     </div>
 
-    <!-- PRICING & BOOKING -->
-    <div class="faq-group">
-      <div class="faq-group-title">Pricing &amp; booking</div>
-
-      <details class="faq-item">
-        <summary>How much does an inspection cost?</summary>
-        <div class="answer">Standard homes (up to 4,000 sq ft) start at $1,450, with add-ons for larger spaces and travel beyond 30 miles. Full breakdown is on our <a href="/#pricing">Pricing section</a>.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Do I pay for travel?</summary>
-        <div class="answer">A $2/mile round-trip charge applies beyond 30 miles from downtown Minneapolis. We serve Minnesota, Wisconsin, Iowa, and eastern North &amp; South Dakota. No hidden fees – you'll know your full price before booking.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>How do I book and pay?</summary>
-        <div class="answer">A 50% deposit holds your slot; the remaining 50% is due at completion of the inspection.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>What's your cancellation or rescheduling policy?</summary>
-        <div class="answer">Rescheduling is allowed with an advance notice of at least 24 hours with no additional fee. Additional fees may apply if you need to reschedule with less than 24 hours until the appointment. Cancellations are not accepted for any reason and will forfeit the 50% deposit if not rescheduled.</div>
-      </details>
-    </div>
-
     <!-- AFTER THE INSPECTION -->
     <div class="faq-group">
       <div class="faq-group-title">After the inspection</div>
@@ -600,6 +633,32 @@
 </footer>
 
 <script>
+  /* ---- September promo banner: auto-expires after Sept 30, 2026 ---- */
+  (function () {
+    var banner = document.getElementById('promoBanner');
+    if (!banner) return;
+
+    /* Promo window. Months are 0-indexed: 7 = August, 8 = September, 9 = October.
+       To run this promo again, just change these two dates. */
+    var PROMO_START = new Date(2026, 7, 31, 0, 0, 0);   /* Aug 31, 2026, 12:00 AM */
+    var PROMO_END   = new Date(2026, 9, 1, 0, 0, 0);    /* Oct 1, 2026, 12:00 AM  */
+
+    var now = new Date();
+    if (now < PROMO_START || now >= PROMO_END) {
+      banner.parentNode.removeChild(banner);
+      return;
+    }
+
+    banner.hidden = false;
+
+    var closeBtn = document.getElementById('promoClose');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        banner.classList.add('is-hidden');
+      });
+    }
+  })();
+
   /* ---- Nav dropdowns (Services + More) ---- */
   (function () {
     const dropdowns = Array.from(document.querySelectorAll('.nav-dropdown'));

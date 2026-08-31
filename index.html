@@ -37,7 +37,7 @@
   "logo": "https://molddog-midwest.com/MDM_LogoOnly.png",
   "description": "A trained mold dog finds hidden mold behind walls, under floors, and in HVAC by scent. Minneapolis-based, serving MN, WI, IA & eastern ND/SD.",
   "telephone": "+1-612-460-1402",
-  "priceRange": "$1,450–$2,000",
+  "priceRange": "$995–$1,295",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Minneapolis",
@@ -104,6 +104,52 @@
   a:hover { text-decoration: underline; }
   img { max-width: 100%; display: block; }
   .container { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- SEPTEMBER PROMO BANNER ---------- */
+  .promo-banner {
+    background: var(--brick);
+    color: var(--bone);
+    text-align: center;
+    padding: 11px 44px 11px 20px;
+    font-size: 14.5px;
+    font-weight: 500;
+    line-height: 1.45;
+    position: relative;
+    letter-spacing: 0.01em;
+  }
+  .promo-banner .promo-inner {
+    max-width: 1240px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; flex-wrap: wrap;
+  }
+  .promo-banner strong { font-weight: 700; }
+  .promo-banner .promo-price {
+    font-family: var(--display);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .promo-banner a.promo-cta {
+    color: var(--bone);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .promo-banner a.promo-cta:hover { color: #fff; }
+  .promo-close {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; color: var(--bone);
+    font-size: 20px; line-height: 1; cursor: pointer;
+    padding: 4px 8px; opacity: 0.75;
+  }
+  .promo-close:hover { opacity: 1; }
+  /* Hidden until the date check passes, and after dismissal */
+  .promo-banner[hidden], .promo-banner.is-hidden { display: none; }
+  @media (max-width: 620px) {
+    .promo-banner { font-size: 13px; padding: 10px 38px 10px 14px; }
+    .promo-banner .promo-price { font-size: 15px; }
+    .promo-banner .promo-inner { gap: 6px; }
+  }
 
   /* ---------- NAV ---------- */
   nav {
@@ -1678,6 +1724,17 @@
 </head>
 <body>
 
+<!-- SEPTEMBER PROMO BANNER (auto-expires — see promo script at end of file) -->
+<div class="promo-banner" id="promoBanner" role="region" aria-label="September promotion" hidden>
+  <div class="promo-inner">
+    <span><strong>September Special:</strong> Book your inspection this month for <span class="promo-price">$995</span> &mdash; homes up to 3,500 sq ft.</span>
+    <a href="#request" data-open-form class="promo-cta">Book Now &rarr;</a>
+  </div>
+  <button class="promo-close" type="button" id="promoClose" aria-label="Dismiss announcement">&times;</button>
+</div>
+
+
+
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
@@ -2047,7 +2104,7 @@
 
     <div class="section-head">
       <div>
-        <div class="section-eyebrow">All-inclusive pricing</div>
+        <div class="section-eyebrow">Transparent pricing</div>
         <h2>No hidden fees. You'll know your <em>full price</em> before we book.</h2>
       </div>
     </div>
@@ -2062,20 +2119,20 @@
       <div class="tier featured">
         <div class="tier-name">Inspection Pricing</div>
         <div class="tier-tag">Serving MN, WI, IA &amp; eastern ND/SD.</div>
-        <div class="price-line"><span>Standard home (up to 4,000 sq ft)</span><span class="amt">$1,450</span></div>
-        <div class="price-line"><span>Vehicle, boat, or RV while on-site (up to 3)</span><span class="amt">Included</span></div>
-        <div class="price-line"><span>Travel beyond 30 mi from downtown Minneapolis</span><span class="amt">+$2/mi RT</span></div>
-        <p class="note">Travel is billed round-trip from downtown Minneapolis. See <em>Boats, RVs &amp; Vehicles</em> for standalone pricing.</p>
+        <div class="price-line"><span>Standard home (up to 3,500 sq ft)</span><span class="amt">$995</span></div>
+        <div class="price-line"><span>Large home (3,500–6,500 sq ft)</span><span class="amt">+$300</span></div>
+        <div class="price-line"><span>Over 6,500 sq ft</span><span class="amt">Custom</span></div>
+        <div class="price-line"><span>Travel beyond 25 mi from downtown Minneapolis</span><span class="amt">$1/mi driven</span></div>
+        <p class="note">First 50 miles round trip are included. After that, $1 per mile driven.</p>
       </div>
 
       <!-- Tier 2 -->
       <div class="tier m-hide">
-        <div class="tier-name">Boats, RVs &amp; Vehicles</div>
-        <div class="tier-tag">Usually included with your home inspection.</div>
-        <div class="price-line"><span>Any combination of vehicle, boat, or RV while on-site (up to 3)</span><span class="amt">Included</span></div>
-        <div class="price-line"><span>Each additional beyond 3</span><span class="amt">+$100 ea</span></div>
-        <div class="price-line"><span>Standalone boat or RV (no home inspection)</span><span class="amt">$500</span></div>
-        <p class="note">If we're already on-site for your home, we'll check any combination of up to three vehicles, boats, or RVs as part of the base fee – no add-on charge. Each additional one beyond three is $100. A boat or RV inspected on its own, with no home inspection attached, is $500.</p>
+        <div class="tier-name">Boats &amp; RVs</div>
+        <div class="tier-tag">Quoted separately from home inspections.</div>
+        <div class="price-line"><span>Boat or RV inspection</span><span class="amt">Custom</span></div>
+        <p class="consult-line">Boats and RVs are priced individually based on size, layout, and location – whether or not we're also inspecting your home. Reach out and we'll quote it before anything is booked.</p>
+        <a href="#request" data-open-form class="btn">Get A Quote</a>
       </div>
 
       <!-- Tier 3 -->
@@ -2084,16 +2141,17 @@
         <div class="tier-tag">Portfolios &amp; multiple properties.</div>
         <p class="consult-line">Own multiple properties or manage a portfolio? Every situation is different – book a consult and we'll build a plan around your properties.</p>
         <a href="#request" data-open-form class="btn">Book A Consult</a>
-        <p class="note"><strong>Travel:</strong> $2/mile beyond 30 miles round-trip from downtown Minneapolis.</p>
+        <p class="note"><strong>Travel:</strong> First 50 miles round trip included, then $1 per mile driven.</p>
       </div>
 
       <!-- Tier 4 -->
       <div class="tier m-hide">
-        <div class="tier-name">Add-Ons</div>
-        <div class="tier-tag">For larger spaces.</div>
-        <div class="price-line"><span>Large home (4,000–8,000 sq ft)</span><span class="amt">+$300</span></div>
-        <div class="price-line"><span>Estate / very large home (8,000+ sq ft)</span><span class="amt">+$800</span></div>
-        <p class="note">Square footage covers all inspectable areas you'd like swept, including unfinished basements.</p>
+        <div class="tier-name">Square Footage</div>
+        <div class="tier-tag">How your size tier is set.</div>
+        <div class="price-line"><span>Up to 3,500 sq ft</span><span class="amt">$995</span></div>
+        <div class="price-line"><span>3,500–6,500 sq ft</span><span class="amt">$1,295</span></div>
+        <div class="price-line"><span>Over 6,500 sq ft</span><span class="amt">Custom</span></div>
+        <p class="note">Square footage covers all inspectable areas you'd like swept, including unfinished basements. Homes over 6,500 sq ft are quoted individually – book a consult and we'll price it before you commit.</p>
       </div>
     </div>
 
@@ -2104,8 +2162,9 @@
     </div>
 
     <div class="fine-print m-hide">
-      <div class="fp-row"><strong>Booking:</strong> A 50% deposit holds your slot; the remaining 50% is due at completion of the inspection.</div>
+      <div class="fp-row"><strong>Booking:</strong> A 25% deposit holds your appointment; the remaining 75% is due at completion of the inspection.</div>
       <div class="fp-row"><strong>Detection only:</strong> remediation is not included. We find it and guide you – we don't do the remediation ourselves.</div>
+      <div class="fp-row"><strong>Cancellations &amp; rescheduling:</strong> Rescheduling is allowed with an advance notice of at least 24 hours with no additional fee. Additional fees may apply if you need to reschedule with less than 24 hours until the appointment. Cancellations are not accepted for any reason and will forfeit the 25% deposit if not rescheduled.</div>
     </div>
 
     <div class="includes" style="margin-top:64px; margin-bottom:0; padding-top:52px; border-top:1px solid rgba(139,111,78,0.25);">
@@ -2378,6 +2437,32 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 
     targets.forEach(t => io.observe(t));
+  })();
+
+  /* ---- September promo banner: auto-expires after Sept 30, 2026 ---- */
+  (function () {
+    var banner = document.getElementById('promoBanner');
+    if (!banner) return;
+
+    /* Promo window. Months are 0-indexed: 7 = August, 8 = September, 9 = October.
+       To run this promo again, just change these two dates. */
+    var PROMO_START = new Date(2026, 7, 31, 0, 0, 0);   /* Aug 31, 2026, 12:00 AM */
+    var PROMO_END   = new Date(2026, 9, 1, 0, 0, 0);    /* Oct 1, 2026, 12:00 AM  */
+
+    var now = new Date();
+    if (now < PROMO_START || now >= PROMO_END) {
+      banner.parentNode.removeChild(banner);
+      return;
+    }
+
+    banner.hidden = false;
+
+    var closeBtn = document.getElementById('promoClose');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        banner.classList.add('is-hidden');
+      });
+    }
   })();
 
   /* ---- Nav dropdowns (Services + More) ---- */

@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Services – Mold Dog Midwest · Canine Mold Detection for Homes, Commercial, Vehicles & PRV</title>
+<title>Services – Mold Dog Midwest · Canine Mold Detection for Homes, Commercial, Boats & RVs, and PRV</title>
     <!-- Favicon: swaps with the browser light/dark theme -->
     <link rel="icon" href="MDM_LogoOnly.svg" type="image/svg+xml" sizes="any" media="(prefers-color-scheme: light)">
     <link rel="icon" href="MDM_LogoOnlyNegative.svg" type="image/svg+xml" sizes="any" media="(prefers-color-scheme: dark)">
-<meta name="description" content="What Mold Dog Midwest inspects: homes, commercial spaces, automobiles (boats, cars/trucks, RVs), and Post-Remediation Verification (PRV). Non-invasive canine mold detection, Minneapolis-based, serving MN, WI, IA & eastern ND/SD." />
+<meta name="description" content="What Mold Dog Midwest inspects: homes, commercial spaces, boats and RVs, and Post-Remediation Verification (PRV). Non-invasive canine mold detection, Minneapolis-based, serving MN, WI, IA & eastern ND/SD." />
 <link rel="canonical" href="https://molddog-midwest.com/services" />
 
 <!-- Social sharing preview (Open Graph) -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Mold Dog Midwest" />
-<meta property="og:title" content="Services – Mold Dog Midwest · Canine Mold Detection for Homes, Commercial, Vehicles &amp; PRV" />
-<meta property="og:description" content="What Mold Dog Midwest inspects: homes, commercial spaces, automobiles (boats, cars/trucks, RVs), and Post-Remediation Verification (PRV). Non-invasive canine mold detection, Minneapolis-based, serving MN, WI, IA & eastern ND/SD." />
+<meta property="og:title" content="Services – Mold Dog Midwest · Canine Mold Detection for Homes, Commercial, Boats &amp; RVs, and PRV" />
+<meta property="og:description" content="What Mold Dog Midwest inspects: homes, commercial spaces, boats and RVs, and Post-Remediation Verification (PRV). Non-invasive canine mold detection, Minneapolis-based, serving MN, WI, IA & eastern ND/SD." />
 <meta property="og:url" content="https://molddog-midwest.com/services" />
 <meta property="og:image" content="https://molddog-midwest.com/MDM_social.png" />
 <meta property="og:image:width" content="1200" />
@@ -23,8 +23,8 @@
 
 <!-- Social sharing preview (Twitter/X) -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Services – Mold Dog Midwest · Canine Mold Detection for Homes, Commercial, Vehicles &amp; PRV" />
-<meta name="twitter:description" content="What Mold Dog Midwest inspects: homes, commercial spaces, automobiles (boats, cars/trucks, RVs), and Post-Remediation Verification (PRV). Non-invasive canine mold detection, Minneapolis-based, serving MN, WI, IA & eastern ND/SD." />
+<meta name="twitter:title" content="Services – Mold Dog Midwest · Canine Mold Detection for Homes, Commercial, Boats &amp; RVs, and PRV" />
+<meta name="twitter:description" content="What Mold Dog Midwest inspects: homes, commercial spaces, boats and RVs, and Post-Remediation Verification (PRV). Non-invasive canine mold detection, Minneapolis-based, serving MN, WI, IA & eastern ND/SD." />
 <meta name="twitter:image" content="https://molddog-midwest.com/MDM_social.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,6 +64,52 @@
   a:hover { text-decoration: underline; }
   img { max-width: 100%; display: block; }
   .container { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- SEPTEMBER PROMO BANNER ---------- */
+  .promo-banner {
+    background: var(--brick);
+    color: var(--bone);
+    text-align: center;
+    padding: 11px 44px 11px 20px;
+    font-size: 14.5px;
+    font-weight: 500;
+    line-height: 1.45;
+    position: relative;
+    letter-spacing: 0.01em;
+  }
+  .promo-banner .promo-inner {
+    max-width: 1240px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; flex-wrap: wrap;
+  }
+  .promo-banner strong { font-weight: 700; }
+  .promo-banner .promo-price {
+    font-family: var(--display);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .promo-banner a.promo-cta {
+    color: var(--bone);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .promo-banner a.promo-cta:hover { color: #fff; }
+  .promo-close {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; color: var(--bone);
+    font-size: 20px; line-height: 1; cursor: pointer;
+    padding: 4px 8px; opacity: 0.75;
+  }
+  .promo-close:hover { opacity: 1; }
+  /* Hidden until the date check passes, and after dismissal */
+  .promo-banner[hidden], .promo-banner.is-hidden { display: none; }
+  @media (max-width: 620px) {
+    .promo-banner { font-size: 13px; padding: 10px 38px 10px 14px; }
+    .promo-banner .promo-price { font-size: 15px; }
+    .promo-banner .promo-inner { gap: 6px; }
+  }
 
   /* ---------- NAV ---------- */
   nav {
@@ -1614,6 +1660,16 @@
 </head>
 <body>
 
+<!-- SEPTEMBER PROMO BANNER (auto-expires — see promo script at end of file) -->
+<div class="promo-banner" id="promoBanner" role="region" aria-label="September promotion" hidden>
+  <div class="promo-inner">
+    <span><strong>September Special:</strong> Book your inspection this month for <span class="promo-price">$995</span> &mdash; homes up to 3,500 sq ft.</span>
+    <a href="/#pricing" class="promo-cta">See Pricing &rarr;</a>
+  </div>
+  <button class="promo-close" type="button" id="promoClose" aria-label="Dismiss announcement">&times;</button>
+</div>
+
+
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
@@ -1704,20 +1760,20 @@
         </ul>
       </div>
 
-      <!-- 3. AUTOMOBILES -->
+      <!-- 3. BOATS & RVs -->
       <div class="svc-card">
         <div class="svc-kicker">On wheels &amp; water</div>
-        <h2>Automobiles <em>&amp; RVs</em></h2>
-        <p>Moisture gets trapped in vehicles just like buildings – and it's easy to miss. Winnie inspects the spaces where mold hides in boats, cars, trucks, and RVs.</p>
+        <h2>Boats <em>&amp; RVs</em></h2>
+        <p>Moisture gets trapped in boats and RVs just like buildings – and it's easy to miss. Winnie inspects the cabins, storage areas, and tight spaces where mold hides.</p>
         <div class="svc-tag-row">
           <span class="svc-tag">Boats</span>
-          <span class="svc-tag">Cars &amp; Trucks</span>
           <span class="svc-tag">RVs</span>
         </div>
         <ul class="svc-list">
           <li>Cabins, upholstery, and enclosed storage areas</li>
           <li>Common after leaks, flooding, or long storage</li>
           <li>Source-first detection before you tear anything apart</li>
+          <li>Priced individually – quoted before anything is booked</li>
         </ul>
       </div>
 
@@ -1821,6 +1877,32 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
     targets.forEach(t => io.observe(t));
+  })();
+
+  /* ---- September promo banner: auto-expires after Sept 30, 2026 ---- */
+  (function () {
+    var banner = document.getElementById('promoBanner');
+    if (!banner) return;
+
+    /* Promo window. Months are 0-indexed: 7 = August, 8 = September, 9 = October.
+       To run this promo again, just change these two dates. */
+    var PROMO_START = new Date(2026, 7, 31, 0, 0, 0);   /* Aug 31, 2026, 12:00 AM */
+    var PROMO_END   = new Date(2026, 9, 1, 0, 0, 0);    /* Oct 1, 2026, 12:00 AM  */
+
+    var now = new Date();
+    if (now < PROMO_START || now >= PROMO_END) {
+      banner.parentNode.removeChild(banner);
+      return;
+    }
+
+    banner.hidden = false;
+
+    var closeBtn = document.getElementById('promoClose');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        banner.classList.add('is-hidden');
+      });
+    }
   })();
 
   /* ---- Nav dropdowns (Services + More) ---- */
